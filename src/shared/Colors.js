@@ -5,6 +5,9 @@ export const StudyColors = {
   black: '#000000',
   white: '#ffffff',
   searchBar: '#D9D9D9',
+  placeholder: '#757575',
+  buttonFocus: '#191919',
+  buttonBorder: '#727272',
 };
 
 export const StudyFontOptions = {
