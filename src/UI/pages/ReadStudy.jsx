@@ -1,5 +1,6 @@
 import React from 'react';
 import Study from 'src/UI/components/Study';
+import SearchBar from '../components/SearchBar';
 
 function ReadStudy() {
   const mockupData = [
@@ -30,7 +31,7 @@ function ReadStudy() {
   return (
     <div>
       <div>뒤로가기 / 알림</div>
-      <div>검색 창</div>
+      <SearchBar />
       <h1>*으로 검색결과 n건</h1>
       <div>정렬기준(최신순)</div>
       <ul>

@@ -14,4 +14,14 @@ export const GlobalStyle = createGlobalStyle`
         padding: 0;
         list-style-type: none
     }
+
+    input {
+        border: 0;
+        padding: 0;
+        background-color: inherit;
+    }
+
+    input:focus {
+        outline: none
+    }
 `;
