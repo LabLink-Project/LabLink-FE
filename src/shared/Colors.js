@@ -4,6 +4,7 @@ export const StudyColors = {
   bg: '#f8f8f8',
   black: '#000000',
   white: '#ffffff',
+  searchBar: '#D9D9D9',
 };
 
 export const StudyFontOptions = {
