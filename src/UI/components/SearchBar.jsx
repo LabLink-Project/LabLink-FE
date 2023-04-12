@@ -7,7 +7,7 @@ import {
   StSearchBarWrap,
 } from '../styles/SearchBar.styled';
 
-function SearchBar() {
+function SearchBar({ placeholder }) {
   const [keyword, setKeyword] = useState('');
 
   return (
@@ -23,6 +23,7 @@ function SearchBar() {
         id="search"
         value={keyword}
         onChange={e => setKeyword(e.target.value)}
+        placeholder={placeholder}
       />
     </StSearchBarWrap>
   );

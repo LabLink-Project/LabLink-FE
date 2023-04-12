@@ -1,11 +1,20 @@
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
+    /* global style */
+
     body {
         font-family: Pretendard, sans-serif
     }
 
-    h1, h2, p, ul {
+    .App {
+        width: 375px;
+        margin: 0 auto;
+    }
+
+    /* reset css */
+
+    h1, h2, p, ul, body, input {
         margin: 0;
 
     }
@@ -23,5 +32,11 @@ export const GlobalStyle = createGlobalStyle`
 
     input:focus {
         outline: none
+    }
+
+    button {
+        background-color: inherit;
+        border: none;
+        padding: 0;
     }
 `;
