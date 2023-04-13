@@ -11,8 +11,10 @@ function PostcodeTest() {
   );
 }
 
-const EmbedPostcode = props => {
+export const EmbedPostcode = props => {
+  console.log(props);
   const handleComplete = data => {
+    console.log(data);
     let fullAddress = data.address;
     let extraAddress = '';
 
@@ -27,17 +29,18 @@ const EmbedPostcode = props => {
       fullAddress += extraAddress !== '' ? `(${extraAddress})` : '';
     }
 
-    console.log(fullAddress);
+    props.onChange(fullAddress);
   };
   return (
     <DaumPostcodeEmbed
       onComplete={handleComplete}
       {...props}
+      onClose={props.onClose}
     />
   );
 };
 
-const PopupPostcode = props => {
+export const PopupPostcode = props => {
   const open = useDaumPostcodePopup();
 
   const handleComplete = data => {

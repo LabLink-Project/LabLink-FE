@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { devStyle } from 'src/utils/devStyle';
-
 import Modal from 'src/UI/components/Modal';
 import ModalPortal from 'src/UI/components/Portal';
+import { EmbedPostcode } from 'src/UI/pages/PostcodeTest';
 
 function CreateStudy() {
   const [study, setStudy] = useState({
@@ -134,7 +134,24 @@ function CreateStudy() {
             // onChange={e => setStudy({ ...study, address: e.target.value })}
           />
 
-          <ModalPortal>{isModal && <Modal></Modal>}</ModalPortal>
+          <button
+            onClick={e => {
+              e.preventDefault();
+              modalHandler();
+            }}
+          >
+            우편번호 검색
+          </button>
+          <ModalPortal>
+            {isModal && (
+              <Modal>
+                <EmbedPostcode
+                  onClose={modalHandler}
+                  onChange={value => setStudy({ ...study, address: value })}
+                />
+              </Modal>
+            )}
+          </ModalPortal>
         </div>
 
         {/* 피실험자 정보 */}
