@@ -1,10 +1,16 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import ModalPortal from 'src/UI/components/Portal';
 import { devStyle } from 'src/utils/devStyle';
 import Modal from 'src/UI/components/Modal';
-import ModalPortal from 'src/UI/components/Portal';
-import { EmbedPostcode } from 'src/UI/pages/PostcodeTest';
+import { EmbedPostcode } from './PostcodeTest';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import axios from 'axios';
 
 function CreateStudy() {
+  const dateObj = new Date();
+
+  // refactor useInput custom hook
   const [study, setStudy] = useState({
     title: '',
     studyInfo: '',
@@ -22,6 +28,60 @@ function CreateStudy() {
     imageURL: '',
   });
 
+  const [dates, setDates] = useState({
+    date: dateObj,
+    endDate: dateObj,
+  });
+
+  useEffect(() => {
+    remakeDates('date');
+  }, [dates.date]);
+
+  useEffect(() => {
+    remakeDates('endDate');
+  }, [dates.endDate]);
+
+  const remakeDates = type => {
+    const date = makeDateTime(type);
+    if (type === 'date') {
+      setStudy(prevState => ({
+        ...prevState,
+        date: date,
+      }));
+    }
+    if (type === 'endDate') {
+      setStudy(prevState => ({
+        ...prevState,
+        endDate: date,
+      }));
+    }
+  };
+
+  const onSubmitHandler = e => {
+    e.preventDefault();
+    console.log(dates, study);
+    axios
+      .post('http://localhost:4000/studys', study)
+      .then(res => console.log(res))
+      .catch(() => 'axios에서 에러가 발생했습니다');
+  };
+
+  // get month, get day가 한자리면 앞에 0 채워야됨
+  const makeDateTime = type => {
+    const a = dates[type];
+    const today = {
+      year: a.getFullYear(),
+      month: a.getMonth().toString().padStart(2, '0'),
+      day: a.getDate().toString().padStart(2, '0'),
+      hour: a.getHours().toString().padStart(2, '0'),
+      min: a.getMinutes().toString().padStart(2, '0'),
+    };
+
+    const date = `${today.year}-${today.month}-${today.day} ${today.hour}:${today.min}`;
+    return date;
+  };
+
+  // refactor useModal custom hook
   const [isModal, setIsModal] = useState(false);
   const modalHandler = () => setIsModal(!isModal);
 
@@ -37,6 +97,7 @@ function CreateStudy() {
             onChange={e => setStudy({ ...study, title: e.target.value })}
           />
         </div>
+
         {/* 실험 소개 */}
         <div>
           <label htmlFor="">연구 소개</label>
@@ -71,6 +132,7 @@ function CreateStudy() {
             onChange={e => setStudy({ ...study, studyAction: e.target.value })}
           ></textarea>
         </div>
+
         {/* 간단한 실험 관련 정보 */}
         <div>
           <label htmlFor="">모집 인원</label>
@@ -104,23 +166,28 @@ function CreateStudy() {
             onChange={e => setStudy({ ...study, repeatCount: e.target.value })}
           />
         </div>
+
         {/* 따로 받아야할 실험 관련 정보 */}
-        {/* 예외처리 필요 : 실험 종료 > 실행 */}
-        {/* 날짜 한 개의 폼에서 두 번 받기 */}
         <div>
           <label htmlFor="">실험 실행 날짜</label>
-          <input
-            type="date"
-            value={study.date}
-            onChange={e => setStudy({ ...study, date: e.target.value })}
+          <DatePicker
+            selected={dates.date}
+            onChange={date => {
+              setDates({ ...dates, date: date });
+              remakeDates('date');
+            }}
+            showTimeSelect
           />
         </div>
         <div>
           <label htmlFor="">실험 종료일</label>
-          <input
-            type="date"
-            value={study.endDate}
-            onChange={e => setStudy({ ...study, endDate: e.target.value })}
+          <DatePicker
+            selected={dates.endDate}
+            onChange={endDate => {
+              setDates({ ...dates, endDate: endDate });
+              remakeDates('endDate');
+            }}
+            showTimeSelect
           />
         </div>
         {/* 주소 입력 폼 공부해야됨 */}
@@ -128,12 +195,16 @@ function CreateStudy() {
           <label htmlFor="">주소</label>
           <input
             type="text"
-            value={study.address}
-            onChange={e => setStudy({ ...study, address: e.target.value })}
             defaultValue={study.address}
+            placeholder="우편번호 검색을 이용해주세요"
+            disabled
             // onChange={e => setStudy({ ...study, address: e.target.value })}
           />
-
+          <input
+            type="text"
+            placeholder="상세 주소를 입력해주세요"
+            // onChange={e => setStudy({ ...study, address: e.target.value })}
+          />
           <button
             onClick={e => {
               e.preventDefault();
@@ -174,6 +245,7 @@ function CreateStudy() {
             onChange={e => setStudy({ ...study, gender: e.target.value })}
           />
         </fieldset>
+
         {/* 고민해봐야 할듯 최소 최대 결정,, */}
         <div>
           <label htmlFor="">나이</label>
@@ -186,6 +258,7 @@ function CreateStudy() {
           />
           <span>{study.age}</span>
         </div>
+
         {/* 이미지..... */}
         {/* 얘는 formdata로 처리 필요 */}
         <div>
@@ -196,16 +269,15 @@ function CreateStudy() {
             onChange={e => setStudy({ ...study, imageURL: e.target.files[0] })}
           />
         </div>
+
         <input
           type="submit"
           value="제출"
-          onClick={e => {
-            e.preventDefault();
-            console.log(study);
-          }}
+          onClick={onSubmitHandler}
         />
       </form>
     </div>
   );
 }
+
 export default CreateStudy;
