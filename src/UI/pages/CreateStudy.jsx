@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { devStyle } from 'src/utils/devStyle';
 
+import Modal from 'src/UI/components/Modal';
+import ModalPortal from 'src/UI/components/Portal';
+
 function CreateStudy() {
   const [study, setStudy] = useState({
     title: '',
@@ -19,6 +22,9 @@ function CreateStudy() {
     imageURL: '',
   });
 
+  const [isModal, setIsModal] = useState(false);
+  const modalHandler = () => setIsModal(!isModal);
+
   return (
     <div style={devStyle}>
       <form>
@@ -31,7 +37,6 @@ function CreateStudy() {
             onChange={e => setStudy({ ...study, title: e.target.value })}
           />
         </div>
-
         {/* 실험 소개 */}
         <div>
           <label htmlFor="">연구 소개</label>
@@ -66,7 +71,6 @@ function CreateStudy() {
             onChange={e => setStudy({ ...study, studyAction: e.target.value })}
           ></textarea>
         </div>
-
         {/* 간단한 실험 관련 정보 */}
         <div>
           <label htmlFor="">모집 인원</label>
@@ -100,7 +104,6 @@ function CreateStudy() {
             onChange={e => setStudy({ ...study, repeatCount: e.target.value })}
           />
         </div>
-
         {/* 따로 받아야할 실험 관련 정보 */}
         {/* 예외처리 필요 : 실험 종료 > 실행 */}
         {/* 날짜 한 개의 폼에서 두 번 받기 */}
@@ -127,7 +130,11 @@ function CreateStudy() {
             type="text"
             value={study.address}
             onChange={e => setStudy({ ...study, address: e.target.value })}
+            defaultValue={study.address}
+            // onChange={e => setStudy({ ...study, address: e.target.value })}
           />
+
+          <ModalPortal>{isModal && <Modal></Modal>}</ModalPortal>
         </div>
 
         {/* 피실험자 정보 */}
@@ -150,7 +157,6 @@ function CreateStudy() {
             onChange={e => setStudy({ ...study, gender: e.target.value })}
           />
         </fieldset>
-
         {/* 고민해봐야 할듯 최소 최대 결정,, */}
         <div>
           <label htmlFor="">나이</label>
@@ -163,7 +169,6 @@ function CreateStudy() {
           />
           <span>{study.age}</span>
         </div>
-
         {/* 이미지..... */}
         {/* 얘는 formdata로 처리 필요 */}
         <div>
@@ -174,7 +179,6 @@ function CreateStudy() {
             onChange={e => setStudy({ ...study, imageURL: e.target.files[0] })}
           />
         </div>
-
         <input
           type="submit"
           value="제출"
@@ -187,5 +191,4 @@ function CreateStudy() {
     </div>
   );
 }
-
 export default CreateStudy;
