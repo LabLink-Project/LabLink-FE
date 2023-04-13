@@ -6,6 +6,7 @@ import { EmbedPostcode } from './PostcodeTest';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import axios from 'axios';
+import formatDate from 'src/utils/formatDate';
 
 function CreateStudy() {
   const dateObj = new Date();
@@ -42,7 +43,7 @@ function CreateStudy() {
   }, [dates.endDate]);
 
   const remakeDates = type => {
-    const date = makeDateTime(type);
+    const date = formatDate(dates[type]);
     if (type === 'date') {
       setStudy(prevState => ({
         ...prevState,
@@ -64,21 +65,6 @@ function CreateStudy() {
       .post('http://localhost:4000/studys', study)
       .then(res => console.log(res))
       .catch(() => 'axios에서 에러가 발생했습니다');
-  };
-
-  // get month, get day가 한자리면 앞에 0 채워야됨
-  const makeDateTime = type => {
-    const a = dates[type];
-    const today = {
-      year: a.getFullYear(),
-      month: a.getMonth().toString().padStart(2, '0'),
-      day: a.getDate().toString().padStart(2, '0'),
-      hour: a.getHours().toString().padStart(2, '0'),
-      min: a.getMinutes().toString().padStart(2, '0'),
-    };
-
-    const date = `${today.year}-${today.month}-${today.day} ${today.hour}:${today.min}`;
-    return date;
   };
 
   // refactor useModal custom hook
