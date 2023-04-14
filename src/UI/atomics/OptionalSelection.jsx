@@ -2,12 +2,12 @@ import React from 'react';
 import {
   StOptionalSelectionCheckbox,
   StOptionalSelectionLabel,
+  StOptionalSelectionWrap,
 } from '../styles/OptionalSelection.styled';
-import { StFlexBox } from '../styles/common.styled';
 
 function OptionalSelection({ label }) {
   return (
-    <StFlexBox>
+    <StOptionalSelectionWrap>
       <StOptionalSelectionCheckbox
         type="checkbox"
         id={label}
@@ -15,7 +15,7 @@ function OptionalSelection({ label }) {
       <StOptionalSelectionLabel htmlFor={label}>
         {label}
       </StOptionalSelectionLabel>
-    </StFlexBox>
+    </StOptionalSelectionWrap>
   );
 }
 
