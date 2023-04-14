@@ -171,7 +171,7 @@ function SignupUser() {
           newUsers
         );
         alert(data.message);
-        nav('/login/user');
+        nav('/signup/success');
       } catch (error) {
         if (error.response.status === 409) {
           alert(`${error.response.data.message}`);

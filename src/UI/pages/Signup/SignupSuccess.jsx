@@ -46,9 +46,9 @@ function SignupSuccess() {
         <Button
           variant="dark"
           size="lg"
-          onClick={() => nav('/')}
+          onClick={() => nav('/login/user')}
         >
-          메인으로 이동
+          로그인 페이지로 이동
         </Button>
       </div>
     </Layout>

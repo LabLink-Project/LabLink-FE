@@ -69,6 +69,23 @@ function Signup() {
             기업회원 가입
           </Link>
         </div>
+        <div
+          style={{
+            marginTop: '350px',
+
+            display: 'flex',
+            justifyContent: 'center',
+          }}
+        >
+          <Link
+            to="/login/user"
+            style={{
+              color: 'gray',
+            }}
+          >
+            이미 계정이 있으신가요?
+          </Link>
+        </div>
       </div>
     </Layout>
   );
