@@ -1,5 +1,7 @@
 import { StudyColors, StudyFontOptions } from 'src/shared/Colors';
 import styled, { css } from 'styled-components';
+import { StCheckbox } from './common.styled';
+import { StButton } from './Button.styled';
 
 export const StSearchWrap = styled.div`
   padding: 20px;
@@ -51,30 +53,7 @@ export const StDetailSearchUl = styled.ul`
   margin-bottom: 32px;
 `;
 
-export const StDetailSearchGenderButton = styled.button`
-  min-width: 164px;
-  min-height: 40px;
-
-  border: 1px solid ${StudyColors.buttonBorder};
-  padding: 10px;
-
-  &:focus {
-    background-color: ${StudyColors.buttonFocus};
-    color: ${StudyColors.white};
-  }
-
-  ${props =>
-    props.children === '온라인' &&
-    css`
-      margin-right: 7px;
-    `}
-
-  ${props =>
-    props.children === '남자' &&
-    css`
-      margin-right: 7px;
-    `}
-`;
+export const StDetailSearchGenderButton = styled(StButton);
 
 export const StDetailSearchAge = styled.input`
   min-width: 335px;
@@ -85,12 +64,7 @@ export const StDetailSearchAge = styled.input`
   margin-bottom: 12px;
 `;
 
-export const StDetailSearchCheckbox = styled.input`
-  width: 16px;
-  height: 16px;
-  border-color: ${StudyColors.buttonBorder};
-  margin-right: 5px;
-`;
+export const StDetailSearchCheckbox = styled(StCheckbox);
 
 export const StDetailSearchCheckboxLabel = styled.label`
   color: ${StudyColors.buttonBorder};

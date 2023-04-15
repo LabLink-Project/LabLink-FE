@@ -1,14 +1,14 @@
 import React from 'react';
 import {
-  StOptionalSelectionCheckbox,
   StOptionalSelectionLabel,
   StOptionalSelectionWrap,
 } from '../styles/OptionalSelection.styled';
+import { StCheckbox } from '../styles/common.styled';
 
 function OptionalSelection({ label }) {
   return (
     <StOptionalSelectionWrap>
-      <StOptionalSelectionCheckbox
+      <StCheckbox
         type="checkbox"
         id={label}
       />

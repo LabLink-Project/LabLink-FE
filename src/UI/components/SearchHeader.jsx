@@ -4,6 +4,7 @@ import {
   StSearchHeaderBackButton,
   StSearchHeaderNotification,
   StSearchHeaderTitle,
+  StSearchHeaderWrap,
 } from 'src/UI/styles/SearchHeader.styled';
 
 // 합성 컴포넌트 패턴으로 변경
@@ -16,13 +17,13 @@ import {
 
 function SearchHeader({ title }) {
   return (
-    <StFlexBox sort="space-between">
+    <StSearchHeaderWrap sort="space-between">
       <StFlexBox>
         <StSearchHeaderBackButton>뒤로가기</StSearchHeaderBackButton>
         <StSearchHeaderTitle>{title}</StSearchHeaderTitle>
       </StFlexBox>
       <StSearchHeaderNotification>알림</StSearchHeaderNotification>
-    </StFlexBox>
+    </StSearchHeaderWrap>
   );
 }
 
