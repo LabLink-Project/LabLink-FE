@@ -1,13 +1,7 @@
-import ReadStudy from './UI/pages/ReadStudy';
-import { GlobalStyle } from './shared/GlobalStyle';
+import Router from './shared/router';
 
 function App() {
-  return (
-    <div className="App">
-      <GlobalStyle />
-      <ReadStudy />
-    </div>
-  );
+  return <Router />;
 }
 
 export default App;
