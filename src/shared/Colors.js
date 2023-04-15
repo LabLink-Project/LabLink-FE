@@ -8,6 +8,10 @@ export const StudyColors = {
   placeholder: '#757575',
   buttonFocus: '#191919',
   buttonBorder: '#727272',
+  inputBorder: '#CBCBCB',
+  searchBorder: '#DADADA',
+  paragraph: '#767676',
+  buttonBg: '#222222',
 };
 
 export const StudyFontOptions = {
