@@ -12,6 +12,7 @@ export const StudyColors = {
   searchBorder: '#DADADA',
   paragraph: '#767676',
   buttonBg: '#222222',
+  bannerBg: '#F2F2F2',
 };
 
 export const StudyFontOptions = {
