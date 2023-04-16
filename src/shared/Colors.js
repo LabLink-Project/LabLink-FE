@@ -19,6 +19,7 @@ export const StudyColors = {
   studyParagraph: '#696969',
   studyRequire: '#191919',
   studyButtonBorder: '#E0E0E0',
+  onlineBorder: '#EFEFEF',
 };
 
 export const StudyFontOptions = {
