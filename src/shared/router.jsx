@@ -10,6 +10,7 @@ import SignupSuccess from '../UI/pages/Signup/SignupSuccess';
 import Home from 'src/UI/pages/Home';
 import ReadStudyDetail from 'src/UI/pages/ReadStudyDetail';
 import BookmarkList from 'src/UI/pages/BookmarkList';
+import PersonalPage from 'src/UI/pages/PersonalPage';
 
 const Router = () => {
   return (
@@ -26,6 +27,10 @@ const Router = () => {
         <Route
           path="/bookmarks"
           element={<BookmarkList />}
+        />
+        <Route
+          path="/mypage/user"
+          element={<PersonalPage />}
         />
         <Route
           path="/signup"
