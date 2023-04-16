@@ -21,7 +21,10 @@ export const GlobalStyle = createGlobalStyle`
 
     ul {
         padding: 0;
-        list-style-type: none
+    }
+
+    li {
+        list-style-type: none;
     }
 
     input {

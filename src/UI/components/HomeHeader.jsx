@@ -8,6 +8,7 @@ import {
 } from '../styles/HomeHeader.styled';
 
 function HomeHeader() {
+  // 보더 바텀 추가하는 거 잊지 말자
   return (
     <StHomeHeaderWrap sort="space-between">
       <div>
