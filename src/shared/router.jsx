@@ -9,6 +9,7 @@ import UserTerms from '../UI/pages/Signup/UserTerms';
 import SignupSuccess from '../UI/pages/Signup/SignupSuccess';
 import Home from 'src/UI/pages/Home';
 import ReadStudyDetail from 'src/UI/pages/ReadStudyDetail';
+import BookmarkList from 'src/UI/pages/BookmarkList';
 
 const Router = () => {
   return (
@@ -21,6 +22,10 @@ const Router = () => {
         <Route
           path="/detail"
           element={<ReadStudyDetail />}
+        />
+        <Route
+          path="/bookmarks"
+          element={<BookmarkList />}
         />
         <Route
           path="/signup"
