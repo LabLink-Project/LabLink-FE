@@ -15,6 +15,10 @@ export const StudyColors = {
   bannerBg: '#F2F2F2',
   moreBorder: '#c2c2c2',
   footer: '#e7e7e7',
+  studyDetailBorder: '#eeeeee',
+  studyParagraph: '#696969',
+  studyRequire: '#191919',
+  studyButtonBorder: '#E0E0E0',
 };
 
 export const StudyFontOptions = {
