@@ -8,6 +8,7 @@ import LoginCompany from '../UI/pages/Login/LoginCompany';
 import UserTerms from '../UI/pages/Signup/UserTerms';
 import SignupSuccess from '../UI/pages/Signup/SignupSuccess';
 import Home from 'src/UI/pages/Home';
+import ReadStudyDetail from 'src/UI/pages/ReadStudyDetail';
 
 const Router = () => {
   return (
@@ -16,6 +17,10 @@ const Router = () => {
         <Route
           path="/"
           element={<Home />}
+        />
+        <Route
+          path="/detail"
+          element={<ReadStudyDetail />}
         />
         <Route
           path="/signup"
