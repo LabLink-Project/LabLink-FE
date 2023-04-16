@@ -7,11 +7,16 @@ import LoginUser from '../UI/pages/Login/LoginUser';
 import LoginCompany from '../UI/pages/Login/LoginCompany';
 import UserTerms from '../UI/pages/Signup/UserTerms';
 import SignupSuccess from '../UI/pages/Signup/SignupSuccess';
+import Home from 'src/UI/pages/Home';
 
 const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
+        <Route
+          path="/"
+          element={<Home />}
+        />
         <Route
           path="/signup"
           element={<Signup />}
