@@ -21,6 +21,8 @@ export const StudyColors = {
   studyButtonBorder: '#E0E0E0',
   onlineBorder: '#EFEFEF',
   inputPlaceholder: '#727272',
+  studyBorder: '#DFDFDF',
+  studyPay: '#191919',
 };
 
 export const StudyFontOptions = {
