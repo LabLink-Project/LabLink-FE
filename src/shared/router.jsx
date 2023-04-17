@@ -7,6 +7,8 @@ import LoginUser from '../UI/pages/Login/LoginUser';
 import LoginCompany from '../UI/pages/Login/LoginCompany';
 import UserTerms from '../UI/pages/Signup/UserTerms';
 import SignupSuccess from '../UI/pages/Signup/SignupSuccess';
+import UserMypage from '../UI/pages/UserMypage';
+import UserMystudy from 'src/UI/pages/UserMystudy';
 
 const Router = () => {
   return (
@@ -39,6 +41,14 @@ const Router = () => {
         <Route
           path="/login/company"
           element={<LoginCompany />}
+        />
+        <Route
+          path="/user/mypage"
+          element={<UserMypage />}
+        />
+        <Route
+          path="/user/mystudy"
+          element={<UserMystudy />}
         />
       </Routes>
     </BrowserRouter>
