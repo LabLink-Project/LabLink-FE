@@ -8,6 +8,18 @@ export const StudyColors = {
   placeholder: '#757575',
   buttonFocus: '#191919',
   buttonBorder: '#727272',
+  inputBorder: '#CBCBCB',
+  searchBorder: '#DADADA',
+  paragraph: '#767676',
+  buttonBg: '#222222',
+  bannerBg: '#F2F2F2',
+  moreBorder: '#c2c2c2',
+  footer: '#e7e7e7',
+  studyDetailBorder: '#eeeeee',
+  studyParagraph: '#696969',
+  studyRequire: '#191919',
+  studyButtonBorder: '#E0E0E0',
+  onlineBorder: '#EFEFEF',
 };
 
 export const StudyFontOptions = {

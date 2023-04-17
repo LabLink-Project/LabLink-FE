@@ -9,11 +9,31 @@ import UserTerms from '../UI/pages/Signup/UserTerms';
 import SignupSuccess from '../UI/pages/Signup/SignupSuccess';
 import UserMypage from '../UI/pages/UserMypage';
 import UserMystudy from 'src/UI/pages/UserMystudy';
+import Home from 'src/UI/pages/Home';
+import ReadStudyDetail from 'src/UI/pages/ReadStudyDetail';
+import BookmarkList from 'src/UI/pages/BookmarkList';
+import PersonalPage from 'src/UI/pages/PersonalPage';
 
 const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
+        <Route
+          path="/"
+          element={<Home />}
+        />
+        <Route
+          path="/detail"
+          element={<ReadStudyDetail />}
+        />
+        <Route
+          path="/bookmarks"
+          element={<BookmarkList />}
+        />
+        <Route
+          path="/mypage/user"
+          element={<PersonalPage />}
+        />
         <Route
           path="/signup"
           element={<Signup />}
@@ -41,10 +61,6 @@ const Router = () => {
         <Route
           path="/login/company"
           element={<LoginCompany />}
-        />
-        <Route
-          path="/user/mypage"
-          element={<UserMypage />}
         />
         <Route
           path="/user/mystudy"
