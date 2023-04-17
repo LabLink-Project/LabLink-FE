@@ -12,11 +12,13 @@ import Modal from '../components/Modal';
 import { EmbedPostcode } from '../pages/PostcodeTest';
 import { StBlackButton } from '../styles/Button.styled';
 
-function CreateStudyAddress() {
+function CreateStudyAddress({ title }) {
   return (
     <StCreateStudyWrap>
       <StCreateStudyLabelWrap>
-        <StCreateStudyLabel htmlFor="">실험장소</StCreateStudyLabel>
+        <StCreateStudyLabel htmlFor="">
+          {title ? title : '실험장소'}
+        </StCreateStudyLabel>
         <StRequiredInputSpan>*필수</StRequiredInputSpan>
       </StCreateStudyLabelWrap>
       <div>
