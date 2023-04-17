@@ -23,6 +23,7 @@ export const StudyColors = {
   inputPlaceholder: '#727272',
   studyBorder: '#DFDFDF',
   studyPay: '#191919',
+  checkbox: '#e4e4e4',
 };
 
 export const StudyFontOptions = {
