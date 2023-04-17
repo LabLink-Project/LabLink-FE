@@ -14,6 +14,7 @@ import PersonalPage from 'src/UI/pages/PersonalPage';
 import EditPersonalProfile from 'src/UI/pages/EditPersonalProfile';
 import PersonalRequest from 'src/UI/pages/PersonalRequest';
 import CompanyApplicant from 'src/UI/pages/CompanyApplicant';
+import EndStudyList from 'src/UI/pages/EndStudyList';
 
 const Router = () => {
   return (
@@ -46,6 +47,10 @@ const Router = () => {
         <Route
           path="/mypage/applicant"
           element={<CompanyApplicant />}
+        />
+        <Route
+          path="/mypage/endstudy"
+          element={<EndStudyList />}
         />
         <Route
           path="/signup"
