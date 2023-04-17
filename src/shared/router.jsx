@@ -12,6 +12,7 @@ import ReadStudyDetail from 'src/UI/pages/ReadStudyDetail';
 import BookmarkList from 'src/UI/pages/BookmarkList';
 import PersonalPage from 'src/UI/pages/PersonalPage';
 import EditPersonalProfile from 'src/UI/pages/EditPersonalProfile';
+import PersonalRequest from 'src/UI/pages/PersonalRequest';
 
 const Router = () => {
   return (
@@ -36,6 +37,10 @@ const Router = () => {
         <Route
           path="/mypage/check"
           element={<EditPersonalProfile />}
+        />
+        <Route
+          path="/mypage/request"
+          element={<PersonalRequest />}
         />
         <Route
           path="/signup"
