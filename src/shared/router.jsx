@@ -11,6 +11,7 @@ import Home from 'src/UI/pages/Home';
 import ReadStudyDetail from 'src/UI/pages/ReadStudyDetail';
 import BookmarkList from 'src/UI/pages/BookmarkList';
 import PersonalPage from 'src/UI/pages/PersonalPage';
+import EditPersonalProfile from 'src/UI/pages/EditPersonalProfile';
 
 const Router = () => {
   return (
@@ -31,6 +32,10 @@ const Router = () => {
         <Route
           path="/mypage/user"
           element={<PersonalPage />}
+        />
+        <Route
+          path="/mypage/check"
+          element={<EditPersonalProfile />}
         />
         <Route
           path="/signup"
