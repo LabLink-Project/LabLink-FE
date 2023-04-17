@@ -1,4 +1,4 @@
-import { StudyColors } from 'src/shared/Colors';
+import { StudyColors, StudyFontOptions } from 'src/shared/Colors';
 import styled from 'styled-components';
 
 export const StStudyInput = styled.input`
@@ -6,4 +6,5 @@ export const StStudyInput = styled.input`
   border: 1px solid ${StudyColors.inputBorder};
   min-width: 335px;
   box-sizing: border-box;
+  ${StudyFontOptions.body}
 `;

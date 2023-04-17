@@ -23,11 +23,15 @@ export const StCreateStudyLabelWrap = styled.div`
 `;
 
 export const StCreateStudyAddressInput = styled.input`
+  min-width: 254px;
+
   padding: 14px 12px;
   border: 1px solid ${StudyColors.inputBorder};
   margin: 0 8px 8px 0;
-  min-width: 254px;
+
   box-sizing: border-box;
+
+  ${StudyFontOptions.body}
 `;
 
 export const StCreateStudyDueDateWrap = styled.div`

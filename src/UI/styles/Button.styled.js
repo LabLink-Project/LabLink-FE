@@ -1,4 +1,4 @@
-import { StudyColors } from 'src/shared/Colors';
+import { StudyColors, StudyFontOptions } from 'src/shared/Colors';
 import styled, { css } from 'styled-components';
 
 export const StButton = styled.button`
@@ -32,4 +32,5 @@ export const StBlackButton = styled.button`
   padding: 14px 12px;
   background-color: ${StudyColors.black};
   color: ${StudyColors.white};
+  ${StudyFontOptions.body}
 `;
