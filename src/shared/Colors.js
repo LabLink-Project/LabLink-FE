@@ -23,6 +23,9 @@ export const StudyColors = {
   inputPlaceholder: '#727272',
   studyBorder: '#DFDFDF',
   studyPay: '#191919',
+  checkbox: '#e4e4e4',
+  date: '#222222',
+  dateOnline: '#616161',
 };
 
 export const StudyFontOptions = {

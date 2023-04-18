@@ -1,4 +1,4 @@
-import { StudyColors, StudyFontOptions } from 'src/shared/Colors';
+import { StudyColors } from 'src/shared/Colors';
 import styled, { css } from 'styled-components';
 
 export const StFlexBox = styled.div`
@@ -27,7 +27,7 @@ export const StFlexBox = styled.div`
 export const StCheckbox = styled.input`
   width: 16px;
   height: 16px;
-  border-color: ${StudyColors.buttonBorder};
+  border: 1px solid ${StudyColors.checkbox};
   margin-right: 5px;
 `;
 
