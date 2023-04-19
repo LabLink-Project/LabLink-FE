@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import right from 'src/assets/right.svg';
 import {
@@ -6,21 +7,35 @@ import {
   StHomeHeaderLink,
   StHomeHeaderWrap,
 } from '../styles/HomeHeader.styled';
+import { URI } from 'src/shared/URIs';
+import Search from 'src/assets/Search.svg';
+import Alarm from 'src/assets/Alarm.svg';
 
 function HomeHeader() {
-  // 보더 바텀 추가하는 거 잊지 말자
   return (
     <StHomeHeaderWrap sort="space-between">
       <div>
-        <StHomeHeaderLink to="/login/user">로그인</StHomeHeaderLink> 해주세요
+        <StHomeHeaderLink to={URI.auth.signin.user}>로그인</StHomeHeaderLink>{' '}
+        해주세요
         <img
           src={right}
           alt="오른쪽 표시"
         />
       </div>
       <div>
-        <StHomeHeaderIcon>검색</StHomeHeaderIcon>
-        <StHomeHeaderIcon>알림</StHomeHeaderIcon>
+        <Link to={URI.crud.search}>
+          <StHomeHeaderIcon
+            src={Search}
+            alt="검색 버튼"
+          />
+        </Link>
+        {/* 알림 페이지 구현 후 수정 필요 */}
+        <Link to="/">
+          <StHomeHeaderIcon
+            src={Alarm}
+            alt="알람 버튼"
+          />
+        </Link>
       </div>
     </StHomeHeaderWrap>
   );
