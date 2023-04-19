@@ -4,6 +4,23 @@ import { useNavigate } from 'react-router-dom';
 import { Accordion, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Layout from '../../components/Layout';
+import {
+  StAllAgreement,
+  StRequirement,
+  StSignupForm,
+  StSignupFormWrap,
+  StSignupHeader,
+  StSignupInput,
+  StSignupInputCondition,
+  StSignupInputName,
+  StSignupInputWrap,
+  StSignupLabel,
+  StSignupLapLink,
+  StSignupTermTitle,
+  StSignupTermWrap,
+  StSignupTitle,
+} from 'src/UI/styles/Signup.styled';
+import { cookies } from 'src/shared/Cookie';
 
 function SignupUser() {
   const nav = useNavigate();
@@ -17,6 +34,7 @@ function SignupUser() {
   // 회원가입 state
   const [newUsers, setNewUsers] = useState({
     email: '',
+    nickName: '',
     password: '',
     userPhone: '',
     phoneCheck: '',
@@ -34,6 +52,15 @@ function SignupUser() {
 
   // 비밀번호 일치 여부 state
   const [isSamePw, setIsSamePw] = useState('');
+
+  // 로그인 상태면 못 들어오게 막기
+  useEffect(() => {
+    const token = cookies.get('token');
+    if (token) {
+      alert('이미 로그인 하셨습니다!');
+      nav('/');
+    }
+  }, [cookies]);
 
   // 모두 동의 체크박스 onchange
   const handleAllAgreementChange = e => {
@@ -116,6 +143,25 @@ function SignupUser() {
     }
   };
 
+  // 닉네임 중복 체크
+  const nickNameCheckButton = async () => {
+    // nickname 검사
+    const nicknameRegex = /^(?=.*[a-z0-9가-힣])[a-z0-9가-힣]{2,16}$/;
+    if (!nicknameRegex.test(newUsers.nickName)) {
+      alert('닉네임은 영문, 한글, 숫자를 포함한 2~16자여야 합니다.');
+    } else {
+      try {
+        const { data } = await axios.post(
+          `${process.env.REACT_APP_SERVER_URL}/users/signup/nickname-check`,
+          { nickName: newUsers.nickName }
+        );
+        alert(data.message);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
+
   // 비밀번호 일치 확인
   useEffect(() => {
     if (newUsers.password === '' || pwCheck.passwordCk === '') {
@@ -137,11 +183,20 @@ function SignupUser() {
       return false;
     }
 
+    // nickname 검사
+    const nicknameRegex = /^(?=.*[a-z0-9가-힣])[a-z0-9가-힣]{2,16}$/;
+    if (!nicknameRegex.test(newUsers.nickName)) {
+      alert('닉네임은 영문, 한글, 숫자를 포함한 2~16자여야 합니다.');
+      return false;
+    }
+
     // password 검사
     const passwordRegex =
       /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,20}$/;
     if (!passwordRegex.test(newUsers.password)) {
-      alert('비밀번호는 영문, 숫자, 특수문자를 포함한 8~20자여야 합니다.');
+      alert(
+        '비밀번호는 영문, 숫자, 특수문자($@$!%*#?&)를 포함한 8~20자여야 합니다.'
+      );
       return false;
     }
 
@@ -184,45 +239,19 @@ function SignupUser() {
     <>
       {!showForm ? (
         <Layout>
-          <div
-            style={{
-              margin: '16px 0',
-            }}
-          >
-            <h2
-              style={{
-                fontSize: '20px',
-              }}
-            >
-              <span
-                style={{
-                  fontWeight: '700',
-                  fontSize: '35px',
-                }}
-              >
-                LabLink
-              </span>
+          <StSignupHeader>
+            <StSignupTitle>
+              <StSignupLapLink>LabLink</StSignupLapLink>
               에 오신 고객님 <br />
               환영합니다!
-            </h2>
-          </div>
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'flex-end',
-              margin: '24px 0',
-            }}
-          >
-            <div
-              style={{
-                fontSize: '20px',
-              }}
-            >
+            </StSignupTitle>
+          </StSignupHeader>
+          <StSignupTermWrap>
+            <StSignupTermTitle>
               회원가입을 위해
               <br />
               약관에 동의해주세요
-            </div>
+            </StSignupTermTitle>
             <div>
               <Link
                 to="/signup/user/terms"
@@ -234,16 +263,9 @@ function SignupUser() {
                 약관 읽기
               </Link>
             </div>
-          </div>
+          </StSignupTermWrap>
           <div>
-            <label
-              style={{
-                marginBottom: '48px',
-                marginLeft: '22px',
-                display: 'flex',
-                // flexDirection: 'row',
-              }}
-            >
+            <StAllAgreement>
               <input
                 type="checkbox"
                 name="all"
@@ -251,7 +273,7 @@ function SignupUser() {
                 onChange={handleAllAgreementChange}
               />
               &nbsp; 모두 동의
-            </label>
+            </StAllAgreement>
             <Accordion>
               <Accordion.Item eventKey="0">
                 <Accordion.Header>
@@ -262,15 +284,8 @@ function SignupUser() {
                       checked={newUsers.ageCheck}
                       onChange={handleAgreementChange}
                     />{' '}
-                    <span
-                      style={{
-                        color: 'red',
-                        font: 'bold',
-                      }}
-                    >
-                      (필수)
-                    </span>{' '}
-                    만 15세 이상입니다.&nbsp;
+                    <StRequirement>(필수)</StRequirement> 만 15세
+                    이상입니다.&nbsp;
                   </label>
                 </Accordion.Header>
                 <Accordion.Body>약관 내용</Accordion.Body>
@@ -284,15 +299,8 @@ function SignupUser() {
                       checked={newUsers.termsOfServiceAgreement}
                       onChange={handleAgreementChange}
                     />{' '}
-                    <span
-                      style={{
-                        color: 'red',
-                        font: 'bold',
-                      }}
-                    >
-                      (필수)
-                    </span>{' '}
-                    서비스 이용약관 동의&nbsp;
+                    <StRequirement>(필수)</StRequirement> 서비스 이용약관
+                    동의&nbsp;
                   </label>
                 </Accordion.Header>
                 <Accordion.Body>약관 내용</Accordion.Body>
@@ -306,15 +314,8 @@ function SignupUser() {
                       checked={newUsers.privacyPolicyConsent}
                       onChange={handleAgreementChange}
                     />{' '}
-                    <span
-                      style={{
-                        color: 'red',
-                        font: 'bold',
-                      }}
-                    >
-                      (필수)
-                    </span>{' '}
-                    개인정보 처리방침 동의&nbsp;
+                    <StRequirement>(필수)</StRequirement> 개인정보 처리방침
+                    동의&nbsp;
                   </label>
                 </Accordion.Header>
                 <Accordion.Body>약관 내용</Accordion.Body>
@@ -328,15 +329,8 @@ function SignupUser() {
                       checked={newUsers.sensitiveInfoConsent}
                       onChange={handleAgreementChange}
                     />{' '}
-                    <span
-                      style={{
-                        color: 'red',
-                        font: 'bold',
-                      }}
-                    >
-                      (필수)
-                    </span>{' '}
-                    민감정보 수집 및 이용 동의&nbsp;
+                    <StRequirement>(필수)</StRequirement> 민감정보 수집 및 이용
+                    동의&nbsp;
                   </label>
                 </Accordion.Header>
                 <Accordion.Body>약관 내용</Accordion.Body>
@@ -374,131 +368,167 @@ function SignupUser() {
         </Layout>
       ) : (
         <Layout>
-          <div
-            style={{
-              margin: '16px 0',
-            }}
-          >
-            <h2
-              style={{
-                fontSize: '20px',
-              }}
-            >
-              <span
-                style={{
-                  fontWeight: '700',
-                  fontSize: '35px',
-                }}
-              >
-                LabLink
-              </span>
+          <StSignupHeader>
+            <StSignupTitle>
+              <StSignupLapLink>LabLink</StSignupLapLink>
               에 오신 고객님 <br />
               환영합니다!
-            </h2>
-          </div>
-          <div
-            style={{
-              marginTop: '16px',
-            }}
-          >
-            <form
-              onSubmit={signupSubmitHandler}
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '20px',
-              }}
-            >
+            </StSignupTitle>
+          </StSignupHeader>
+          <StSignupFormWrap>
+            <StSignupForm onSubmit={signupSubmitHandler}>
               <div>
-                <label>
-                  이메일
-                  <br />
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="이메일"
-                    value={newUsers.email}
-                    onChange={signupChangeHandler}
-                    required
+                <StSignupInputWrap>
+                  <StSignupLabel>
+                    <StSignupInputName>이메일</StSignupInputName>
+                    <br />
+                    <StSignupInput
+                      type="email"
+                      name="email"
+                      placeholder="이메일"
+                      value={newUsers.email}
+                      onChange={signupChangeHandler}
+                      required
+                    />
+                  </StSignupLabel>
+                  <Button
+                    type="button"
+                    onClick={emailCheckButton}
+                    variant="dark"
                     style={{
-                      height: '100',
+                      height: '50px',
                     }}
-                  />
-                </label>
-                <button
-                  type="button"
-                  onClick={emailCheckButton}
-                >
-                  중복확인
-                </button>
-                <br />
-                <span>이메일 형식으로 입력해주세요</span>
+                  >
+                    중복확인
+                  </Button>
+                </StSignupInputWrap>
+                <StSignupInputCondition>
+                  이메일 형식으로 입력해주세요
+                </StSignupInputCondition>
+              </div>
+              <div>
+                <StSignupInputWrap>
+                  <StSignupLabel>
+                    <StSignupInputName>닉네임</StSignupInputName>
+                    <br />
+                    <StSignupInput
+                      type="text"
+                      name="nickName"
+                      placeholder="닉네임"
+                      value={newUsers.nickName}
+                      onChange={signupChangeHandler}
+                      required
+                    />
+                  </StSignupLabel>
+                  <Button
+                    type="button"
+                    onClick={nickNameCheckButton}
+                    variant="dark"
+                    style={{
+                      height: '50px',
+                    }}
+                  >
+                    중복확인
+                  </Button>
+                </StSignupInputWrap>
+                <StSignupInputCondition>
+                  영문, 한글, 숫자를 포함된 <br />
+                  2~16글자로 입력해주세요
+                </StSignupInputCondition>
               </div>
               <div>
                 <div>
-                  <label>
-                    비밀번호
+                  <StSignupLabel width={'100%'}>
+                    <StSignupInputName>비밀번호</StSignupInputName>
                     <br />
-                    <input
+                    <StSignupInput
                       type="password"
                       name="password"
                       placeholder="비밀번호 입력"
                       value={newUsers.password}
                       onChange={signupChangeHandler}
                       required
+                      width={'100%'}
                     />
-                  </label>
-                  <br />
-                  <span>
-                    영문, 숫자, 특수문자가 포함된 8~20글자로 입력해주세요
-                  </span>
+                  </StSignupLabel>
+                  <StSignupInputCondition>
+                    영문, 숫자, 특수문자가 포함된 8~20글자로
+                    <br />
+                    입력해주세요
+                  </StSignupInputCondition>
                 </div>
-                <div>
-                  <label>
-                    <input
+                <div
+                  style={{
+                    marginTop: '10px',
+                  }}
+                >
+                  <StSignupLabel width={'100%'}>
+                    <StSignupInput
                       type="password"
                       name="passwordCk"
                       placeholder="비밀번호 확인"
                       value={pwCheck.passwordCk}
                       onChange={signupChangeHandler}
                       required
+                      width={'100%'}
                     />
-                  </label>
-                  <br />
-                  {isSamePw}
+                  </StSignupLabel>
+                  <StSignupInputCondition>{isSamePw}</StSignupInputCondition>
                 </div>
               </div>
               <div>
                 <div>
-                  <label>
-                    휴대폰 번호
-                    <br />
-                    <input
-                      type="text"
-                      name="userPhone"
-                      placeholder="휴대폰 번호 '-'제외하고 입력"
-                      value={newUsers.userPhone}
-                      onChange={signupChangeHandler}
-                      required
+                  <StSignupInputWrap>
+                    <StSignupLabel>
+                      <StSignupInputName>휴대폰 번호</StSignupInputName>
+                      <br />
+                      <StSignupInput
+                        type="text"
+                        name="userPhone"
+                        placeholder="휴대폰 번호 '-'제외하고 입력"
+                        value={newUsers.userPhone}
+                        onChange={signupChangeHandler}
+                        required
+                      />
+                    </StSignupLabel>
+                    <Button
+                      type="button"
+                      variant="dark"
                       style={{
-                        width: '250px',
+                        height: '50px',
                       }}
-                    />
-                  </label>
-                  <button type="button">인증번호</button>
+                    >
+                      인증번호
+                    </Button>
+                  </StSignupInputWrap>
                 </div>
-                <div>
-                  <label>
-                    <input
-                      type="text"
-                      name="phoneCheck"
-                      placeholder="인증번호 입력"
-                      value={newUsers.phoneCheck}
-                      onChange={signupChangeHandler}
-                      required
-                    />
-                  </label>
-                  <button type="button">확인</button>
+                <div
+                  style={{
+                    marginTop: '10px',
+                  }}
+                >
+                  <StSignupInputWrap>
+                    <StSignupLabel>
+                      <StSignupInput
+                        type="text"
+                        name="phoneCheck"
+                        placeholder="인증번호 입력"
+                        value={newUsers.phoneCheck}
+                        onChange={signupChangeHandler}
+                        required
+                      />
+                    </StSignupLabel>
+                    <Button
+                      type="button"
+                      onClick={emailCheckButton}
+                      variant="dark"
+                      style={{
+                        height: '50px',
+                      }}
+                    >
+                      인증확인
+                    </Button>
+                  </StSignupInputWrap>
                 </div>
               </div>
               <div className="d-grid gap-2">
@@ -510,8 +540,8 @@ function SignupUser() {
                   회원가입
                 </Button>
               </div>
-            </form>
-          </div>
+            </StSignupForm>
+          </StSignupFormWrap>
         </Layout>
       )}
     </>
