@@ -11,8 +11,13 @@ export const StSearchHeaderTitle = styled.h1`
   font-weight: 600;
 `;
 
-export const StSearchHeaderBackButton = styled.span`
+export const StSearchHeaderBackButton = styled.div`
   margin-right: 8px;
+`;
+
+export const StSearchHeaderBackImage = styled.img`
+  width: 28px;
+  height: 26px;
 `;
 
 export const StSearchHeaderWrap = styled(StFlexBox)`

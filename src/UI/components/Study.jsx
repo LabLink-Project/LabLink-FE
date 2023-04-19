@@ -11,6 +11,8 @@ import {
 import { convertToShortDate } from 'src/utils/formatDate';
 import filledHeart from 'src/assets/Favorite_on.svg';
 import outlineHeart from 'src/assets/Favorite_off.svg';
+import { Link } from 'react-router-dom';
+import { URI } from 'src/shared/URIs';
 
 // 합성 컴포넌트 패턴으로 처리해보자
 function Study({ obj }) {
@@ -35,8 +37,10 @@ function Study({ obj }) {
             )}
           </div>
         </StFlexBox>
-        <StStudyCompany>{obj.companyName}</StStudyCompany>
-        <p>{obj.title}</p>
+        <Link to={URI.crud.studyDetail}>
+          <StStudyCompany>{obj.companyName}</StStudyCompany>
+          <p>{obj.title}</p>
+        </Link>
         <StFlexBox
           sort="space-between"
           color="sub"

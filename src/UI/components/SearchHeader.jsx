@@ -2,10 +2,15 @@ import React from 'react';
 import { StFlexBox } from 'src/UI/styles/common.styled';
 import {
   StSearchHeaderBackButton,
+  StSearchHeaderBackImage,
   StSearchHeaderNotification,
   StSearchHeaderTitle,
   StSearchHeaderWrap,
 } from 'src/UI/styles/SearchHeader.styled';
+
+import Back from 'src/assets/back.svg';
+import Alarm from 'src/assets/Alarm.svg';
+import { Link } from 'react-router-dom';
 
 // 합성 컴포넌트 패턴으로 변경
 
@@ -19,10 +24,23 @@ function SearchHeader({ title }) {
   return (
     <StSearchHeaderWrap sort="space-between">
       <StFlexBox>
-        <StSearchHeaderBackButton>뒤로가기</StSearchHeaderBackButton>
+        <StSearchHeaderBackButton>
+          <StSearchHeaderBackImage
+            src={Back}
+            alt="뒤로가기 버튼"
+          />
+        </StSearchHeaderBackButton>
         <StSearchHeaderTitle>{title}</StSearchHeaderTitle>
       </StFlexBox>
-      <StSearchHeaderNotification>알림</StSearchHeaderNotification>
+      <StSearchHeaderNotification>
+        {/* 구현 후 수정 */}
+        <Link to="#">
+          <img
+            src={Alarm}
+            alt="알람 버튼"
+          />
+        </Link>
+      </StSearchHeaderNotification>
     </StSearchHeaderWrap>
   );
 }

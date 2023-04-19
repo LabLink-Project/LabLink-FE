@@ -6,6 +6,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
+import { URI } from 'src/shared/URIs';
 
 function LoginCompany() {
   const nav = useNavigate();
@@ -70,7 +71,7 @@ function LoginCompany() {
         <Tab
           eventKey="user"
           title="개인회원"
-          onEnter={() => nav('/login/user')}
+          onEnter={() => nav(URI.auth.signin.user)}
         />
         <Tab
           eventKey="company"
@@ -118,7 +119,7 @@ function LoginCompany() {
             }}
           >
             <Link
-              to="/signup"
+              to={URI.auth.signup.home}
               style={{
                 color: 'gray',
               }}
@@ -126,6 +127,8 @@ function LoginCompany() {
               LapLink가 처음이신가요?
             </Link>
             <Link
+              // 페이지 구현 후 수정하기
+              to="/"
               style={{
                 color: 'gray',
               }}

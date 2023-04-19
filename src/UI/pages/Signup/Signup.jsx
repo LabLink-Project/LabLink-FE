@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Layout from '../../components/Layout';
+import { URI } from 'src/shared/URIs';
 
 function Signup() {
   const nav = useNavigate();
@@ -40,7 +41,7 @@ function Signup() {
           </span>
           <br />
           <Link
-            to="/signup/user"
+            to={URI.auth.signup.user}
             style={{
               color: 'black',
               fontWeight: '600',
@@ -60,7 +61,7 @@ function Signup() {
           </span>
           <br />
           <Link
-            to="/signup/company"
+            to={URI.auth.signup.company}
             style={{
               color: 'black',
               fontWeight: '600',
@@ -78,7 +79,7 @@ function Signup() {
           }}
         >
           <Link
-            to="/login/user"
+            to={URI.auth.signin.user}
             style={{
               color: 'gray',
             }}
