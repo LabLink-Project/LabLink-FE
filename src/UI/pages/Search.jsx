@@ -17,6 +17,7 @@ import {
 } from '../styles/Search.styled';
 import SearchHistoryUI from '../atomics/SearchHistoryUI';
 import SearchAddressHistory from '../atomics/SearchAddressHistory';
+import { StFlexBox } from '../styles/common.styled';
 
 function Search() {
   const mockupData = [
@@ -81,9 +82,7 @@ function Search() {
           <StDetailSearchLabel htmlFor="">성별</StDetailSearchLabel>
         </h3>
         <div>
-          <StDetailSearchGenderButton autoFocus>
-            남자
-          </StDetailSearchGenderButton>
+          <StDetailSearchGenderButton>남자</StDetailSearchGenderButton>
           <StDetailSearchGenderButton>여자</StDetailSearchGenderButton>
         </div>
       </div>
@@ -95,21 +94,20 @@ function Search() {
           type="text"
           placeholder="20세"
         />
-        <div>
+        <StFlexBox>
           <StDetailSearchCheckbox type="checkbox" />
-          {/* label 높이 문제 남아있다!! */}
           <StDetailSearchCheckboxLabel htmlFor="">
             연령무관
           </StDetailSearchCheckboxLabel>
-        </div>
+        </StFlexBox>
       </div>
       <div>
         <h3>
           <StDetailSearchLabel htmlFor="">공고 분류</StDetailSearchLabel>
         </h3>
         <div>
-          <StDetailSearchGenderButton>온라인</StDetailSearchGenderButton>
-          <StDetailSearchGenderButton>오프라인</StDetailSearchGenderButton>
+          {/* <StDetailSearchGenderButton>온라인</StDetailSearchGenderButton> */}
+          {/* <StDetailSearchGenderButton>오프라인</StDetailSearchGenderButton> */}
         </div>
       </div>
       <StDetailSearchSaveButton>저장하기</StDetailSearchSaveButton>
