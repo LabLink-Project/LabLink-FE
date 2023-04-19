@@ -67,42 +67,19 @@ function Search() {
     localStorage.setItem('history', historyStr);
   };
 
+  // history 삭제 기능 나중에 구현
+
   const searchRequest = async () => {
     const res = await api.get(`/studies`);
     console.log(res);
     setStudys([...res.data.data]);
   };
 
-  // search 결과를 담을 state
-  const [studys, setStudys] = useState([]);
-
   // 상세검색 구현 로직 나중에 구현
   // const [areaHistory, setAreaHistory] = useState([]);
 
-  const mockupData = [
-    {
-      id: 1,
-      title: 'APP 사용성테스트 지원자 모집',
-      category: 'UT',
-      companyName: '(주)항해99',
-      companyHeat: 75,
-      date: '2023-04-03 22:34',
-      pay: '10000',
-      address: 'online',
-      isBookmarked: true,
-    },
-    {
-      id: 2,
-      title: 'MRI 받아보실 분',
-      category: '실험',
-      companyName: 'KAIST',
-      companyHeat: 90,
-      date: '2023-10-03 22:34',
-      pay: '10000',
-      address: '지역',
-      isBookmarked: false,
-    },
-  ];
+  // search 결과를 담을 state
+  const [studys, setStudys] = useState([]);
 
   const mockupAddresses = [
     '서울 노원구',
@@ -126,7 +103,12 @@ function Search() {
           <StSearchHistorys>
             {history.map((searchedTitle, index) => {
               return (
-                <SearchHistoryUI key={index}>{searchedTitle}</SearchHistoryUI>
+                <SearchHistoryUI
+                  key={index}
+                  handler={setHistory}
+                >
+                  {searchedTitle}
+                </SearchHistoryUI>
               );
             })}
           </StSearchHistorys>
@@ -147,12 +129,7 @@ function Search() {
 
             <StDetailSearchUl>
               {mockupAddresses.map((address, index) => {
-                return (
-                  <SearchAddressHistory
-                    key={index}
-                    content={address}
-                  />
-                );
+                return <SearchAddressHistory key={index} />;
               })}
             </StDetailSearchUl>
           </div>
