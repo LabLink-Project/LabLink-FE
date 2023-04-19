@@ -81,3 +81,7 @@ export const StDetailSearchSaveButton = styled.button`
   background-color: ${StudyColors.buttonFocus};
   color: ${StudyColors.white};
 `;
+
+export const StDetailSearchWrap = styled.div`
+  margin-bottom: 32px;
+`;
