@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Layout from '../../components/Layout';
 import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
@@ -7,9 +7,20 @@ import {
   StSignupLapLink,
   StSignupTitle,
 } from 'src/UI/styles/Signup.styled';
+import { cookies } from 'src/shared/Cookie';
 
 function SignupSuccess() {
   const nav = useNavigate();
+
+  // 로그인 상태면 못 들어오게 막기
+  useEffect(() => {
+    const token = cookies.get('token');
+    if (token) {
+      alert('이미 로그인 하셨습니다!');
+      nav('/');
+    }
+  }, [cookies]);
+
   return (
     <Layout>
       <StSignupHeader>

@@ -152,7 +152,7 @@ function SignupUser() {
     } else {
       try {
         const { data } = await axios.post(
-          `${process.env.REACT_APP_SERVER_URL}/users/signup/nickname-check`,
+          `${process.env.REACT_APP_SERVER_URL}/users/signup/nickName-check`,
           { nickName: newUsers.nickName }
         );
         alert(data.message);

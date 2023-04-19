@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { cookies } from '../../../shared/Cookie';
@@ -26,6 +26,15 @@ function LoginUser() {
 
   // tab 선택 state
   const [key, setKey] = useState('user');
+
+  // 로그인 상태면 못 들어오게 막기
+  useEffect(() => {
+    const token = cookies.get('token');
+    if (token) {
+      alert('이미 로그인 하셨습니다!');
+      nav('/');
+    }
+  }, [cookies]);
 
   // 로그인 onchange
   const signupChangeHandler = e => {
