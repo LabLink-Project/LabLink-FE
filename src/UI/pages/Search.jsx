@@ -129,7 +129,12 @@ function Search() {
 
             <StDetailSearchUl>
               {mockupAddresses.map((address, index) => {
-                return <SearchAddressHistory key={index} />;
+                return (
+                  <SearchAddressHistory
+                    key={index}
+                    content={address}
+                  />
+                );
               })}
             </StDetailSearchUl>
           </div>
