@@ -18,6 +18,8 @@ import {
 
 import filledHeart from 'src/assets/Favorite_on.svg';
 import outlineHeart from 'src/assets/Favorite_off.svg';
+import { Link } from 'react-router-dom';
+import { URI } from 'src/shared/URIs';
 
 // 합성 컴포넌트 패턴으로 처리해보자
 function StudyColumn({ obj }) {
@@ -30,8 +32,10 @@ function StudyColumn({ obj }) {
           </StStudyColumnOnline>
           <div>{'~' + convertToShortDate(obj.date)}</div>
         </StStudyColumnOnlineWrap>
-        <StStudyCompany>{obj.companyName}</StStudyCompany>
-        <StStudyColumnTitle>{obj.title}</StStudyColumnTitle>
+        <Link to={URI.crud.studyDetail}>
+          <StStudyCompany>{obj.companyName}</StStudyCompany>
+          <StStudyColumnTitle>{obj.title}</StStudyColumnTitle>
+        </Link>
         <StStudyColumnAddress>
           {obj.address !== 'online' && obj.address}
         </StStudyColumnAddress>

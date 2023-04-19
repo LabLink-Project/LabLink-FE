@@ -10,6 +10,8 @@ import {
   StPersonalPageTemp,
   StPersonalPageList,
 } from '../styles/PersonalPage.styled';
+import { Link } from 'react-router-dom';
+import { URI } from 'src/shared/URIs';
 
 function PersonalPage() {
   return (
@@ -20,7 +22,7 @@ function PersonalPage() {
           안녕하세요! <StPersonalPageStrong>www님</StPersonalPageStrong>
         </StPersonalPageH2>
         <div>
-          <span>내정보 수정 </span>
+          <Link to={URI.mypage.user.editInfo}>내 정보 수정</Link>
           <img
             src={right}
             alt="더보기"
@@ -30,21 +32,23 @@ function PersonalPage() {
       <StPersonalPageTemp>나의 온도</StPersonalPageTemp>
       <ul>
         <StPersonalPageList>
-          내 실험 관리
+          <Link to={URI.mypage.user.apply}>내 실험 관리</Link>
           <img
             src={triangle}
             alt=""
           />
         </StPersonalPageList>
         <StPersonalPageList>
-          신청서 작성
+          {/* 신청서 작성 구현 완료시 수정 */}
+          <Link to="#">신청서 작성</Link>
           <img
             src={triangle}
             alt=""
           />
         </StPersonalPageList>
         <StPersonalPageList>
-          설정
+          {/* 설정 부분 구현 완료시 수정 */}
+          <Link to="#">설정</Link>
           <img
             src={triangle}
             alt=""

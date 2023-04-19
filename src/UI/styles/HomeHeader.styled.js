@@ -1,19 +1,17 @@
 import { Link } from 'react-router-dom';
-import { StudyColors, StudyFontOptions } from 'src/shared/Colors';
 import styled, { css } from 'styled-components';
 import { StFlexBox } from './common.styled';
 
 export const StHomeHeaderWrap = styled(StFlexBox)`
-  padding: 14px 24px;
+  padding: 14px 0;
 `;
 
-export const StHomeHeaderIcon = styled.span`
-  padding: 4px 0;
-  border: 1px solid ${StudyColors.buttonBorder};
-  ${StudyFontOptions.body}
+export const StHomeHeaderIcon = styled.img`
+  max-width: 25px;
+  max-height: 20px;
 
   ${props =>
-    props.children === '검색' &&
+    props.alt === '검색 버튼' &&
     css`
       margin-right: 16px;
     `}
