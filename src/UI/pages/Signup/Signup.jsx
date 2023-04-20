@@ -1,44 +1,38 @@
-import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import Layout from '../../components/Layout';
+import { StLoginHeader, StLoginTitle } from 'src/UI/styles/Login.styled';
+import {
+  StSignupLogin,
+  StSignupSpan,
+  StSignupWrap,
+} from 'src/UI/styles/Signup.styled';
+import { cookies } from 'src/shared/Cookie';
+import { useNavigate } from 'react-router-dom';
 import { URI } from 'src/shared/URIs';
 
 function Signup() {
   const nav = useNavigate();
 
+  // 로그인 상태면 못 들어오게 막기
+  useEffect(() => {
+    const token = cookies.get('token');
+    if (token) {
+      alert('이미 로그인 하셨습니다!');
+      nav('/');
+    }
+  }, [cookies]);
+
   return (
     <Layout>
-      <div
-        style={{
-          margin: '16px auto',
-          marginBottom: '100px',
-        }}
-      >
-        <h2
-          style={{
-            fontWeight: '700',
-            fontSize: '35px',
-          }}
-        >
-          LabLink
-        </h2>
-      </div>
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '20px',
-        }}
-      >
+      <StLoginHeader>
+        <StLoginTitle>LabLink</StLoginTitle>
+      </StLoginHeader>
+      <StSignupWrap>
         <div>
-          <span
-            style={{
-              fontSize: '14px',
-              color: 'gray',
-            }}
-          >
+          <StSignupSpan>
             정보를 등록하고 여러가지 테스트에 참여하세요
-          </span>
+          </StSignupSpan>
           <br />
           <Link
             to={URI.auth.signup.user}
@@ -51,14 +45,7 @@ function Signup() {
           </Link>
         </div>
         <div>
-          <span
-            style={{
-              fontSize: '14px',
-              color: 'gray',
-            }}
-          >
-            공고를 등록하고 참여자를 쉽게 찾아보세요
-          </span>
+          <StSignupSpan>공고를 등록하고 참여자를 쉽게 찾아보세요</StSignupSpan>
           <br />
           <Link
             to={URI.auth.signup.company}
@@ -70,14 +57,7 @@ function Signup() {
             기업회원 가입
           </Link>
         </div>
-        <div
-          style={{
-            marginTop: '350px',
-
-            display: 'flex',
-            justifyContent: 'center',
-          }}
-        >
+        <StSignupLogin>
           <Link
             to={URI.auth.signin.user}
             style={{
@@ -86,8 +66,8 @@ function Signup() {
           >
             이미 계정이 있으신가요?
           </Link>
-        </div>
-      </div>
+        </StSignupLogin>
+      </StSignupWrap>
     </Layout>
   );
 }
