@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StFlexBox } from 'src/UI/styles/common.styled';
 import {
   StStudy,
@@ -16,6 +16,19 @@ import { URI } from 'src/shared/URIs';
 
 // 합성 컴포넌트 패턴으로 처리해보자
 function Study({ obj }) {
+  // Study, StudyColumn에 동일한 코드가 들어있음
+  // do refactoring later
+  const [isBookmark, setIsBookmark] = useState(obj.isBookmarked);
+
+  const onClickBookmarkHandler = () => {
+    setIsBookmark(!isBookmark);
+    bookmarkRequest();
+  };
+
+  const bookmarkRequest = async () => {
+    // api.get(`/studies/:id/bookmark`);
+  };
+
   return (
     <StStudy>
       <article>
@@ -24,17 +37,19 @@ function Study({ obj }) {
             {obj.address === 'online' ? '온라인' : '오프라인'}
           </StStudyOnline>
           <div>
-            {obj.isBookmarked ? (
-              <img
-                src={filledHeart}
-                alt="북마크"
-              />
-            ) : (
-              <img
-                src={outlineHeart}
-                alt="북마크"
-              />
-            )}
+            <button onClick={onClickBookmarkHandler}>
+              {isBookmark ? (
+                <img
+                  src={filledHeart}
+                  alt="북마크"
+                />
+              ) : (
+                <img
+                  src={outlineHeart}
+                  alt="북마크"
+                />
+              )}
+            </button>
           </div>
         </StFlexBox>
         <Link to={URI.crud.studyDetail}>
