@@ -268,6 +268,21 @@ function SignupCompany() {
             </div>
             <div>
               <StSignupLabel width={'100%'}>
+                <StSignupInputName>업종</StSignupInputName>
+                <br />
+                <StSignupInput
+                  type="text"
+                  name="business"
+                  placeholder="업종 입력 ex)제약업"
+                  value={newCompanies.business}
+                  onChange={signupChangeHandler}
+                  required
+                  width={'100%'}
+                />
+              </StSignupLabel>
+            </div>
+            <div>
+              <StSignupLabel width={'100%'}>
                 <StSignupInputName>대표자명</StSignupInputName>
                 <br />
                 <StSignupInput
