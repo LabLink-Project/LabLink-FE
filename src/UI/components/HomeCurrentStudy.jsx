@@ -29,28 +29,6 @@ function HomeCurrentStudy() {
       address: 'online',
       isBookmarked: true,
     },
-    {
-      id: 3,
-      title: 'CT 받아보실 분',
-      category: '실험',
-      companyName: 'CNU Hospital',
-      companyHeat: 90,
-      date: '2023-10-03 22:34',
-      pay: '10000',
-      address: '지역',
-      isBookmarked: false,
-    },
-    {
-      id: 4,
-      title: 'UT 해주세요',
-      category: '실험',
-      companyName: 'LabLink',
-      companyHeat: 90,
-      date: '2023-10-03 22:34',
-      pay: '10000',
-      address: '지역',
-      isBookmarked: false,
-    },
   ];
 
   return (

@@ -17,70 +17,125 @@ import EditPersonalProfile from 'src/UI/pages/EditPersonalProfile';
 import PersonalRequest from 'src/UI/pages/PersonalRequest';
 import CompanyApplicant from 'src/UI/pages/CompanyApplicant';
 import EndStudyList from 'src/UI/pages/EndStudyList';
+import ReadStudy from 'src/UI/pages/ReadStudy';
+import Search from 'src/UI/pages/Search';
+import CreateStudy from 'src/UI/pages/CreateStudy';
+import { URI } from './URIs';
 
 const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
+        {/* CRUD */}
         <Route
-          path="/"
+          path={URI.crud.home}
           element={<Home />}
         />
         <Route
-          path="/detail"
+          path={URI.crud.search}
+          element={<Search />}
+        />
+        <Route
+          path={URI.crud.studys}
+          element={<ReadStudy />}
+        />
+        <Route
+          path={URI.crud.studyDetail}
           element={<ReadStudyDetail />}
         />
         <Route
-          path="/bookmarks"
+          path={URI.crud.bookmark}
           element={<BookmarkList />}
         />
+
+        {/* auths */}
+        {/* 로그인 선택 예정
         <Route
-          path="/mypage/user"
-          element={<PersonalPage />}
-        />
+          path={URI.auth.signin.home}
+          element={</>}
+        /> */}
         <Route
-          path="/mypage/check"
-          element={<EditPersonalProfile />}
-        />
-        <Route
-          path="/mypage/request"
-          element={<PersonalRequest />}
-        />
-        <Route
-          path="/mypage/applicant"
-          element={<CompanyApplicant />}
-        />
-        <Route
-          path="/mypage/endstudy"
-          element={<EndStudyList />}
-        />
-        <Route
-          path="/signup"
-          element={<Signup />}
-        />
-        <Route
-          path="/signup/user"
-          element={<SignupUser />}
-        />
-        <Route
-          path="/signup/user/terms"
-          element={<UserTerms />}
-        />
-        <Route
-          path="/signup/company"
-          element={<SignupCompany />}
-        />
-        <Route
-          path="/signup/success"
-          element={<SignupSuccess />}
-        />
-        <Route
-          path="/login/user"
+          path={URI.auth.signin.user}
           element={<LoginUser />}
         />
         <Route
-          path="/login/company"
+          path={URI.auth.signin.company}
           element={<LoginCompany />}
+        />
+        <Route
+          path={URI.auth.signup.home}
+          element={<Signup />}
+        />
+        <Route
+          path={URI.auth.signup.user}
+          element={<SignupUser />}
+        />
+        <Route
+          path={URI.auth.signup.userTerm}
+          element={<UserTerms />}
+        />
+        <Route
+          path={URI.auth.signup.company}
+          element={<SignupCompany />}
+        />
+        {/* 기업 회원가입 약관 예정
+        <Route
+          path={URI.auth.signup.companyTerm}
+          element={< />}
+        /> */}
+        <Route
+          path={URI.auth.signup.done}
+          element={<SignupSuccess />}
+        />
+        {/* 아이디/비밀번호 찾기 예정
+        <Route
+          path={URI.auth.signup.findID}
+          element={< />}
+        /> */}
+
+        {/* 개인 마이페이지 */}
+        <Route
+          path={URI.mypage.user.home}
+          element={<PersonalPage />}
+        />
+        {/* 비밀번호 확인 + 내 정보 수정 페이지 통일 */}
+        <Route
+          path={URI.mypage.user.editInfo}
+          element={<EditPersonalProfile />}
+        />
+        {/* 신청할, 진행할, 완료된 실험 수정 예정 */}
+        <Route
+          path={URI.mypage.user.apply}
+          element={<PersonalRequest />}
+        />
+        {/* 신청서 작성 페이지 구현 예정 */}
+        {/* <Route
+          path={URI.mypage.user.application}
+          element={< />}
+        /> */}
+
+        {/* 기업 마이페이지 */}
+        {/* 기업 마이페이지 구현 예정 */}
+        {/* <Route
+          path={URI.mypage.company.home}
+          element={< />}
+        /> */}
+        {/* 내가 올린 공고 구현 예정 */}
+        {/* <Route
+          path={URI.mypage.company.myStudys}
+          element={< />}
+        /> */}
+        <Route
+          path={URI.mypage.company.applicant}
+          element={<CompanyApplicant />}
+        />
+        <Route
+          path={URI.mypage.company.feedback}
+          element={<EndStudyList />}
+        />
+        <Route
+          path={URI.mypage.company.makeStudy}
+          element={<CreateStudy />}
         />
         <Route
           path="/user/mystudy"

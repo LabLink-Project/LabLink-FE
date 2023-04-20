@@ -9,6 +9,7 @@ import {
 } from 'src/UI/styles/Signup.styled';
 import { cookies } from 'src/shared/Cookie';
 import { useNavigate } from 'react-router-dom';
+import { URI } from 'src/shared/URIs';
 
 function Signup() {
   const nav = useNavigate();
@@ -34,7 +35,7 @@ function Signup() {
           </StSignupSpan>
           <br />
           <Link
-            to="/signup/user"
+            to={URI.auth.signup.user}
             style={{
               color: 'black',
               fontWeight: '600',
@@ -47,7 +48,7 @@ function Signup() {
           <StSignupSpan>공고를 등록하고 참여자를 쉽게 찾아보세요</StSignupSpan>
           <br />
           <Link
-            to="/signup/company"
+            to={URI.auth.signup.company}
             style={{
               color: 'black',
               fontWeight: '600',
@@ -58,7 +59,7 @@ function Signup() {
         </div>
         <StSignupLogin>
           <Link
-            to="/login/user"
+            to={URI.auth.signin.user}
             style={{
               color: 'gray',
             }}

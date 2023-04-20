@@ -13,6 +13,7 @@ import {
   StLoginLinks,
   StLoginTitle,
 } from 'src/UI/styles/Login.styled';
+import { URI } from 'src/shared/URIs';
 
 function LoginCompany() {
   const nav = useNavigate();
@@ -74,7 +75,7 @@ function LoginCompany() {
         <Tab
           eventKey="user"
           title="개인회원"
-          onEnter={() => nav('/login/user')}
+          onEnter={() => nav(URI.auth.signin.user)}
         />
         <Tab
           eventKey="company"
@@ -112,7 +113,7 @@ function LoginCompany() {
           </StLoginForm>
           <StLoginLinks>
             <Link
-              to="/signup"
+              to={URI.auth.signup.home}
               style={{
                 color: 'gray',
               }}
@@ -120,6 +121,8 @@ function LoginCompany() {
               LapLink가 처음이신가요?
             </Link>
             <Link
+              // 페이지 구현 후 수정하기
+              to="/"
               style={{
                 color: 'gray',
               }}
