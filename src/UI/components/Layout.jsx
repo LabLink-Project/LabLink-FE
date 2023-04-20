@@ -1,27 +1,18 @@
 import { BsArrowLeftSquare } from 'react-icons/bs';
 import { useNavigate } from 'react-router-dom';
+import { StHeader, StLayout, StTitle } from '../styles/Layout.styled';
 
-const Layout = ({ children }) => {
+const Layout = ({ children, header }) => {
   const nav = useNavigate();
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        padding: '24px',
-      }}
-    >
-      <div
-        style={{
-          height: '56px',
-          fontSize: '30px',
-        }}
-      >
+    <StLayout>
+      <StHeader>
         <BsArrowLeftSquare onClick={() => nav(-1)} />
-      </div>
+        <StTitle>{header}</StTitle>
+      </StHeader>
       {children}
-    </div>
+    </StLayout>
   );
 };
 

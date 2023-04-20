@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { cookies } from '../../../shared/Cookie';
@@ -6,6 +6,14 @@ import Layout from '../../components/Layout';
 import { Button } from 'react-bootstrap';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
+import {
+  StLoginForm,
+  StLoginHeader,
+  StLoginInput,
+  StLoginLinks,
+  StLoginSNS,
+  StLoginTitle,
+} from 'src/UI/styles/Login.styled';
 import { URI } from 'src/shared/URIs';
 
 function LoginUser() {
@@ -19,6 +27,15 @@ function LoginUser() {
 
   // tab 선택 state
   const [key, setKey] = useState('user');
+
+  // 로그인 상태면 못 들어오게 막기
+  useEffect(() => {
+    const token = cookies.get('token');
+    if (token) {
+      alert('이미 로그인 하셨습니다!');
+      nav('/');
+    }
+  }, [cookies]);
 
   // 로그인 onchange
   const signupChangeHandler = e => {
@@ -45,21 +62,9 @@ function LoginUser() {
 
   return (
     <Layout>
-      <div
-        style={{
-          margin: '16px auto',
-          marginBottom: '100px',
-        }}
-      >
-        <h2
-          style={{
-            fontWeight: '700',
-            fontSize: '35px',
-          }}
-        >
-          LabLink
-        </h2>
-      </div>
+      <StLoginHeader>
+        <StLoginTitle>LabLink</StLoginTitle>
+      </StLoginHeader>
       <Tabs
         activeKey={key}
         onSelect={k => setKey(k)}
@@ -72,50 +77,38 @@ function LoginUser() {
           eventKey="user"
           title="개인회원"
         >
-          <form
-            style={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              flexDirection: 'column',
-            }}
-            onSubmit={loginSubmitHandler}
-          >
-            <input
+          <StLoginForm onSubmit={loginSubmitHandler}>
+            <StLoginInput
               type="text"
               name="email"
               value={login.email}
               onChange={signupChangeHandler}
               placeholder="이메일"
             />
-            <input
+            <StLoginInput
               type="password"
               name="password"
               value={login.password}
               onChange={signupChangeHandler}
               placeholder="비밀번호"
             />
-            <div className="d-grid gap-2">
+            <div
+              className="d-grid gap-2"
+              style={{
+                width: '90%',
+              }}
+            >
               <Button
                 variant="dark"
                 size="lg"
-                type="submit"
+                type="sumbit"
               >
                 로그인
               </Button>
             </div>
-            <div>
-              <p>SNS로 간편하게 로그인하기</p>
-            </div>
-          </form>
-          <div
-            style={{
-              fontSize: '10px',
-              display: 'flex',
-              justifyContent: 'center',
-              gap: '20px',
-            }}
-          >
+          </StLoginForm>
+          <StLoginSNS>SNS로 간편하게 로그인하기</StLoginSNS>
+          <StLoginLinks>
             <Link
               to={URI.auth.signup.home}
               style={{
@@ -133,7 +126,7 @@ function LoginUser() {
             >
               아이디/비밀번호 찾기
             </Link>
-          </div>
+          </StLoginLinks>
         </Tab>
         <Tab
           eventKey="company"
