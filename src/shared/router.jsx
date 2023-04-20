@@ -137,10 +137,6 @@ const Router = () => {
           path={URI.mypage.company.makeStudy}
           element={<CreateStudy />}
         />
-        <Route
-          path="/user/mystudy"
-          element={<UserMystudy />}
-        />
       </Routes>
     </BrowserRouter>
   );
