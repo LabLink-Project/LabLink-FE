@@ -8,6 +8,7 @@ import {
   StSignupTitle,
 } from 'src/UI/styles/Signup.styled';
 import { cookies } from 'src/shared/Cookie';
+import { URI } from 'src/shared/URIs';
 
 function SignupSuccess() {
   const nav = useNavigate();
@@ -17,7 +18,7 @@ function SignupSuccess() {
     const token = cookies.get('token');
     if (token) {
       alert('이미 로그인 하셨습니다!');
-      nav('/');
+      nav(URI.crud.home);
     }
   }, [cookies]);
 
@@ -47,7 +48,7 @@ function SignupSuccess() {
         <Button
           variant="dark"
           size="lg"
-          onClick={() => nav('/login/user')}
+          onClick={() => nav(URI.auth.signin.user)}
         >
           로그인 페이지로 이동
         </Button>

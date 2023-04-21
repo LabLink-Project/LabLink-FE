@@ -19,7 +19,7 @@ function Signup() {
     const token = cookies.get('token');
     if (token) {
       alert('이미 로그인 하셨습니다!');
-      nav('/');
+      nav(URI.crud.home);
     }
   }, [cookies]);
 
