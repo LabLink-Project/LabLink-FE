@@ -18,7 +18,7 @@ import { URI } from 'src/shared/URIs';
 function Study({ obj }) {
   // Study, StudyColumn에 동일한 코드가 들어있음
   // do refactoring later
-  const [isBookmark, setIsBookmark] = useState(obj.isBookmarked);
+  const [isBookmark, setIsBookmark] = useState(obj.isbookmarked);
 
   const onClickBookmarkHandler = () => {
     setIsBookmark(!isBookmark);

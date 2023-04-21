@@ -37,6 +37,7 @@ function BookmarkList() {
           <div>최근 1주일</div>
         </StBookmarkTitles>
         {bookmarks?.map(obj => {
+          obj['isbookmarked'] = true;
           return (
             <Study
               obj={obj}

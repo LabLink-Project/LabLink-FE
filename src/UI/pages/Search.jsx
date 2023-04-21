@@ -94,6 +94,7 @@ function Search() {
       <SearchBar
         placeholder="어떤 공고를 찾으세요?"
         handler={keywordHandler}
+        onEnterHandler={onSearchHandler}
       />
       {!isSearch ? (
         <>

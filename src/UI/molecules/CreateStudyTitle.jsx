@@ -7,7 +7,8 @@ import {
 } from '../styles/CreateStudy.styled';
 import StudyInput from '../atomics/StudyInput';
 
-function CreateStudyTitle() {
+function CreateStudyTitle({ state }) {
+  console.log(state);
   return (
     <StCreateStudyWrap>
       <StCreateStudyLabelWrap>
@@ -17,6 +18,11 @@ function CreateStudyTitle() {
       <StudyInput
         type="text"
         placeholder="공고명을 입력해 주세요."
+        value={state[0]}
+        onChange={e => {
+          console.log(state[0]);
+          state[1](e.target.value);
+        }}
       />
     </StCreateStudyWrap>
   );
