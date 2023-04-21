@@ -28,7 +28,7 @@ import { StReadStudyWrap } from '../styles/ReadStudy.styled';
 import filledHeart from 'src/assets/Favorite_on.svg';
 import outlineHeart from 'src/assets/Favorite_off.svg';
 import { StFlexBox } from '../styles/common.styled';
-import api from 'src/api/api';
+import { api } from 'src/api/api';
 import { useParams } from 'react-router-dom';
 import { convertToShortDate } from 'src/utils/formatDate';
 
