@@ -34,7 +34,7 @@ function Study({ obj }) {
       <article>
         <StFlexBox sort="space-between">
           <StStudyOnline>
-            {obj.address === 'online' ? '온라인' : '오프라인'}
+            {obj.category === 'ONLINE' ? '온라인' : '오프라인'}
           </StStudyOnline>
           <div>
             <button onClick={onClickBookmarkHandler}>

@@ -20,19 +20,20 @@ import filledHeart from 'src/assets/Favorite_on.svg';
 import outlineHeart from 'src/assets/Favorite_off.svg';
 import { Link } from 'react-router-dom';
 import { URI } from 'src/shared/URIs';
-import api from 'src/api/api';
+import { apiWithJWT } from 'src/api/api';
 
 // 합성 컴포넌트 패턴으로 처리해보자
 function StudyColumn({ obj }) {
-  const [isBookmark, setIsBookmark] = useState(obj.isBookmarked);
+  const [isbookmark, setIsBookmark] = useState(obj.isbookmarked);
 
   const onClickBookmarkHandler = () => {
-    setIsBookmark(!isBookmark);
+    setIsBookmark(!isbookmark);
     bookmarkRequest();
   };
 
   const bookmarkRequest = async () => {
-    // api.get(`/studies/:id/bookmark`);
+    const response = await apiWithJWT.post(`/studies/${obj.id}/bookmark`);
+    console.log(response.data);
   };
 
   return (
@@ -40,7 +41,7 @@ function StudyColumn({ obj }) {
       <article>
         <StStudyColumnOnlineWrap sort="space-between">
           <StStudyColumnOnline>
-            {obj.address === 'online' ? '온라인' : '오프라인'}
+            {obj.category === 'ONLINE' ? '온라인' : '오프라인'}
           </StStudyColumnOnline>
           <div>{'~' + convertToShortDate(obj.date)}</div>
         </StStudyColumnOnlineWrap>
@@ -50,7 +51,7 @@ function StudyColumn({ obj }) {
           <StStudyColumnTitle>{obj.title}</StStudyColumnTitle>
         </Link>
         <StStudyColumnAddress>
-          {obj.address !== 'online' && obj.address}
+          {obj.address !== 'ONLINE' && obj.address}
         </StStudyColumnAddress>
         <StStudyColumnPayWrap sort="space-between">
           <div>
@@ -58,7 +59,7 @@ function StudyColumn({ obj }) {
           </div>
           <div>
             <button onClick={onClickBookmarkHandler}>
-              {isBookmark ? (
+              {isbookmark ? (
                 <img
                   src={filledHeart}
                   alt="북마크"

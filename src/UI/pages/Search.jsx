@@ -20,7 +20,7 @@ import SearchHistoryUI from '../atomics/SearchHistoryUI';
 import SearchAddressHistory from '../atomics/SearchAddressHistory';
 import { StFlexBox } from '../styles/common.styled';
 import { useInput } from 'src/hooks/useInput';
-import api from 'src/api/api';
+import { api } from 'src/api/api';
 import { StReadStudyH1 } from '../styles/ReadStudy.styled';
 import Study from '../components/Study';
 

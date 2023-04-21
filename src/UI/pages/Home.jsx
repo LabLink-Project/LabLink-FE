@@ -15,7 +15,9 @@ import { useDispatch } from 'react-redux';
 import { getAccountInfo } from 'src/redux/modules/accountHandler';
 
 function Home() {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch(state => {
+    return state;
+  });
 
   useEffect(() => {
     // do refactoring later

@@ -24,7 +24,7 @@ const accountHandler = (state = initialState, action) => {
       // 아직 nickname 토큰에 담기 전
       // payload = jwt token
       const { role, nickname } = jwtDecode(action.payload);
-      console.log(role, nickname);
+      // console.log(role, nickname);
       if (!role) return state;
       // if (!nickname) return state;
 
