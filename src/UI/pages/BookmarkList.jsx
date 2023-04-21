@@ -9,6 +9,7 @@ import {
 } from '../styles/BookmarkList.styled';
 import Study from '../components/Study';
 import { apiWithJWT } from 'src/api/api';
+import FooterNav from '../components/FooterNav';
 
 function BookmarkList() {
   const [bookmarks, setBookmarks] = useState([]);
@@ -44,6 +45,7 @@ function BookmarkList() {
           );
         })}
       </div>
+      <FooterNav />
     </StBookmarkListWrap>
   );
 }

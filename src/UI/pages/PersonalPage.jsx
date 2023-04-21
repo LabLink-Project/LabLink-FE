@@ -12,14 +12,22 @@ import {
 } from '../styles/PersonalPage.styled';
 import { Link } from 'react-router-dom';
 import { URI } from 'src/shared/URIs';
+import FooterNav from '../components/FooterNav';
+import { useSelector } from 'react-redux';
 
 function PersonalPage() {
+  const account = useSelector(state => {
+    return state;
+  });
+
+  const { nickname, ...rest } = account.accountHandler;
+
   return (
     <StPersonalPageWrap>
       <SearchHeader title="마이페이지" />
       <StPersonalPageUserWrap sort="space-between">
         <StPersonalPageH2>
-          안녕하세요! <StPersonalPageStrong>www님</StPersonalPageStrong>
+          안녕하세요! <StPersonalPageStrong>{nickname}님</StPersonalPageStrong>
         </StPersonalPageH2>
         <div>
           <Link to={URI.mypage.user.editInfo}>내 정보 수정</Link>
@@ -55,6 +63,7 @@ function PersonalPage() {
           />
         </StPersonalPageList>
       </ul>
+      <FooterNav />
     </StPersonalPageWrap>
   );
 }
