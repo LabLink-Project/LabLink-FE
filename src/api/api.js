@@ -11,7 +11,8 @@ export const apiWithJWT = axios.create({
 apiWithJWT.interceptors.request.use(
   config => {
     const token = document.cookie.split('=')[1];
-    config.headers.Authorization = `Bearer ${token}`;
+    // console.log(token);
+    if (token) config.headers.Authorization = `Bearer ${token}`;
     return config;
   },
   error => {
