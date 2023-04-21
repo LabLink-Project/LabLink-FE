@@ -44,7 +44,8 @@ function StudyColumn({ obj }) {
           </StStudyColumnOnline>
           <div>{'~' + convertToShortDate(obj.date)}</div>
         </StStudyColumnOnlineWrap>
-        <Link to={URI.crud.studyDetail}>
+        {/* do refactoring later */}
+        <Link to={URI.crud.studys + '/' + obj.id}>
           <StStudyCompany>{obj.companyName}</StStudyCompany>
           <StStudyColumnTitle>{obj.title}</StStudyColumnTitle>
         </Link>

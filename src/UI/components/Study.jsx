@@ -52,7 +52,8 @@ function Study({ obj }) {
             </button>
           </div>
         </StFlexBox>
-        <Link to={URI.crud.studyDetail}>
+        {/* do refactoring later */}
+        <Link to={URI.crud.studys + '/' + obj.id}>
           <StStudyCompany>{obj.companyName}</StStudyCompany>
           <p>{obj.title}</p>
         </Link>

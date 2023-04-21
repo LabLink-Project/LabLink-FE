@@ -10,6 +10,8 @@ export const StReadStudyWrap = styled.div`
 export const StReadStudyDetailImage = styled.img`
   min-width: 335px;
   min-height: 216px;
+  max-width: 335px;
+  max-height: 216px;
 
   background-color: ${StudyColors.searchBar};
 `;
