@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Study from './Study';
 import {
   StHomeRealTimeMoreButton,
@@ -6,49 +6,25 @@ import {
   StHomeRealTimeUpdateH2,
 } from '../styles/HomeRealTimeUpdate.styled';
 import triangle from 'src/assets/triangle.svg';
+import api from 'src/api/api';
 
 function HomeRealTimeUpdate() {
-  const mockupData = [
-    {
-      id: 1,
-      title: 'APP 사용성테스트 지원자 모집',
-      category: 'UT',
-      companyName: '(주)항해99',
-      companyHeat: 75,
-      date: '2023-04-03 22:34',
-      pay: '10000',
-      address: 'online',
-      isBookmarked: true,
-    },
-    {
-      id: 3,
-      title: 'CT 받아보실 분',
-      category: '실험',
-      companyName: 'CNU Hospital',
-      companyHeat: 90,
-      date: '2023-10-03 22:34',
-      pay: '10000',
-      address: '지역',
-      isBookmarked: false,
-    },
-    {
-      id: 4,
-      title: 'UT 해주세요',
-      category: '실험',
-      companyName: 'LabLink',
-      companyHeat: 90,
-      date: '2023-10-03 22:34',
-      pay: '10000',
-      address: '지역',
-      isBookmarked: false,
-    },
-  ];
+  const [studys, setStudys] = useState([]);
+
+  const getStudy = async () => {
+    const response = await api.get('/studies');
+    setStudys([...response.data.data]);
+  };
+
+  useEffect(() => {
+    getStudy();
+  }, []);
 
   return (
     <div>
       <StHomeRealTimeUpdateH2>실시간 업데이트</StHomeRealTimeUpdateH2>
       <ul>
-        {mockupData.map(obj => {
+        {studys.map(obj => {
           return (
             <Study
               obj={obj}

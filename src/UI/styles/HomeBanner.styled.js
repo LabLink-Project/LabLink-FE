@@ -4,7 +4,9 @@ import styled from 'styled-components';
 export const StHomeBannerImg = styled.img`
   background-color: ${StudyColors.bannerBg};
   min-width: 335px;
+  max-width: 335px;
   min-height: 168px;
+  max-height: 168px;
 `;
 
 export const StHomeBannerCircle = styled.div`

@@ -1,5 +1,6 @@
 export const convertToShortDate = dateAndTime => {
   // date의 형식 : YYYY-MM-DD HH:MM
+  if (!dateAndTime) return;
   const [fullDate, time] = dateAndTime.split(' ');
   const [year, month, date] = fullDate.split('-');
 
