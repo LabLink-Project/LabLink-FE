@@ -44,7 +44,7 @@ function Search() {
     // do refactor later
     const historyString = localStorage.getItem('history');
     const historyLog = JSON.parse(historyString);
-    if (historyLog) setHistory([...historyLog]);
+    if (historyLog) setHistory([...historyLog.reverse()]);
 
     // console.log(historyLog);
   }, []);
@@ -70,7 +70,7 @@ function Search() {
   // history 삭제 기능 나중에 구현
 
   const searchRequest = async () => {
-    const res = await api.get(`/studies`);
+    const res = await api.get(`/studies?keyword=${keyword}`);
     console.log(res);
     setStudys([...res.data.data]);
   };
