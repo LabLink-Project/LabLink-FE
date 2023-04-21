@@ -20,7 +20,7 @@ import SearchHistoryUI from '../atomics/SearchHistoryUI';
 import SearchAddressHistory from '../atomics/SearchAddressHistory';
 import { StFlexBox } from '../styles/common.styled';
 import { useInput } from 'src/hooks/useInput';
-import { api } from 'src/api/api';
+import { apiWithJWT } from 'src/api/api';
 import { StReadStudyH1 } from '../styles/ReadStudy.styled';
 import Study from '../components/Study';
 
@@ -70,7 +70,7 @@ function Search() {
   // history 삭제 기능 나중에 구현
 
   const searchRequest = async () => {
-    const res = await api.get(`/studies?keyword=${keyword}`);
+    const res = await apiWithJWT.get(`/studies?keyword=${keyword}`);
     console.log(res);
     setStudys([...res.data.data]);
   };
