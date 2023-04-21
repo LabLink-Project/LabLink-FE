@@ -51,7 +51,7 @@ function StudyColumn({ obj }) {
           <StStudyColumnTitle>{obj.title}</StStudyColumnTitle>
         </Link>
         <StStudyColumnAddress>
-          {obj.address !== 'ONLINE' && obj.address}
+          {obj.category !== 'ONLINE' && obj.address}
         </StStudyColumnAddress>
         <StStudyColumnPayWrap sort="space-between">
           <div>

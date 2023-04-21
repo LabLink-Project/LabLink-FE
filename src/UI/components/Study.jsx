@@ -64,7 +64,7 @@ function Study({ obj }) {
           <StStudyDateAndAddress>
             {/* date and address */}
             {'~' + convertToShortDate(obj.date)}
-            {obj.address !== 'online' && ' | ' + obj.address}
+            {obj.category !== 'ONLINE' && ' | ' + obj.address}
           </StStudyDateAndAddress>
           <StStudyCurrency>
             <StStudyPrice>{obj.pay}</StStudyPrice>원
