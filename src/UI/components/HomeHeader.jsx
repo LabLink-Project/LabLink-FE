@@ -10,17 +10,35 @@ import {
 import { URI } from 'src/shared/URIs';
 import Search from 'src/assets/Search.svg';
 import Alarm from 'src/assets/Alarm.svg';
+import { useSelector } from 'react-redux';
 
 function HomeHeader() {
+  const account = useSelector(state => {
+    return state;
+  });
+
+  const { nickname, ...rest } = account.accountHandler;
+
   return (
     <StHomeHeaderWrap sort="space-between">
       <div>
-        <StHomeHeaderLink to={URI.auth.signin.user}>로그인</StHomeHeaderLink>{' '}
-        해주세요
-        <img
-          src={right}
-          alt="오른쪽 표시"
-        />
+        {nickname ? (
+          <>
+            <strong>{nickname}</strong>님 환영합니다
+          </>
+        ) : (
+          <>
+            {' '}
+            <StHomeHeaderLink to={URI.auth.signin.user}>
+              로그인
+            </StHomeHeaderLink>{' '}
+            해주세요
+            <img
+              src={right}
+              alt="오른쪽 표시"
+            />
+          </>
+        )}
       </div>
       <div>
         <Link to={URI.crud.search}>
