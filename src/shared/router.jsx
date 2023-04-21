@@ -7,8 +7,6 @@ import LoginUser from '../UI/pages/Login/LoginUser';
 import LoginCompany from '../UI/pages/Login/LoginCompany';
 import UserTerms from '../UI/pages/Signup/UserTerms';
 import SignupSuccess from '../UI/pages/Signup/SignupSuccess';
-import UserMypage from '../UI/pages/UserMypage';
-import UserMystudy from 'src/UI/pages/UserMystudy';
 import Home from 'src/UI/pages/Home';
 import ReadStudyDetail from 'src/UI/pages/ReadStudyDetail';
 import BookmarkList from 'src/UI/pages/BookmarkList';

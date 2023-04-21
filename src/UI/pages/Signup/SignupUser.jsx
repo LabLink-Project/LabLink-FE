@@ -21,6 +21,7 @@ import {
   StSignupTitle,
 } from 'src/UI/styles/Signup.styled';
 import { cookies } from 'src/shared/Cookie';
+import { URI } from 'src/shared/URIs';
 
 function SignupUser() {
   const nav = useNavigate();
@@ -58,7 +59,7 @@ function SignupUser() {
     const token = cookies.get('token');
     if (token) {
       alert('이미 로그인 하셨습니다!');
-      nav('/');
+      nav(URI.crud.home);
     }
   }, [cookies]);
 
@@ -136,9 +137,7 @@ function SignupUser() {
         );
         alert(data.message);
       } catch (error) {
-        if (error.response.status === 409) {
-          alert(`${error.response.data.message}`);
-        }
+        alert(`${error.response.data.message}`);
       }
     }
   };
@@ -157,7 +156,7 @@ function SignupUser() {
         );
         alert(data.message);
       } catch (error) {
-        console.log(error);
+        alert(`${error.response.data.message}`);
       }
     }
   };
@@ -226,7 +225,7 @@ function SignupUser() {
           newUsers
         );
         alert(data.message);
-        nav('/signup/success');
+        nav(URI.auth.signup.done);
       } catch (error) {
         if (error.response.status === 409) {
           alert(`${error.response.data.message}`);
