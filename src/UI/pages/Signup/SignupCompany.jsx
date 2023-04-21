@@ -17,6 +17,7 @@ import {
   StSignupTitle,
 } from 'src/UI/styles/Signup.styled';
 import { cookies } from 'src/shared/Cookie';
+import { URI } from 'src/shared/URIs';
 
 function SignupCompany() {
   const nav = useNavigate();
@@ -51,7 +52,7 @@ function SignupCompany() {
     const token = cookies.get('token');
     if (token) {
       alert('이미 로그인 하셨습니다!');
-      nav('/');
+      nav(URI.crud.home);
     }
   }, [cookies]);
 
@@ -148,7 +149,7 @@ function SignupCompany() {
           newCompanies
         );
         alert(data.message);
-        nav('/signup/success');
+        nav(URI.auth.signup.done);
       } catch (error) {
         if (error.response.status === 409) {
           alert(`${error.response.data.message}`);

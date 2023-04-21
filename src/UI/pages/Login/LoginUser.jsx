@@ -33,7 +33,7 @@ function LoginUser() {
     const token = cookies.get('token');
     if (token) {
       alert('이미 로그인 하셨습니다!');
-      nav('/');
+      nav(URI.crud.home);
     }
   }, [cookies]);
 
@@ -54,7 +54,7 @@ function LoginUser() {
       cookies.set('token', data.headers.authorization.split(' ')[1], {
         path: '/',
       });
-      nav('/');
+      nav(URI.crud.home);
     } catch (error) {
       alert(error.response.data.message);
     }
@@ -68,6 +68,7 @@ function LoginUser() {
       <Tabs
         activeKey={key}
         onSelect={k => setKey(k)}
+        variant="pills"
         style={{
           display: 'flex',
           justifyContent: 'center',
