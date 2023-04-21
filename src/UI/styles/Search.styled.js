@@ -53,7 +53,7 @@ export const StDetailSearchUl = styled.ul`
   margin-bottom: 32px;
 `;
 
-export const StDetailSearchGenderButton = styled(StButton);
+export const StDetailSearchGenderButton = styled(StButton)``;
 
 export const StDetailSearchAge = styled.input`
   min-width: 335px;
@@ -64,7 +64,7 @@ export const StDetailSearchAge = styled.input`
   margin-bottom: 12px;
 `;
 
-export const StDetailSearchCheckbox = styled(StCheckbox);
+export const StDetailSearchCheckbox = styled(StCheckbox)``;
 
 export const StDetailSearchCheckboxLabel = styled.label`
   color: ${StudyColors.buttonBorder};
@@ -80,4 +80,8 @@ export const StDetailSearchSaveButton = styled.button`
 
   background-color: ${StudyColors.buttonFocus};
   color: ${StudyColors.white};
+`;
+
+export const StDetailSearchWrap = styled.div`
+  margin-bottom: 32px;
 `;

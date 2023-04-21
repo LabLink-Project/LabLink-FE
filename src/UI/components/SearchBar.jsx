@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import search from 'src/assets/Search.svg';
 import {
   StSearchBar,
@@ -7,9 +7,7 @@ import {
   StSearchBarWrap,
 } from '../styles/SearchBar.styled';
 
-function SearchBar({ placeholder }) {
-  const [keyword, setKeyword] = useState('');
-
+function SearchBar({ placeholder, handler }) {
   return (
     <StSearchBarWrap>
       <StSearchBarIconLabel htmlFor="search">
@@ -21,8 +19,7 @@ function SearchBar({ placeholder }) {
       <StSearchBar
         type="text"
         id="search"
-        value={keyword}
-        onChange={e => setKeyword(e.target.value)}
+        onChange={handler}
         placeholder={placeholder}
       />
     </StSearchBarWrap>
