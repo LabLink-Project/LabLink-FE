@@ -44,7 +44,7 @@ function HomeBanner() {
           >
             &lt;
           </StCarouselButton>
-          <StFlexBox style={style}>
+          <StCarouselFlexBox current={current}>
             {images.current.map((img, i) => {
               return (
                 <StImage
@@ -53,7 +53,7 @@ function HomeBanner() {
                 />
               );
             })}
-          </StFlexBox>
+          </StCarouselFlexBox>
           <StCarouselButton
             onClick={() => {
               moveSlide(1);
@@ -73,7 +73,6 @@ function HomeBanner() {
           );
         })}
       </StFlexBox>
-
       {/* <StHomeBannerImg
         src={lab}
         alt="배너 영역"
@@ -103,6 +102,18 @@ const StImage = styled.img`
   // image로 contain 구현하기
   /* object-fit: contain; */
   flex: none;
+`;
+
+const StCarouselFlexBox = styled.div`
+  display: flex;
+  align-items: center;
+  transition: margin-left 0.3s ease-out;
+
+  ${props =>
+    props.current &&
+    css`
+      margin-left: -${props.current}00%;
+    `}
 `;
 
 const StCarouselButton = styled.button`
