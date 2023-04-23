@@ -18,10 +18,9 @@ function HomeBanner() {
   const imgSize = useRef(images.current.length);
 
   const [current, setCurrent] = useState(0);
-  const [style, setStyle] = useState({
-    marginLeft: `-${current}00%`,
-  });
 
+  // img 앞에 추가 : unshift
+  // img 뒤에 추가 : push
   const moveSlide = i => {
     let nextIndex = current + i;
     if (nextIndex < 0) nextIndex = imgSize.current - 1;
@@ -29,9 +28,9 @@ function HomeBanner() {
     setCurrent(nextIndex);
   };
 
-  useEffect(() => {
-    setStyle({ marginLeft: `-${current}00%` });
-  }, [current]);
+  const onClickPagenationHandler = index => {
+    setCurrent(index);
+  };
 
   return (
     <>
@@ -69,6 +68,7 @@ function HomeBanner() {
             <StHomeBannerCircle
               key={i}
               current={i === current ? true : false}
+              onClick={() => onClickPagenationHandler(i)}
             />
           );
         })}

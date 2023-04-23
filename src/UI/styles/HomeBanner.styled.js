@@ -15,6 +15,7 @@ export const StHomeBannerCircle = styled.div`
   background-color: ${StudyColors.searchBar};
   border-radius: 4px;
   margin: 16px 8px 0 0;
+  cursor: pointer;
 
   ${props =>
     props.current &&
