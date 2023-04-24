@@ -23,14 +23,21 @@ function HomeBanner() {
   // img 뒤에 추가 : push
   const moveSlide = i => {
     let nextIndex = current + i;
+    if (nextIndex >= imgSize.current) nextIndex = 0;
     if (nextIndex < 0) nextIndex = imgSize.current - 1;
-    else if (nextIndex >= imgSize.current) nextIndex = 0;
     setCurrent(nextIndex);
   };
 
   const onClickPagenationHandler = index => {
     setCurrent(index);
   };
+
+  useEffect(() => {
+    const interval = setTimeout(() => {
+      moveSlide(1);
+    }, 3000);
+    return () => clearTimeout(interval);
+  });
 
   return (
     <>
