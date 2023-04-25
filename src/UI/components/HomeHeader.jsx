@@ -11,6 +11,7 @@ import { URI } from 'src/shared/URIs';
 import Search from 'src/assets/Search.svg';
 import Alarm from 'src/assets/Alarm.svg';
 import { useSelector } from 'react-redux';
+import { deleteCookie } from 'src/utils/cookieHandler';
 
 function HomeHeader() {
   const account = useSelector(state => {
@@ -19,12 +20,18 @@ function HomeHeader() {
 
   const { nickname, ...rest } = account.accountHandler;
 
+  const signOutHandler = () => {
+    deleteCookie('token');
+    window.location.reload();
+  };
+
   return (
     <StHomeHeaderWrap sort="space-between">
       <div>
         {nickname ? (
           <>
             <strong>{nickname}</strong>님 환영합니다
+            <button onClick={signOutHandler}>로그아웃</button>
           </>
         ) : (
           <>
