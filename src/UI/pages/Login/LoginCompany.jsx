@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import { cookies } from '../../../shared/Cookie';
 import Layout from '../../components/Layout';
 import { Link, useNavigate } from 'react-router-dom';
@@ -14,6 +13,7 @@ import {
   StLoginTitle,
 } from 'src/UI/styles/Login.styled';
 import { URI } from 'src/shared/URIs';
+import api from 'src/api/api';
 
 function LoginCompany() {
   const nav = useNavigate();
@@ -46,8 +46,8 @@ function LoginCompany() {
   const loginSubmitHandler = async e => {
     e.preventDefault();
     try {
-      const data = await axios.post(
-        `${process.env.REACT_APP_SERVER_URL}/companies/login`,
+      const data = await api.post(
+        '/companies/login',
         login
       );
       cookies.set('token', data.headers.authorization.split(' ')[1], {
