@@ -89,6 +89,19 @@ export const StEditPersonalProfileButton = styled.input`
   }
 `;
 
+export const StEditPersonalProfileFixedButton = styled.button`
+  min-width: 335px;
+  min-height: 56px;
+
+  padding: 16px auto;
+
+  background-color: ${StudyColors.title};
+  color: ${StudyColors.white};
+
+  position: fixed;
+  bottom: 66px;
+`;
+
 export const StEditPersonalProfileChangeInfoInput = styled(
   StEditPersonalProfileInput
 )`

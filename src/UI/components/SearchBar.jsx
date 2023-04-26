@@ -7,7 +7,7 @@ import {
   StSearchBarWrap,
 } from '../styles/SearchBar.styled';
 
-function SearchBar({ placeholder, handler }) {
+function SearchBar({ placeholder, handler, onEnterHandler }) {
   return (
     <StSearchBarWrap>
       <StSearchBarIconLabel htmlFor="search">
@@ -21,6 +21,9 @@ function SearchBar({ placeholder, handler }) {
         id="search"
         onChange={handler}
         placeholder={placeholder}
+        onKeyPress={e => {
+          if (e.key === 'Enter') onEnterHandler();
+        }}
       />
     </StSearchBarWrap>
   );

@@ -1,7 +1,21 @@
 import axios from 'axios';
 
-const api = axios.create({
+export const api = axios.create({
   baseURL: process.env.REACT_APP_SERVER_URL,
 });
 
-export default api;
+export const apiWithJWT = axios.create({
+  baseURL: process.env.REACT_APP_SERVER_URL,
+});
+
+apiWithJWT.interceptors.request.use(
+  config => {
+    const token = document.cookie.split('=')[1];
+    // console.log(token);
+    if (token) config.headers.Authorization = `Bearer ${token}`;
+    return config;
+  },
+  error => {
+    return error;
+  }
+);

@@ -7,6 +7,7 @@ import {
   StEditPersonalProfileCheckPw,
   StEditPersonalProfileDate,
   StEditPersonalProfileDateWrap,
+  StEditPersonalProfileFixedButton,
   StEditPersonalProfileH2,
   StEditPersonalProfileInput,
   StEditPersonalProfilePwWrap,

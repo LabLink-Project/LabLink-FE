@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import formatDate from 'src/utils/formatDate';
 import SearchHeader from '../components/SearchHeader';
 import CreateStudyTitle from '../molecules/CreateStudyTitle';
@@ -16,6 +15,7 @@ import CreateStudyDetail from '../molecules/CreateStudyDetail';
 import CreateStudyImage from '../molecules/CreateStudyImage';
 import { StContentWrap } from '../styles/common.styled';
 import { StCreateStudySubmit } from '../styles/CreateStudy.styled';
+import { apiWithJWT } from 'src/api/api';
 
 function CreateStudy() {
   const dateObj = new Date();
@@ -43,6 +43,8 @@ function CreateStudy() {
     endDate: dateObj,
   });
 
+  // do refactor later
+  // change data format
   useEffect(() => {
     remakeDates('date');
   }, [dates.date]);
@@ -55,7 +57,7 @@ function CreateStudy() {
     const date = formatDate(dates[type]);
     setStudy(prevState => ({
       ...prevState,
-      [date]: date,
+      [type]: date,
     }));
 
     // if (type === 'date') {
@@ -75,10 +77,10 @@ function CreateStudy() {
   const onSubmitHandler = e => {
     e.preventDefault();
     console.log(dates, study);
-    axios
-      .post('http://localhost:4000/studys', study)
+    apiWithJWT
+      .post('/studies', study)
       .then(res => console.log(res))
-      .catch(() => 'axios에서 에러가 발생했습니다');
+      .catch(err => console.error(err));
   };
 
   // refactor useModal custom hook
@@ -89,18 +91,18 @@ function CreateStudy() {
     <StContentWrap>
       <SearchHeader title="글 작성" />
       <form>
-        <CreateStudyTitle />
-        <CreateStudyCategory />
-        <CreateStudyAddress />
-        <CreateStudyDueDate />
-        <CreateStudyTrialDate />
-        <CreateStudyPay />
-        <CreateStudyGender />
-        <CreateStudyAge />
-        <CreateStudyBenefit />
-        <CreateStudyIntro />
-        <CreateStudyDetail />
-        <CreateStudyImage />
+        <CreateStudyTitle state={[study, setStudy]} />
+        <CreateStudyCategory state={[study, setStudy]} />
+        <CreateStudyAddress state={[study, setStudy]} />
+        <CreateStudyDueDate state={[study, setStudy]} />
+        <CreateStudyTrialDate state={[study, setStudy]} />
+        <CreateStudyPay state={[study, setStudy]} />
+        <CreateStudyGender state={[study, setStudy]} />
+        <CreateStudyAge state={[study, setStudy]} />
+        <CreateStudyBenefit state={[study, setStudy]} />
+        <CreateStudyIntro state={[study, setStudy]} />
+        <CreateStudyDetail state={[study, setStudy]} />
+        <CreateStudyImage state={[study, setStudy]} />
 
         <StCreateStudySubmit
           type="submit"

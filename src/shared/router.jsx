@@ -118,6 +118,11 @@ const Router = () => {
           path={URI.mypage.company.home}
           element={< />}
         /> */}
+        {/* 기업 마이페이지 구현 예정 */}
+        <Route
+          path={URI.mypage.company.createStudy}
+          element={<CreateStudy />}
+        />
         {/* 내가 올린 공고 구현 예정 */}
         {/* <Route
           path={URI.mypage.company.myStudys}

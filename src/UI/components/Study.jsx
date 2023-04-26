@@ -18,7 +18,7 @@ import { URI } from 'src/shared/URIs';
 function Study({ obj }) {
   // Study, StudyColumn에 동일한 코드가 들어있음
   // do refactoring later
-  const [isBookmark, setIsBookmark] = useState(obj.isBookmarked);
+  const [isBookmark, setIsBookmark] = useState(obj.isbookmarked);
 
   const onClickBookmarkHandler = () => {
     setIsBookmark(!isBookmark);
@@ -34,7 +34,7 @@ function Study({ obj }) {
       <article>
         <StFlexBox sort="space-between">
           <StStudyOnline>
-            {obj.address === 'online' ? '온라인' : '오프라인'}
+            {obj.category === 'ONLINE' ? '온라인' : '오프라인'}
           </StStudyOnline>
           <div>
             <button onClick={onClickBookmarkHandler}>
@@ -64,7 +64,7 @@ function Study({ obj }) {
           <StStudyDateAndAddress>
             {/* date and address */}
             {'~' + convertToShortDate(obj.date)}
-            {obj.address !== 'online' && ' | ' + obj.address}
+            {obj.category !== 'ONLINE' && ' | ' + obj.address}
           </StStudyDateAndAddress>
           <StStudyCurrency>
             <StStudyPrice>{obj.pay}</StStudyPrice>원

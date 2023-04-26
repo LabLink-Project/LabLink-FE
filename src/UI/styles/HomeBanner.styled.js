@@ -1,5 +1,5 @@
 import { StudyColors } from 'src/shared/Colors';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const StHomeBannerImg = styled.img`
   background-color: ${StudyColors.bannerBg};
@@ -15,4 +15,11 @@ export const StHomeBannerCircle = styled.div`
   background-color: ${StudyColors.searchBar};
   border-radius: 4px;
   margin: 16px 8px 0 0;
+  cursor: pointer;
+
+  ${props =>
+    props.current &&
+    css`
+      background: gray;
+    `}
 `;
