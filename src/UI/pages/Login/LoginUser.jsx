@@ -15,6 +15,7 @@ import {
   StLoginTitle,
 } from 'src/UI/styles/Login.styled';
 import { URI } from 'src/shared/URIs';
+import api from 'src/api/api';
 
 function LoginUser() {
   const nav = useNavigate();
@@ -47,10 +48,7 @@ function LoginUser() {
   const loginSubmitHandler = async e => {
     e.preventDefault();
     try {
-      const data = await axios.post(
-        `${process.env.REACT_APP_SERVER_URL}/users/login`,
-        login
-      );
+      const data = await api.post('/users/login', login);
       cookies.set('token', data.headers.authorization.split(' ')[1], {
         path: '/',
       });

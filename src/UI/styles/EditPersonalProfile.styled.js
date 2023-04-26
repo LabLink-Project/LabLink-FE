@@ -43,7 +43,7 @@ export const StEditPersonalProfileDateWrap = styled(StFlexBox)`
 `;
 
 export const StEditPersonalProfileYear = styled.input`
-  min-width: 161px;
+  min-width: 335px;
   min-height: 40px;
 
   padding: 10px 8px;
@@ -84,7 +84,7 @@ export const StEditPersonalProfileButton = styled.input`
   color: ${StudyColors.inputPlaceholder};
 
   &:focus {
-    border: 1px solid ${StudyColors.black};
+    outline: 1px solid ${StudyColors.black};
     color: ${StudyColors.black};
   }
 `;
