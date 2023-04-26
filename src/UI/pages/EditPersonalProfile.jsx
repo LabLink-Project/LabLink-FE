@@ -39,7 +39,7 @@ function EditPersonalProfile() {
   });
 
   // 비밀번호 확인 결과 state
-  const [pwStatus, setPwStatus] = useState(true);
+  const [pwStatus, setPwStatus] = useState(false);
 
   // 내 정보 수정 tap state
   const [myProfile, setMyProfile] = useState(true);
