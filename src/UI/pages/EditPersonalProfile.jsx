@@ -23,7 +23,7 @@ import { StCreateStudyAddressInput } from '../styles/CreateStudy.styled';
 import { StBlackButton } from '../styles/Button.styled';
 import { Button } from 'react-bootstrap';
 import { cookies } from 'src/shared/Cookie';
-import api from 'src/api/api';
+import { api } from 'src/api/api';
 import DaumPostcode from 'react-daum-postcode';
 import { Modal } from 'bootstrap';
 import CreateUserAddress from '../molecules/CreateUserAddress';

@@ -22,7 +22,7 @@ function Home() {
   useEffect(() => {
     // do refactoring later
     const token = document.cookie.split('=')[1];
-    if (token) dispatch(getAccountInfo(token));
+    // if (token) dispatch(getAccountInfo(token));
   }, []);
 
   return (
