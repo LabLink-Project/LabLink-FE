@@ -11,6 +11,7 @@ import ModalPortal from '../components/Portal';
 import Modal from '../components/Modal';
 import { EmbedPostcode } from '../pages/PostcodeTest';
 import { StBlackButton } from '../styles/Button.styled';
+import DaumPostcode from 'react-daum-postcode';
 
 function CreateStudyAddress({ title }) {
   return (

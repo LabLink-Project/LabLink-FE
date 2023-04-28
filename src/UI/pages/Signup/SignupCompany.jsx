@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Modal, Button } from 'react-bootstrap';
 import Layout from '../../components/Layout';
@@ -18,6 +17,7 @@ import {
 } from 'src/UI/styles/Signup.styled';
 import { cookies } from 'src/shared/Cookie';
 import { URI } from 'src/shared/URIs';
+import { api } from 'src/api/api';
 
 function SignupCompany() {
   const nav = useNavigate();
@@ -32,6 +32,7 @@ function SignupCompany() {
     managerPhone: '',
     address: '',
     detailAddress: '',
+    companyLogo: '',
   });
 
   // 비밀번호 확인 state
@@ -58,12 +59,15 @@ function SignupCompany() {
 
   // 회원 정보 onchange
   const signupChangeHandler = e => {
-    const { name, value } = e.target;
+    const { name, value, files } = e.target;
     if (name === 'passwordCk') {
       setPwCheck({ ...pwCheck, [name]: value });
+    } else if (name === 'companyLogo') {
+      setNewCompanies({ ...newCompanies, [name]: files[0] });
     } else {
       setNewCompanies({ ...newCompanies, [name]: value });
     }
+    console.log(files[0]);
   };
 
   // 이메일 중복 체크
@@ -75,10 +79,9 @@ function SignupCompany() {
       alert('올바른 이메일 주소를 입력해주세요.');
     } else {
       try {
-        const { data } = await axios.post(
-          `${process.env.REACT_APP_SERVER_URL}/companies/signup/email-check`,
-          { email: newCompanies.email }
-        );
+        const { data } = await api.post('/companies/signup/email-check', {
+          email: newCompanies.email,
+        });
         alert(data.message);
       } catch (error) {
         if (error.response.status === 409) {
@@ -155,6 +158,9 @@ function SignupCompany() {
           `${process.env.REACT_APP_SERVER_URL}/companies/signup`,
           formData
         );
+
+        const { data } = await api.post('/companies/signup', newCompanies);
+        
         alert(data.message);
         nav(URI.auth.signup.done);
       } catch (error) {
@@ -333,12 +339,13 @@ function SignupCompany() {
                 show={show}
                 onHide={handleClose}
               >
-                <Modal.Body
-                  style={{
-                    height: '600px',
-                  }}
-                >
-                  <DaumPostcode onComplete={completeHandler} />
+                <Modal.Body>
+                  <DaumPostcode
+                    onComplete={completeHandler}
+                    style={{
+                      height: '600px',
+                    }}
+                  />
                 </Modal.Body>
               </Modal>
               <br />
@@ -351,6 +358,18 @@ function SignupCompany() {
                 required
                 width={'100%'}
               />
+            </div>
+            <div>
+              <StSignupLabel width={'100%'}>
+                <StSignupInputName>로고</StSignupInputName>
+                <br />
+                <input
+                  type="file"
+                  name="companyLogo"
+                  accept="image/png, image/jpeg, image/jpg"
+                  onChange={signupChangeHandler}
+                />
+              </StSignupLabel>
             </div>
             <div className="d-grid gap-2">
               <Button

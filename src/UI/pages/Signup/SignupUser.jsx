@@ -22,6 +22,7 @@ import {
 } from 'src/UI/styles/Signup.styled';
 import { cookies } from 'src/shared/Cookie';
 import { URI } from 'src/shared/URIs';
+import { api } from 'src/api/api';
 
 function SignupUser() {
   const nav = useNavigate();
@@ -131,10 +132,9 @@ function SignupUser() {
       alert('올바른 이메일 주소를 입력해주세요.');
     } else {
       try {
-        const { data } = await axios.post(
-          `${process.env.REACT_APP_SERVER_URL}/users/signup/email-check`,
-          { email: newUsers.email }
-        );
+        const { data } = await api.post('/users/signup/email-check', {
+          email: newUsers.email,
+        });
         alert(data.message);
       } catch (error) {
         alert(`${error.response.data.message}`);
@@ -150,10 +150,9 @@ function SignupUser() {
       alert('닉네임은 영문, 한글, 숫자를 포함한 2~16자여야 합니다.');
     } else {
       try {
-        const { data } = await axios.post(
-          `${process.env.REACT_APP_SERVER_URL}/users/signup/nickName-check`,
-          { nickName: newUsers.nickName }
-        );
+        const { data } = await api.post('/users/signup/nickName-check', {
+          nickName: newUsers.nickName,
+        });
         alert(data.message);
       } catch (error) {
         alert(`${error.response.data.message}`);
@@ -220,10 +219,7 @@ function SignupUser() {
     e.preventDefault();
     if (validateForm(newUsers)) {
       try {
-        const { data } = await axios.post(
-          `${process.env.REACT_APP_SERVER_URL}/users/signup`,
-          newUsers
-        );
+        const { data } = await api.post('/users/signup', newUsers);
         alert(data.message);
         nav(URI.auth.signup.done);
       } catch (error) {
