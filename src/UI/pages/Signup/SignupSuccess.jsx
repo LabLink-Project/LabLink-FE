@@ -36,7 +36,7 @@ function SignupSuccess() {
           color: 'gray',
         }}
       >
-        이제 LapLink의 유저들과 함께 <br />
+        이제 LabLink의 유저들과 함께 <br />
         많은 실험을 진행할 수 있어요!
       </p>
       <div

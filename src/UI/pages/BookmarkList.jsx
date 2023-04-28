@@ -16,7 +16,6 @@ function BookmarkList() {
 
   const getBookmarkList = async () => {
     const response = await apiWithJWT.get('/bookmark?category=online');
-    console.log('data : ', response.data.data);
     setBookmarks([...response.data.data]);
   };
 
@@ -24,6 +23,7 @@ function BookmarkList() {
     getBookmarkList();
   }, []);
 
+  // 이 페이지에선 북마크 취소 시 화면에 반영되어야 함
   return (
     <StBookmarkListWrap>
       <SearchHeader title="찜 목록" />
@@ -37,7 +37,6 @@ function BookmarkList() {
           <div>최근 1주일</div>
         </StBookmarkTitles>
         {bookmarks?.map(obj => {
-          obj['isbookmarked'] = true;
           return (
             <Study
               obj={obj}

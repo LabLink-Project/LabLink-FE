@@ -1,49 +1,23 @@
-import { StudyColors, StudyFontOptions } from 'src/shared/Colors';
 import styled from 'styled-components';
 import { StFlexBox } from './common.styled';
+import { fontColors } from 'src/shared/designColors';
 
-export const StStudyColumn = styled.li`
+export const StStudyWrap = styled.li`
+  padding: 10px 12px;
+  border-radius: 12px;
+
+  background-color: ${fontColors.white};
+
   min-width: 164px;
   max-width: 164px;
-  min-height: 164px;
-  max-height: 164px;
-  font-size: 12px;
-  background-color: ${StudyColors.bg};
-
-  padding: 12px;
-  box-sizing: border-box;
-
-  position: relative;
+  min-height: 158px;
+  max-height: 158px;
 `;
 
-export const StStudyColumnOnline = styled.div`
-  padding: 2px 10px;
-
-  background-color: ${StudyColors.body};
-  color: ${StudyColors.white};
-  ${StudyFontOptions.caption}
-`;
-
-export const StStudyColumnOnlineWrap = styled(StFlexBox)`
+export const StFlexWrap = styled(StFlexBox)`
   margin-bottom: 8px;
 `;
 
-export const StStudyColumnTitle = styled.p`
-  margin-bottom: 4px;
-`;
-
-export const StStudyColumnAddress = styled.div`
-  margin-bottom: 14px;
-`;
-
-export const StStudyColumnPay = styled.strong`
-  color: ${StudyColors.black};
-  ${StudyFontOptions.title}
-`;
-
-export const StStudyColumnPayWrap = styled(StFlexBox)`
-  position: absolute;
-  left: 12px;
-  bottom: 12px;
-  right: 12px;
+export const StWrap = styled.div`
+  margin-bottom: 8px;
 `;
