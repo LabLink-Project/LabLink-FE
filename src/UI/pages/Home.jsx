@@ -21,8 +21,10 @@ function Home() {
 
   useEffect(() => {
     // do refactoring later
-    const token = document.cookie.split('=')[1];
-    if (token) dispatch(getAccountInfo(token));
+    const token = document.cookie?.split('=')[1];
+
+    // has error, token data만 가져올 수 있는 방법이 필요
+    // if (token) dispatch(getAccountInfo(token));
   }, []);
 
   return (

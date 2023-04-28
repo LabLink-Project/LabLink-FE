@@ -6,14 +6,14 @@ import {
   StHomeRealTimeUpdateH2,
 } from '../styles/HomeRealTimeUpdate.styled';
 import triangle from 'src/assets/triangle.svg';
-import { api } from 'src/api/api';
+import { apiWithJWT } from 'src/api/api';
 
 function HomeRealTimeUpdate() {
   const [studys, setStudys] = useState([]);
 
   const getStudy = async () => {
-    const response = await api.get('/studies');
-    // console.log('realtime studys : ', response.data.data);
+    const response = await apiWithJWT.get('/studies');
+    console.log('realtime studys : ', response.data.data);
     setStudys([...response.data.data]);
   };
 

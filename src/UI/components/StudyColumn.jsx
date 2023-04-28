@@ -10,7 +10,7 @@ import Title from '../atomics/popularStudy/Title';
 import Deadline from '../atomics/popularStudy/Deadline';
 import Pay from '../atomics/popularStudy/Pay';
 
-// 합성 컴포넌트 패턴으로 처리해보자
+// 합성 컴포넌트 패턴으로 처리해보자 도전!!
 function StudyColumn({ obj }) {
   return (
     <StStudyWrap>
