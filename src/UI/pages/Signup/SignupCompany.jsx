@@ -144,9 +144,16 @@ function SignupCompany() {
     e.preventDefault();
     if (validateForm(newCompanies)) {
       try {
+        const formData = new FormData();
+
+        for (let key in newCompanies) {
+          const value = newCompanies[key];
+          formData.append(key, value);
+        }
+
         const { data } = await axios.post(
           `${process.env.REACT_APP_SERVER_URL}/companies/signup`,
-          newCompanies
+          formData
         );
         alert(data.message);
         nav(URI.auth.signup.done);
