@@ -32,10 +32,12 @@ export const URI = {
     company: {
       home: '/mypage/company',
       createStudy: '/mypage/company/createstudy',
-      myStudys: '/mypage/company/studys',
+      ongoingStudy: '/mypage/company/ongoingstudy',
+      endStudy: '/mypage/company/endstudy',
       applicant: '/mypage/company/applicant',
       feedback: '/mypage/company/feedbacks',
-      makeStudy: '/mypage/company/makestudy',
+      studySchedule: '/mypage/company/studyschedule',
     },
   },
 };
+ 

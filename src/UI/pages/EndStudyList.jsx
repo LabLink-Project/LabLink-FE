@@ -17,8 +17,12 @@ import {
   StEndStudyListTitle,
   StEndStudyListWrap,
 } from '../styles/EndStudyList.styled';
+import { useNavigate } from 'react-router-dom';
+import { URI } from 'src/shared/URIs';
 
 function EndStudyList() {
+  const nav = useNavigate()
+
   return (
     <StEndStudyListWrap>
       <SearchHeader title="실험 종료된 공고 확인" />
@@ -51,7 +55,9 @@ function EndStudyList() {
             </StEndStudyListPay>
             <StEndStudyListPay>4월 12일 실험마감</StEndStudyListPay>
           </div>
-          <StEndStudyListFeedbackButton>
+          <StEndStudyListFeedbackButton
+          // onClick={()=>nav(`${URI.mypage.company.feedback}/id`)}
+          >
             피드백 확인
           </StEndStudyListFeedbackButton>
         </StEndStudyListFlexWrap>

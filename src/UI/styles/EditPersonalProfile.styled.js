@@ -84,7 +84,7 @@ export const StEditPersonalProfileButton = styled.input`
   color: ${StudyColors.inputPlaceholder};
 
   &:focus {
-    outline: 1px solid ${StudyColors.black};
+    border: 1px solid ${StudyColors.black};
     color: ${StudyColors.black};
   }
 `;

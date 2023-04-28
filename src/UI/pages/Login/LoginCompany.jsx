@@ -120,7 +120,7 @@ function LoginCompany() {
             </Link>
             <Link
               // 페이지 구현 후 수정하기
-              to="/"
+              to={URI.crud.home}
               style={{
                 color: 'gray',
               }}
