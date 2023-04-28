@@ -13,7 +13,7 @@ import {
   StLoginTitle,
 } from 'src/UI/styles/Login.styled';
 import { URI } from 'src/shared/URIs';
-import api from 'src/api/api';
+import { api } from 'src/api/api';
 
 function LoginCompany() {
   const nav = useNavigate();
@@ -46,10 +46,7 @@ function LoginCompany() {
   const loginSubmitHandler = async e => {
     e.preventDefault();
     try {
-      const data = await api.post(
-        '/companies/login',
-        login
-      );
+      const data = await api.post('/companies/login', login);
       cookies.set('token', data.headers.authorization.split(' ')[1], {
         path: '/',
       });
@@ -123,7 +120,7 @@ function LoginCompany() {
             </Link>
             <Link
               // 페이지 구현 후 수정하기
-              to="/"
+              to={URI.crud.home}
               style={{
                 color: 'gray',
               }}

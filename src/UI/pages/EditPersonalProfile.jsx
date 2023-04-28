@@ -23,7 +23,7 @@ import { StCreateStudyAddressInput } from '../styles/CreateStudy.styled';
 import { StBlackButton } from '../styles/Button.styled';
 import { Button } from 'react-bootstrap';
 import { cookies } from 'src/shared/Cookie';
-import api from 'src/api/api';
+import { api } from 'src/api/api';
 import DaumPostcode from 'react-daum-postcode';
 import { Modal } from 'bootstrap';
 import CreateUserAddress from '../molecules/CreateUserAddress';
@@ -39,7 +39,7 @@ function EditPersonalProfile() {
   });
 
   // 비밀번호 확인 결과 state
-  const [pwStatus, setPwStatus] = useState(false);
+  const [pwStatus, setPwStatus] = useState(true);
 
   // 내 정보 수정 tap state
   const [myProfile, setMyProfile] = useState(true);

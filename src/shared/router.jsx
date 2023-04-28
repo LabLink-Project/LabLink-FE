@@ -19,6 +19,10 @@ import ReadStudy from 'src/UI/pages/ReadStudy';
 import Search from 'src/UI/pages/Search';
 import CreateStudy from 'src/UI/pages/CreateStudy';
 import { URI } from './URIs';
+import CompanyPage from 'src/UI/pages/CompanyPage';
+import OngoingStudy from 'src/UI/pages/OngoingStudy';
+import Feedback from 'src/UI/pages/Feedback';
+import StudySchedule from 'src/UI/pages/StudySchedule';
 
 const Router = () => {
   return (
@@ -114,31 +118,33 @@ const Router = () => {
 
         {/* 기업 마이페이지 */}
         {/* 기업 마이페이지 구현 예정 */}
-        {/* <Route
+        <Route
           path={URI.mypage.company.home}
-          element={< />}
-        /> */}
-        {/* 기업 마이페이지 구현 예정 */}
+          element={<CompanyPage />}
+        />
         <Route
           path={URI.mypage.company.createStudy}
           element={<CreateStudy />}
         />
-        {/* 내가 올린 공고 구현 예정 */}
-        {/* <Route
-          path={URI.mypage.company.myStudys}
-          element={< />}
-        /> */}
+        <Route
+          path={URI.mypage.company.ongoingStudy}
+          element={<OngoingStudy />}
+        />
+        <Route
+          path={URI.mypage.company.endStudy}
+          element={<EndStudyList />}
+        />
+        <Route
+          path={URI.mypage.company.studySchedule}
+          element={<StudySchedule />}
+        />
         <Route
           path={URI.mypage.company.applicant}
           element={<CompanyApplicant />}
         />
         <Route
-          path={URI.mypage.company.feedback}
-          element={<EndStudyList />}
-        />
-        <Route
-          path={URI.mypage.company.makeStudy}
-          element={<CreateStudy />}
+          path={`${URI.mypage.company.feedback}/:id`}
+          element={<Feedback />}
         />
       </Routes>
     </BrowserRouter>

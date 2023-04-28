@@ -17,7 +17,7 @@ import {
 } from 'src/UI/styles/Signup.styled';
 import { cookies } from 'src/shared/Cookie';
 import { URI } from 'src/shared/URIs';
-import api from 'src/api/api';
+import { api } from 'src/api/api';
 
 function SignupCompany() {
   const nav = useNavigate();

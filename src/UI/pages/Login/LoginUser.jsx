@@ -15,7 +15,7 @@ import {
   StLoginTitle,
 } from 'src/UI/styles/Login.styled';
 import { URI } from 'src/shared/URIs';
-import api from 'src/api/api';
+import { api } from 'src/api/api';
 
 function LoginUser() {
   const nav = useNavigate();
