@@ -1,5 +1,5 @@
 import { StudyColors, StudyFontOptions } from 'src/shared/Colors';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const StHomeCategoryNav = styled.nav``;
 
@@ -12,8 +12,10 @@ export const StHomeCategoryNavButton = styled.button`
   color: ${StudyColors.paragraph};
   ${StudyFontOptions.body}
 
-  &:focus {
-    color: ${StudyColors.black};
-    border-bottom: 2px solid ${StudyColors.black};
-  }
+  ${props =>
+    props.current &&
+    css`
+      color: ${StudyColors.black};
+      border-bottom: 2px solid ${StudyColors.black};
+    `}
 `;

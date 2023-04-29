@@ -12,7 +12,7 @@ function useHomeAddress() {
     dispatch(getStudyType(address));
   }, [address]);
 
-  return useAddressInteraction(setAddress);
+  return [address, ...useAddressInteraction(setAddress)];
 }
 
 // 상호작용 관리
