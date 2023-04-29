@@ -1,38 +1,47 @@
 import React from 'react';
 import Study from './Study';
-import {
-  StHomeRealTimeMoreButton,
-  StHomeRealTimeMoreSpan,
-  StHomeRealTimeUpdateH2,
-} from '../styles/HomeRealTimeUpdate.styled';
-import triangle from 'src/assets/triangle.svg';
+import { StHomeRealTimeUpdateH2 } from '../styles/HomeRealTimeUpdate.styled';
 import useStudys from 'src/hooks/useStudys';
+import styled from 'styled-components';
+import useReduxState from 'src/hooks/useReduxState';
 
 function HomeRealTimeUpdate() {
   const [studys] = useStudys('/studies');
+  const address = useReduxState('detailAddress');
 
   return (
     <div>
       <StHomeRealTimeUpdateH2>실시간 업데이트</StHomeRealTimeUpdateH2>
       <ul>
-        {studys.map(obj => {
-          return (
-            <Study
-              obj={obj}
-              key={obj.id}
-            />
-          );
-        })}
+        {studys
+          .filter(obj => {
+            if (address === '전체') return obj;
+            return obj.address === address;
+          })
+          .map(obj => {
+            return (
+              <Study
+                obj={obj}
+                key={obj.id}
+              />
+            );
+          })}
       </ul>
+      <StMarginDiv></StMarginDiv>
+      {/* 더 보기 버튼 삭제, 무한 스크롤로 런칭 후 수정 예정
       <StHomeRealTimeMoreButton>
         <StHomeRealTimeMoreSpan>더 보기</StHomeRealTimeMoreSpan>
         <img
           src={triangle}
           alt="삼각형"
         />
-      </StHomeRealTimeMoreButton>
+      </StHomeRealTimeMoreButton> */}
     </div>
   );
 }
+
+const StMarginDiv = styled.div`
+  margin-bottom: 54px;
+`;
 
 export default HomeRealTimeUpdate;
