@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { StFlexBox } from '../styles/common.styled';
 import { StHomeBannerCircle } from '../styles/HomeBanner.styled';
 import {
@@ -6,21 +6,11 @@ import {
   StHomeStudysUl,
 } from '../styles/HomePopularStudy.styled';
 import StudyColumn from './StudyColumn';
-import { apiWithJWT } from 'src/api/api';
 import useReduxState from 'src/hooks/useReduxState';
+import useStudys from 'src/hooks/useStudys';
 
 function HomePopularStudys() {
-  const [studys, setStudys] = useState([]);
-  const getStudys = async () => {
-    const response = await apiWithJWT.get('/studies?sortedType=popularity');
-    console.log('popular studys : ', response.data.data);
-    setStudys([...response.data.data]);
-  };
-
-  useEffect(() => {
-    getStudys();
-  }, []);
-
+  const [studys] = useStudys();
   const address = useReduxState('detailAddress');
 
   return (
