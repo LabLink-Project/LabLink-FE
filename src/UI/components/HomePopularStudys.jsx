@@ -12,7 +12,7 @@ function HomePopularStudys() {
   const [studys, setStudys] = useState([]);
   const getStudys = async () => {
     const response = await apiWithJWT.get('/studies?sortedType=popularity');
-    console.log('popular studys : ', response.data.data);
+    // console.log('popular studys : ', response.data.data);
     setStudys([...response.data.data]);
   };
 

@@ -19,7 +19,7 @@ function HomeHeader() {
   });
 
   const state = account.accountHandler;
-  console.log('state : ', state);
+  // console.log('state : ', state);
   const { nickname, ...rest } = state;
 
   const signOutHandler = () => {

@@ -23,7 +23,7 @@ function Home() {
   useEffect(() => {
     // do refactoring later
     const token = getCookie('token');
-    console.log('home token : ', token);
+    // console.log('home token : ', token);
 
     if (token) dispatch(getAccountInfo(token));
   }, []);
@@ -35,7 +35,7 @@ function Home() {
       <HomeBanner />
       <HomeSelectAddress />
       <HomePopularStudys />
-      <HomeCurrentStudy />
+      {/* <HomeCurrentStudy /> */}
       <HomeRealTimeUpdate />
       <FooterNav />
     </StHomeWrap>

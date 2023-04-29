@@ -13,7 +13,7 @@ function HomeRealTimeUpdate() {
 
   const getStudy = async () => {
     const response = await apiWithJWT.get('/studies');
-    console.log('realtime studys : ', response.data.data);
+    // console.log('realtime studys : ', response.data.data);
     setStudys([...response.data.data]);
   };
 
