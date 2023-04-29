@@ -6,11 +6,20 @@
 export const getCookie = cname => {
   const name = cname + '=';
   const cArr = window.document.cookie.split(';');
+  // console.log(name);
+
+  let result;
 
   cArr.forEach(element => {
     const c = element.trim();
-    if (!c.indexOf(name)) return c.substring(name.length, c.length);
+
+    if (!c.indexOf(name)) {
+      console.log(c.indexOf(name), c.substring(name.length, c.length));
+      result = c.substring(name.length, c.length);
+    }
   });
+
+  return result;
 };
 
 /**
