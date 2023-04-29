@@ -1,21 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   StHomeSelectAddress,
   StHomeSelectAddressButton,
   StHomeSelectAddressWrap,
 } from '../styles/HomeSelectAddress.styled';
-import { useSelector } from 'react-redux';
 
 import Option from './Home/Option';
+import useBoolean from 'src/hooks/useBoolean';
+import useReduxState from 'src/hooks/useReduxState';
+import styled from 'styled-components';
+import { StFlexBox } from '../styles/common.styled';
 
 function HomeSelectAddress() {
-  const [show, setShow] = useState(false);
-  const address = useSelector(state => state);
-  const { studyType, detailAddress } = address.studyTypeHandler;
-
-  const onClickShowOptionsHandler = () => {
-    setShow(!show);
-  };
+  const [show, isShowHandler] = useBoolean();
+  const { studyType, detailAddress } = useReduxState();
 
   return (
     <>
@@ -26,25 +24,25 @@ function HomeSelectAddress() {
             <StHomeSelectAddress>
               {detailAddress} {'>'} 전체
             </StHomeSelectAddress>
-            <StHomeSelectAddressButton onClick={onClickShowOptionsHandler}>
+            <StHomeSelectAddressButton onClick={isShowHandler}>
               설정하기
             </StHomeSelectAddressButton>
           </StHomeSelectAddressWrap>
           {show && (
             <>
-              <Option closeHandler={onClickShowOptionsHandler}>서울</Option>
-              <Option closeHandler={onClickShowOptionsHandler}>인천</Option>
-              <Option closeHandler={onClickShowOptionsHandler}>경기</Option>
-              <Option closeHandler={onClickShowOptionsHandler}>대전</Option>
-              <Option closeHandler={onClickShowOptionsHandler}>충남</Option>
-              <Option closeHandler={onClickShowOptionsHandler}>충북</Option>
-              <Option closeHandler={onClickShowOptionsHandler}>강원</Option>
-              <Option closeHandler={onClickShowOptionsHandler}>광주</Option>
-              <Option closeHandler={onClickShowOptionsHandler}>전라</Option>
-              <Option closeHandler={onClickShowOptionsHandler}>부산</Option>
-              <Option closeHandler={onClickShowOptionsHandler}>울산</Option>
-              <Option closeHandler={onClickShowOptionsHandler}>대구</Option>
-              <Option closeHandler={onClickShowOptionsHandler}>경상</Option>
+              <Option closeHandler={isShowHandler}>서울</Option>
+              <Option closeHandler={isShowHandler}>인천</Option>
+              <Option closeHandler={isShowHandler}>경기</Option>
+              <Option closeHandler={isShowHandler}>대전</Option>
+              <Option closeHandler={isShowHandler}>충남</Option>
+              <Option closeHandler={isShowHandler}>충북</Option>
+              <Option closeHandler={isShowHandler}>강원</Option>
+              <Option closeHandler={isShowHandler}>광주</Option>
+              <Option closeHandler={isShowHandler}>전라</Option>
+              <Option closeHandler={isShowHandler}>부산</Option>
+              <Option closeHandler={isShowHandler}>울산</Option>
+              <Option closeHandler={isShowHandler}>대구</Option>
+              <Option closeHandler={isShowHandler}>경상</Option>
             </>
           )}
         </>

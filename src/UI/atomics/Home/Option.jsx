@@ -4,6 +4,7 @@ import { setStudyDetailAddress } from 'src/redux/modules/studyHandler';
 
 function Option({ children, closeHandler }) {
   const dispatch = useDispatch();
+
   const onClickHandler = () => {
     dispatch(setStudyDetailAddress(children));
     closeHandler();

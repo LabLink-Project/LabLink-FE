@@ -7,7 +7,6 @@ import HomeBanner from '../atomics/HomeBanner';
 
 import HomePopularStudys from '../components/HomePopularStudys';
 import HomeSelectAddress from '../atomics/HomeSelectAddress';
-import HomeCurrentStudy from '../components/HomeCurrentStudy';
 import HomeRealTimeUpdate from '../components/HomeRealTimeUpdate';
 import FooterNav from '../components/FooterNav';
 
@@ -35,7 +34,6 @@ function Home() {
       <HomeBanner />
       <HomeSelectAddress />
       <HomePopularStudys />
-      {/* <HomeCurrentStudy /> */}
       <HomeRealTimeUpdate />
       <FooterNav />
     </StHomeWrap>
