@@ -29,7 +29,7 @@ function HomeSelectAddress() {
             </StHomeSelectAddressButton>
           </StHomeSelectAddressWrap>
           {show && (
-            <>
+            <StOptionsWrap>
               <Option closeHandler={isShowHandler}>서울</Option>
               <Option closeHandler={isShowHandler}>인천</Option>
               <Option closeHandler={isShowHandler}>경기</Option>
@@ -43,7 +43,7 @@ function HomeSelectAddress() {
               <Option closeHandler={isShowHandler}>울산</Option>
               <Option closeHandler={isShowHandler}>대구</Option>
               <Option closeHandler={isShowHandler}>경상</Option>
-            </>
+            </StOptionsWrap>
           )}
         </>
       ) : (
@@ -52,5 +52,15 @@ function HomeSelectAddress() {
     </>
   );
 }
+
+const StOptionsWrap = styled(StFlexBox)`
+  flex-wrap: wrap;
+
+  margin-top: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 8px;
+  gap: 6px;
+`;
 
 export default HomeSelectAddress;
