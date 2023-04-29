@@ -157,10 +157,10 @@ function SignupCompany() {
           formData.append(key, value);
         }
 
-        // const { data } = await axios.post(
-        //   `${process.env.REACT_APP_SERVER_URL}/companies/signup`,
-        //   formData
-        // );
+        const { data } = await axios.post(
+          `${process.env.REACT_APP_SERVER_URL}/companies/signup`,
+          formData
+        );
 
         alert(data.message);
         nav(URI.auth.signup.done);
