@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Study from './Study';
 import {
   StHomeRealTimeMoreButton,
@@ -6,20 +6,10 @@ import {
   StHomeRealTimeUpdateH2,
 } from '../styles/HomeRealTimeUpdate.styled';
 import triangle from 'src/assets/triangle.svg';
-import { apiWithJWT } from 'src/api/api';
+import useStudys from 'src/hooks/useStudys';
 
 function HomeRealTimeUpdate() {
-  const [studys, setStudys] = useState([]);
-
-  const getStudy = async () => {
-    const response = await apiWithJWT.get('/studies');
-    // console.log('realtime studys : ', response.data.data);
-    setStudys([...response.data.data]);
-  };
-
-  useEffect(() => {
-    getStudy();
-  }, []);
+  const [studys] = useStudys('/studies');
 
   return (
     <div>

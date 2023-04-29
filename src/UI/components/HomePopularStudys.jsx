@@ -10,7 +10,7 @@ import useReduxState from 'src/hooks/useReduxState';
 import useStudys from 'src/hooks/useStudys';
 
 function HomePopularStudys() {
-  const [studys] = useStudys();
+  const [studys] = useStudys('/studies?sortedType=popularity');
   const address = useReduxState('detailAddress');
 
   return (
