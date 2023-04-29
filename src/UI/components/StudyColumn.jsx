@@ -25,7 +25,7 @@ function StudyColumn({ obj }) {
         <StWrap>
           <Link>
             <CompanyName>{obj.companyName}</CompanyName>
-            <Title>공고공고제목공고공고공고고고고공고고고고고고고고</Title>
+            <Title>{obj.title}</Title>
           </Link>
         </StWrap>
         <div>

@@ -89,7 +89,7 @@ function ReadStudyDetail() {
     <StReadStudyWrap>
       <SearchHeader />
       <StReadStudyDetailImage
-        src={data.imageURL}
+        src={data.thumbnailImageURL}
         alt="섬네일 이미지"
       />
 
