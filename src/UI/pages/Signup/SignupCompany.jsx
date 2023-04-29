@@ -18,6 +18,7 @@ import {
 import { cookies } from 'src/shared/Cookie';
 import { URI } from 'src/shared/URIs';
 import { api } from 'src/api/api';
+import axios from 'axios';
 
 function SignupCompany() {
   const nav = useNavigate();
@@ -59,15 +60,17 @@ function SignupCompany() {
 
   // 회원 정보 onchange
   const signupChangeHandler = e => {
-    const { name, value, files } = e.target;
+    const { name, value } = e.target;
     if (name === 'passwordCk') {
       setPwCheck({ ...pwCheck, [name]: value });
-    } else if (name === 'companyLogo') {
-      setNewCompanies({ ...newCompanies, [name]: files[0] });
     } else {
       setNewCompanies({ ...newCompanies, [name]: value });
     }
-    console.log(files[0]);
+  };
+
+  const signUpFileHandler = e => {
+    const { name, files } = e.target;
+    setNewCompanies({ ...newCompanies, [name]: files[0] });
   };
 
   // 이메일 중복 체크
@@ -159,8 +162,6 @@ function SignupCompany() {
         //   formData
         // );
 
-        const { data } = await api.post('/companies/signup', newCompanies);
-        
         alert(data.message);
         nav(URI.auth.signup.done);
       } catch (error) {
@@ -367,7 +368,7 @@ function SignupCompany() {
                   type="file"
                   name="companyLogo"
                   accept="image/png, image/jpeg, image/jpg"
-                  onChange={signupChangeHandler}
+                  onChange={signUpFileHandler}
                 />
               </StSignupLabel>
             </div>

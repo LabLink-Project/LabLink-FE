@@ -13,6 +13,7 @@ import FooterNav from '../components/FooterNav';
 
 import { useDispatch } from 'react-redux';
 import { getAccountInfo } from 'src/redux/modules/accountHandler';
+import { getCookie } from 'src/utils/cookieHandler';
 
 function Home() {
   const dispatch = useDispatch(state => {
@@ -21,10 +22,10 @@ function Home() {
 
   useEffect(() => {
     // do refactoring later
-    const token = document.cookie?.split('=')[1];
+    const token = getCookie('token');
+    console.log('home token : ', token);
 
-    // has error, token data만 가져올 수 있는 방법이 필요
-    // if (token) dispatch(getAccountInfo(token));
+    if (token) dispatch(getAccountInfo(token));
   }, []);
 
   return (

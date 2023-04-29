@@ -28,6 +28,8 @@ const accountHandler = (state = initialState, action) => {
       if (!role) return state;
       // if (!nickname) return state;
 
+      // 기업 회원가입에 nickname이 추가되면 수정할 예정
+      if (role === 'BUSINESS') return { role, nickname: '기업 회원' };
       return { role, nickname };
     default:
       return state;

@@ -18,7 +18,9 @@ function HomeHeader() {
     return state;
   });
 
-  const { nickname, ...rest } = account.accountHandler;
+  const state = account.accountHandler;
+  console.log('state : ', state);
+  const { nickname, ...rest } = state;
 
   const signOutHandler = () => {
     deleteCookie('token');

@@ -18,9 +18,9 @@ function CreateStudyTitle({ state }) {
       <StudyInput
         type="text"
         placeholder="공고명을 입력해 주세요."
-        value={state[0]}
+        value={state[0].title}
         onChange={e => {
-          console.log(state[0]);
+          console.log(state[0].title);
           state[1](e.target.value);
         }}
       />
