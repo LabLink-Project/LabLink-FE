@@ -34,13 +34,13 @@ function HomePopularStudys() {
             );
           })}
       </StHomeStudysUl>
-      {/* 추가로 수정해야 할 부분 */}
-      <StFlexBox sort="center">
+      {/* 시간 나면 추가로 수정해야 할 부분 */}
+      {/* <StFlexBox sort="center">
         <StHomeBannerCircle current />
         <StHomeBannerCircle />
         <StHomeBannerCircle />
         <StHomeBannerCircle />
-      </StFlexBox>
+      </StFlexBox> */}
     </div>
   );
 }
