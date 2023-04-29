@@ -9,9 +9,8 @@ function useReduxState(type) {
   const address = useSelector(state => state);
 
   // expect 'type's type : string
-  //
   if (!type) return address.studyTypeHandler;
-  if (type) return address[type];
+  if (type) return address.studyTypeHandler[type];
 }
 
 export default useReduxState;

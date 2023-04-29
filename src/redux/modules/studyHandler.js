@@ -19,7 +19,7 @@ export const setStudyDetailAddress = payload => {
 
 const initialState = {
   studyType: 'all',
-  detailAddress: '서울',
+  detailAddress: '전체',
 };
 
 // reducer
@@ -29,7 +29,7 @@ const studyTypeHandler = (state = initialState, action) => {
       // console.log(action.payload);
       return { ...state, studyType: action.payload };
     case SET_STUDY_DETAIL_ADDRESS:
-      console.log(action.payload);
+      // console.log(action.payload);
       return { ...state, detailAddress: action.payload };
     default:
       return state;

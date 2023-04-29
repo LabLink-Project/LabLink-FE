@@ -22,7 +22,7 @@ function HomeSelectAddress() {
         <>
           <StHomeSelectAddressWrap sort="space-between">
             <StHomeSelectAddress>
-              {detailAddress} {'>'} 전체
+              {detailAddress === '전체' ? '전체' : `${detailAddress} > 전체`}
             </StHomeSelectAddress>
             <StHomeSelectAddressButton onClick={isShowHandler}>
               설정하기
@@ -30,6 +30,7 @@ function HomeSelectAddress() {
           </StHomeSelectAddressWrap>
           {show && (
             <StOptionsWrap>
+              <Option closeHandler={isShowHandler}>전체</Option>
               <Option closeHandler={isShowHandler}>서울</Option>
               <Option closeHandler={isShowHandler}>인천</Option>
               <Option closeHandler={isShowHandler}>경기</Option>

@@ -7,12 +7,13 @@ import {
 } from '../styles/HomePopularStudy.styled';
 import StudyColumn from './StudyColumn';
 import { apiWithJWT } from 'src/api/api';
+import useReduxState from 'src/hooks/useReduxState';
 
 function HomePopularStudys() {
   const [studys, setStudys] = useState([]);
   const getStudys = async () => {
     const response = await apiWithJWT.get('/studies?sortedType=popularity');
-    // console.log('popular studys : ', response.data.data);
+    console.log('popular studys : ', response.data.data);
     setStudys([...response.data.data]);
   };
 
@@ -20,12 +21,18 @@ function HomePopularStudys() {
     getStudys();
   }, []);
 
+  const address = useReduxState('detailAddress');
+
   return (
     <div>
       <StHomePopularStudysH2>오늘의 인기 공고</StHomePopularStudysH2>
       <StHomeStudysUl>
         {studys
-          .filter((obj, index) => {
+          .filter(obj => {
+            if (address === '전체') return obj;
+            return obj.address === address;
+          })
+          .filter((_, index) => {
             return index < 4;
           })
           .map(obj => {
