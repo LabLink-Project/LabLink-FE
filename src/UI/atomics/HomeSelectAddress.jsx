@@ -12,13 +12,13 @@ function HomeSelectAddress() {
 
   return (
     <>
-      {studyType !== 'offline' ? (
-        <></>
-      ) : (
+      {studyType !== 'online' ? (
         <StHomeSelectAddressWrap sort="space-between">
           <StHomeSelectAddress>서울 {'>'} 전체</StHomeSelectAddress>
           <StHomeSelectAddressButton>설정하기</StHomeSelectAddressButton>
         </StHomeSelectAddressWrap>
+      ) : (
+        <></>
       )}
     </>
   );

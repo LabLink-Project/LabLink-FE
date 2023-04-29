@@ -17,6 +17,7 @@ const initialState = {
 const studyTypeHandler = (state = initialState, action) => {
   switch (action.type) {
     case GET_STUDY_TYPE:
+      console.log(action.payload);
       return { studyType: action.payload };
     default:
       return state;
