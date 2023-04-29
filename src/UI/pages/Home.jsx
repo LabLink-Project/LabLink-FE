@@ -25,7 +25,6 @@ function Home() {
     const token = getCookie('token');
     console.log('home token : ', token);
 
-    // has error, token data만 가져올 수 있는 방법이 필요
     if (token) dispatch(getAccountInfo(token));
   }, []);
 

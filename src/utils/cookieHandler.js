@@ -14,7 +14,7 @@ export const getCookie = cname => {
     const c = element.trim();
 
     if (!c.indexOf(name)) {
-      console.log(c.indexOf(name), c.substring(name.length, c.length));
+      // console.log(c.indexOf(name), c.substring(name.length, c.length));
       result = c.substring(name.length, c.length);
     }
   });

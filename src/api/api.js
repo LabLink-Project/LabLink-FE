@@ -12,7 +12,7 @@ export const apiWithJWT = axios.create({
 apiWithJWT.interceptors.request.use(
   config => {
     const token = getCookie('token');
-    console.log(token, getCookie('token'));
+    // console.log(token, getCookie('token'));
     if (token) config.headers.Authorization = `Bearer ${token}`;
     return config;
   },
