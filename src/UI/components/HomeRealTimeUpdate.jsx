@@ -7,7 +7,7 @@ import useReduxState from 'src/hooks/useReduxState';
 
 function HomeRealTimeUpdate() {
   const [studys] = useStudys('/studies');
-  const address = useReduxState('detailAddress');
+  const { studyType, detailAddress } = useReduxState();
 
   return (
     <div>
@@ -15,8 +15,12 @@ function HomeRealTimeUpdate() {
       <ul>
         {studys
           .filter(obj => {
-            if (address === '전체') return obj;
-            return obj.address === address;
+            if (studyType === 'ALL') return obj;
+            return obj.category === studyType;
+          })
+          .filter(obj => {
+            if (detailAddress === '전체') return obj;
+            return obj.address === detailAddress;
           })
           .map(obj => {
             return (

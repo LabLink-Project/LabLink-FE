@@ -18,7 +18,7 @@ export const setStudyDetailAddress = payload => {
 };
 
 const initialState = {
-  studyType: 'all',
+  studyType: 'ALL',
   detailAddress: '전체',
 };
 

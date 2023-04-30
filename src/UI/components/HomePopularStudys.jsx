@@ -11,7 +11,9 @@ import useStudys from 'src/hooks/useStudys';
 
 function HomePopularStudys() {
   const [studys] = useStudys('/studies?sortedType=popularity');
-  const address = useReduxState('detailAddress');
+  const { studyType, detailAddress } = useReduxState();
+  // console.log(studyType, detailAddress);
+  // 맨 처음 값이 all(소문자)로 되어있는 현상 버그 찾아야됨
 
   return (
     <div>
@@ -19,8 +21,12 @@ function HomePopularStudys() {
       <StHomeStudysUl>
         {studys
           .filter(obj => {
-            if (address === '전체') return obj;
-            return obj.address === address;
+            if (studyType === 'ALL') return obj;
+            return obj.category === studyType;
+          })
+          .filter(obj => {
+            if (detailAddress === '전체') return obj;
+            return obj.address === detailAddress;
           })
           .filter((_, index) => {
             return index < 4;
