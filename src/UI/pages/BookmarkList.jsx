@@ -10,8 +10,19 @@ import {
 import Study from '../components/Study';
 import { apiWithJWT } from 'src/api/api';
 import FooterNav from '../components/FooterNav';
+import { useNavigate } from 'react-router-dom';
+import { isSignIn } from 'src/hooks/useCheckToken';
 
 function BookmarkList() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!isSignIn()) {
+      alert('로그인이 필요한 기능입니다.');
+      navigate('/auth/signin/user');
+    }
+  }, []);
+
   const [bookmarks, setBookmarks] = useState([]);
 
   const getBookmarkList = async () => {

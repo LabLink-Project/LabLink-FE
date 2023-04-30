@@ -8,7 +8,7 @@ import {
 import StudyInput from '../atomics/StudyInput';
 
 function CreateStudyTitle({ state }) {
-  console.log(state);
+  // console.log(state);
   return (
     <StCreateStudyWrap>
       <StCreateStudyLabelWrap>

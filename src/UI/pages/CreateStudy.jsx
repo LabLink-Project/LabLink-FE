@@ -16,8 +16,21 @@ import CreateStudyImage from '../molecules/CreateStudyImage';
 import { StContentWrap } from '../styles/common.styled';
 import { StCreateStudySubmit } from '../styles/CreateStudy.styled';
 import { apiWithJWT } from 'src/api/api';
+import { isSignIn } from 'src/hooks/useCheckToken';
+import { useNavigate } from 'react-router-dom';
 
 function CreateStudy() {
+  // 하나의 커스텀 훅으로 묶을 수 있지 않을까..????
+  // 글 작성, 찜 목록, 내 정보 모두 들어감
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!isSignIn()) {
+      alert('로그인이 필요한 기능입니다.');
+      navigate('/auth/signin/user');
+    }
+  }, []);
+
   const dateObj = new Date();
 
   // refactor useInput custom hook

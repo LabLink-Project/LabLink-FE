@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import SearchHeader from '../components/SearchHeader';
 import right from 'src/assets/right.svg';
 import triangle from 'src/assets/triangle.svg';
@@ -14,8 +14,19 @@ import { Link } from 'react-router-dom';
 import { URI } from 'src/shared/URIs';
 import FooterNav from '../components/FooterNav';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { isSignIn } from 'src/hooks/useCheckToken';
 
 function PersonalPage() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!isSignIn()) {
+      alert('로그인이 필요한 기능입니다.');
+      navigate('/auth/signin/user');
+    }
+  }, []);
+
   const account = useSelector(state => {
     return state;
   });

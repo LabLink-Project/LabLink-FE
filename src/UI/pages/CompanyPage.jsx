@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import SearchHeader from '../components/SearchHeader';
 import right from 'src/assets/right.svg';
 import triangle from 'src/assets/triangle.svg';
@@ -15,8 +15,19 @@ import { URI } from 'src/shared/URIs';
 import FooterNav from '../components/FooterNav';
 import { useSelector } from 'react-redux';
 import Collapse from 'react-bootstrap/Collapse';
+import { useNavigate } from 'react-router-dom';
+import { isSignIn } from 'src/hooks/useCheckToken';
 
 function CompanyPage() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!isSignIn()) {
+      alert('로그인이 필요한 기능입니다.');
+      navigate('/auth/signin/user');
+    }
+  }, []);
+
   const account = useSelector(state => {
     return state;
   });

@@ -16,6 +16,7 @@ import {
 } from 'src/UI/styles/Login.styled';
 import { URI } from 'src/shared/URIs';
 import { api } from 'src/api/api';
+import FooterNav from 'src/UI/components/FooterNav';
 
 function LoginUser() {
   const nav = useNavigate();
@@ -59,81 +60,84 @@ function LoginUser() {
   };
 
   return (
-    <Layout>
-      <StLoginHeader>
-        <StLoginTitle>LabLink</StLoginTitle>
-      </StLoginHeader>
-      <Tabs
-        activeKey={key}
-        onSelect={k => setKey(k)}
-        variant="pills"
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-        }}
-      >
-        <Tab
-          eventKey="user"
-          title="개인회원"
+    <>
+      <Layout>
+        <StLoginHeader>
+          <StLoginTitle>LabLink</StLoginTitle>
+        </StLoginHeader>
+        <Tabs
+          activeKey={key}
+          onSelect={k => setKey(k)}
+          variant="pills"
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+          }}
         >
-          <StLoginForm onSubmit={loginSubmitHandler}>
-            <StLoginInput
-              type="text"
-              name="email"
-              value={login.email}
-              onChange={signupChangeHandler}
-              placeholder="이메일"
-            />
-            <StLoginInput
-              type="password"
-              name="password"
-              value={login.password}
-              onChange={signupChangeHandler}
-              placeholder="비밀번호"
-            />
-            <div
-              className="d-grid gap-2"
-              style={{
-                width: '90%',
-              }}
-            >
-              <Button
-                variant="dark"
-                size="lg"
-                type="sumbit"
+          <Tab
+            eventKey="user"
+            title="개인회원"
+          >
+            <StLoginForm onSubmit={loginSubmitHandler}>
+              <StLoginInput
+                type="text"
+                name="email"
+                value={login.email}
+                onChange={signupChangeHandler}
+                placeholder="이메일"
+              />
+              <StLoginInput
+                type="password"
+                name="password"
+                value={login.password}
+                onChange={signupChangeHandler}
+                placeholder="비밀번호"
+              />
+              <div
+                className="d-grid gap-2"
+                style={{
+                  width: '90%',
+                }}
               >
-                로그인
-              </Button>
-            </div>
-          </StLoginForm>
-          <StLoginSNS>SNS로 간편하게 로그인하기</StLoginSNS>
-          <StLoginLinks>
-            <Link
-              to={URI.auth.signup.home}
-              style={{
-                color: 'gray',
-              }}
-            >
-              LapLink가 처음이신가요?
-            </Link>
-            <Link
-              // 아이디 / 비밀번호 찾기 페이지 구현되면 수정
-              to="/"
-              style={{
-                color: 'gray',
-              }}
-            >
-              아이디/비밀번호 찾기
-            </Link>
-          </StLoginLinks>
-        </Tab>
-        <Tab
-          eventKey="company"
-          title="기업회원"
-          onEnter={() => nav(URI.auth.signin.company)}
-        />
-      </Tabs>
-    </Layout>
+                <Button
+                  variant="dark"
+                  size="lg"
+                  type="sumbit"
+                >
+                  로그인
+                </Button>
+              </div>
+            </StLoginForm>
+            <StLoginSNS>SNS로 간편하게 로그인하기</StLoginSNS>
+            <StLoginLinks>
+              <Link
+                to={URI.auth.signup.home}
+                style={{
+                  color: 'gray',
+                }}
+              >
+                LapLink가 처음이신가요?
+              </Link>
+              <Link
+                // 아이디 / 비밀번호 찾기 페이지 구현되면 수정
+                to="/"
+                style={{
+                  color: 'gray',
+                }}
+              >
+                아이디/비밀번호 찾기
+              </Link>
+            </StLoginLinks>
+          </Tab>
+          <Tab
+            eventKey="company"
+            title="기업회원"
+            onEnter={() => nav(URI.auth.signin.company)}
+          />
+        </Tabs>
+      </Layout>
+      <FooterNav />
+    </>
   );
 }
 
