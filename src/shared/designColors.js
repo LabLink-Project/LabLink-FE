@@ -8,8 +8,8 @@ export const fontColors = {
 };
 
 export const serviceColors = {
-  primary: '#536dfe',
-  secondary: '#a2d9ce',
+  primary: '#ffc90b',
+  secondary: '#536dfe',
 };
 
 export const placeColors = {
