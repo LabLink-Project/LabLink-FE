@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { getCookie } from 'src/utils/cookieHandler';
+import { deleteCookie, getCookie } from 'src/utils/cookieHandler';
 
 export const api = axios.create({
   baseURL: process.env.REACT_APP_SERVER_URL,
@@ -17,6 +17,20 @@ apiWithJWT.interceptors.request.use(
     return config;
   },
   error => {
-    return error;
+    console.error('token api interceptor', error);
+    return Promise.reject(error);
+  }
+);
+
+apiWithJWT.interceptors.response.use(
+  response => {
+    console.log(response);
+    return response;
+  },
+  error => {
+    console.error('token api interceptor', error.response.data.message);
+    deleteCookie('token');
+    window.location.reload();
+    return Promise.reject(error);
   }
 );
