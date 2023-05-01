@@ -43,8 +43,20 @@ export const StSignupTermTitle = styled.div`
 
 export const StAllAgreement = styled.label`
   margin-bottom: 48px;
-  margin-left: 22px;
+  /* margin-left: 22px; */
   display: flex;
+`;
+
+export const StTerms = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+`;
+
+export const StTermLabel = styled.label`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 `;
 
 export const StRequirement = styled.span`

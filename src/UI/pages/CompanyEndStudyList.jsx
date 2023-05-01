@@ -20,7 +20,7 @@ import {
 import { useNavigate } from 'react-router-dom';
 import { URI } from 'src/shared/URIs';
 
-function EndStudyList() {
+function CompanyEndStudyList() {
   const nav = useNavigate()
 
   return (
@@ -56,7 +56,7 @@ function EndStudyList() {
             <StEndStudyListPay>4월 12일 실험마감</StEndStudyListPay>
           </div>
           <StEndStudyListFeedbackButton
-          // onClick={()=>nav(`${URI.mypage.company.feedback}/id`)}
+          onClick={()=>nav(`${URI.mypage.company.feedback}/1`)}
           >
             피드백 확인
           </StEndStudyListFeedbackButton>
@@ -66,4 +66,4 @@ function EndStudyList() {
   );
 }
 
-export default EndStudyList;
+export default CompanyEndStudyList;

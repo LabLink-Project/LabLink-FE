@@ -19,6 +19,8 @@ import {
   StSignupTermTitle,
   StSignupTermWrap,
   StSignupTitle,
+  StTermLabel,
+  StTerms,
 } from 'src/UI/styles/Signup.styled';
 import { cookies } from 'src/shared/Cookie';
 import { URI } from 'src/shared/URIs';
@@ -43,7 +45,7 @@ function SignupUser() {
     ageCheck: false,
     termsOfServiceAgreement: false,
     privacyPolicyConsent: false,
-    sensitiveInfoConsent: false,
+    // sensitiveInfoConsent: false,
     marketingOptIn: false,
   });
 
@@ -104,8 +106,8 @@ function SignupUser() {
     if (
       newUsers.ageCheck === false ||
       newUsers.termsOfServiceAgreement === false ||
-      newUsers.privacyPolicyConsent === false ||
-      newUsers.sensitiveInfoConsent === false
+      newUsers.privacyPolicyConsent === false
+      // newUsers.sensitiveInfoConsent === false
     ) {
       alert('모든 필수 약관에 동의하셔야합니다');
     } else {
@@ -247,17 +249,6 @@ function SignupUser() {
               <br />
               약관에 동의해주세요
             </StSignupTermTitle>
-            <div>
-              <Link
-                to="/signup/user/terms"
-                style={{
-                  color: 'gray',
-                  fontSize: '15px',
-                }}
-              >
-                약관 읽기
-              </Link>
-            </div>
           </StSignupTermWrap>
           <div>
             <StAllAgreement>
@@ -269,96 +260,112 @@ function SignupUser() {
               />
               &nbsp; 모두 동의
             </StAllAgreement>
-            <Accordion>
-              <Accordion.Item eventKey="0">
-                <Accordion.Header>
-                  <label>
-                    <input
-                      type="checkbox"
-                      name="ageCheck"
-                      checked={newUsers.ageCheck}
-                      onChange={handleAgreementChange}
-                    />{' '}
-                    <StRequirement>(필수)</StRequirement> 만 15세
-                    이상입니다.&nbsp;
-                  </label>
-                </Accordion.Header>
-                <Accordion.Body>약관 내용</Accordion.Body>
-              </Accordion.Item>
-              <Accordion.Item eventKey="1">
-                <Accordion.Header>
-                  <label>
-                    <input
-                      type="checkbox"
-                      name="termsOfServiceAgreement"
-                      checked={newUsers.termsOfServiceAgreement}
-                      onChange={handleAgreementChange}
-                    />{' '}
-                    <StRequirement>(필수)</StRequirement> 서비스 이용약관
-                    동의&nbsp;
-                  </label>
-                </Accordion.Header>
-                <Accordion.Body>약관 내용</Accordion.Body>
-              </Accordion.Item>
-              <Accordion.Item eventKey="2">
-                <Accordion.Header>
-                  <label>
-                    <input
-                      type="checkbox"
-                      name="privacyPolicyConsent"
-                      checked={newUsers.privacyPolicyConsent}
-                      onChange={handleAgreementChange}
-                    />{' '}
-                    <StRequirement>(필수)</StRequirement> 개인정보 처리방침
-                    동의&nbsp;
-                  </label>
-                </Accordion.Header>
-                <Accordion.Body>약관 내용</Accordion.Body>
-              </Accordion.Item>
-              <Accordion.Item eventKey="3">
-                <Accordion.Header>
-                  <label>
-                    <input
-                      type="checkbox"
-                      name="sensitiveInfoConsent"
-                      checked={newUsers.sensitiveInfoConsent}
-                      onChange={handleAgreementChange}
-                    />{' '}
-                    <StRequirement>(필수)</StRequirement> 민감정보 수집 및 이용
-                    동의&nbsp;
-                  </label>
-                </Accordion.Header>
-                <Accordion.Body>약관 내용</Accordion.Body>
-              </Accordion.Item>
-              <Accordion.Item eventKey="4">
-                <Accordion.Header>
-                  <label>
-                    <input
-                      type="checkbox"
-                      name="marketingOptIn"
-                      checked={newUsers.marketingOptIn}
-                      onChange={handleAgreementChange}
-                    />{' '}
-                    (선택) 마케팅 수신동의
-                  </label>
-                </Accordion.Header>
-                <Accordion.Body>약관 내용</Accordion.Body>
-              </Accordion.Item>
-            </Accordion>
-            <div
-              className="d-grid gap-2"
-              style={{
-                marginTop: '72px',
-              }}
-            >
-              <Button
-                variant="dark"
-                size="lg"
-                onClick={onClickAgreement}
+            <StTerms>
+              <StTermLabel>
+                <div>
+                  <input
+                    type="checkbox"
+                    name="ageCheck"
+                    checked={newUsers.ageCheck}
+                    onChange={handleAgreementChange}
+                  />{' '}
+                  <StRequirement>(필수)</StRequirement> 만 18세
+                  이상입니다.&nbsp;
+                </div>
+              </StTermLabel>
+              <StTermLabel>
+                <div>
+                  <input
+                    type="checkbox"
+                    name="termsOfServiceAgreement"
+                    checked={newUsers.termsOfServiceAgreement}
+                    onChange={handleAgreementChange}
+                  />{' '}
+                  <StRequirement>(필수)</StRequirement> 서비스 이용약관
+                  동의&nbsp;
+                </div>
+                <div>
+                  <Link
+                    to={URI.auth.signup.serviceTerm}
+                    style={{
+                      color: 'gray',
+                      fontSize: '15px',
+                    }}
+                  >
+                    보기
+                  </Link>
+                </div>
+              </StTermLabel>
+              <StTermLabel>
+                <div>
+                  <input
+                    type="checkbox"
+                    name="privacyPolicyConsent"
+                    checked={newUsers.privacyPolicyConsent}
+                    onChange={handleAgreementChange}
+                  />{' '}
+                  <StRequirement>(필수)</StRequirement> 개인정보 처리방침
+                  동의&nbsp;
+                </div>
+                <div>
+                  <Link
+                    to={URI.auth.signup.personalTerm}
+                    style={{
+                      color: 'gray',
+                      fontSize: '15px',
+                    }}
+                  >
+                    보기
+                  </Link>
+                </div>
+              </StTermLabel>
+              {/* <label>
+                <input
+                  type="checkbox"
+                  name="sensitiveInfoConsent"
+                  checked={newUsers.sensitiveInfoConsent}
+                  onChange={handleAgreementChange}
+                />{' '}
+                <StRequirement>(필수)</StRequirement> 민감정보 수집 및 이용
+                동의&nbsp;
+              </label> */}
+              <StTermLabel>
+                <div>
+                  <input
+                    type="checkbox"
+                    name="marketingOptIn"
+                    checked={newUsers.marketingOptIn}
+                    onChange={handleAgreementChange}
+                  />{' '}
+                  (선택) 마케팅 수신동의
+                </div>
+                <div>
+                  <Link
+                    to={URI.auth.signup.marketingTerm}
+                    style={{
+                      color: 'gray',
+                      fontSize: '15px',
+                    }}
+                  >
+                    보기
+                  </Link>
+                </div>
+              </StTermLabel>
+              <div
+                className="d-grid gap-2"
+                style={{
+                  marginTop: '72px',
+                }}
               >
-                동의
-              </Button>
-            </div>
+                <Button
+                  variant="dark"
+                  size="lg"
+                  onClick={onClickAgreement}
+                >
+                  동의
+                </Button>
+              </div>
+            </StTerms>
           </div>
         </Layout>
       ) : (
@@ -474,7 +481,7 @@ function SignupUser() {
               <div>
                 <div>
                   <StSignupInputWrap>
-                    <StSignupLabel>
+                    <StSignupLabel width={'100%'}>
                       <StSignupInputName>휴대폰 번호</StSignupInputName>
                       <br />
                       <StSignupInput
@@ -484,9 +491,10 @@ function SignupUser() {
                         value={newUsers.userPhone}
                         onChange={signupChangeHandler}
                         required
+                        width={'100%'}
                       />
                     </StSignupLabel>
-                    <Button
+                    {/* <Button
                       type="button"
                       variant="dark"
                       style={{
@@ -494,7 +502,7 @@ function SignupUser() {
                       }}
                     >
                       인증번호
-                    </Button>
+                    </Button> */}
                   </StSignupInputWrap>
                 </div>
                 <div
@@ -503,7 +511,7 @@ function SignupUser() {
                   }}
                 >
                   <StSignupInputWrap>
-                    <StSignupLabel>
+                    <StSignupLabel width={'100%'}>
                       <StSignupInput
                         type="text"
                         name="phoneCheck"
@@ -511,9 +519,10 @@ function SignupUser() {
                         value={newUsers.phoneCheck}
                         onChange={signupChangeHandler}
                         required
+                        width={'100%'}
                       />
                     </StSignupLabel>
-                    <Button
+                    {/* <Button
                       type="button"
                       onClick={emailCheckButton}
                       variant="dark"
@@ -522,7 +531,7 @@ function SignupUser() {
                       }}
                     >
                       인증확인
-                    </Button>
+                    </Button> */}
                   </StSignupInputWrap>
                 </div>
               </div>

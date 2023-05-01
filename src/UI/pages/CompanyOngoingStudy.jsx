@@ -14,21 +14,25 @@ import {
   StPersonalRequestTitle,
   StPersonalRequestWrap,
 } from '../styles/PersonalRequest.styled';
+import { Button } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
+import { URI } from 'src/shared/URIs';
 
-function PersonalRequest() {
+function CompanyOngoingStudy() {
+  const nav = useNavigate();
   return (
     <StPersonalRequestPaddingWrap>
       <SearchHeader title="실험 관리" />
       <StPersonalRequestWrap sort="space-between">
-        <StPersonalRequestTitle>신청한 실험</StPersonalRequestTitle>
-        <StPersonalRequestDiv>최근 1주일</StPersonalRequestDiv>
+        <StPersonalRequestTitle>진행중인 공고</StPersonalRequestTitle>
+        <StPersonalRequestDiv>전체보기</StPersonalRequestDiv>
       </StPersonalRequestWrap>
       <ul>
         <li>
           <StPersonalRequestListWrap>
             <StPersonalRequestHeaderWrap sort="space-between">
               <StPersonalRequestCompany>(주)항해99</StPersonalRequestCompany>
-              <StPersonalRequestTime>2시간 전 지원</StPersonalRequestTime>
+              <StPersonalRequestTime>현재 6명 지원</StPersonalRequestTime>
             </StPersonalRequestHeaderWrap>
             <StPersonalRequestStudyTitle>
               APP 사용성테스트 지원자 모집
@@ -41,9 +45,18 @@ function PersonalRequest() {
             </StPersonalRequestStudyPay>
             <StPersonalRequestHeaderWrap sort="space-between">
               <StPersonalRequestStudyPay>
-                온라인 | 4월 12일 마감
+                온라인 | 4월 12일 진행
               </StPersonalRequestStudyPay>
-              <p>열람</p>
+              <Button
+                variant="dark"
+                style={{
+                  height: '100%',
+                  fontSize: '15px',
+                }}
+                onClick={() => nav(`${URI.mypage.company.applicant}/1`)}
+              >
+                지원자 확인
+              </Button>
             </StPersonalRequestHeaderWrap>
           </StPersonalRequestListWrap>
         </li>
@@ -52,4 +65,4 @@ function PersonalRequest() {
   );
 }
 
-export default PersonalRequest;
+export default CompanyOngoingStudy;
