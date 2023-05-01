@@ -9,12 +9,12 @@ import useStudys from 'src/hooks/useStudys';
 
 function ReadStudy() {
   const { state } = useLocation();
-  // console.log(state);
+  console.log(state);
 
-  const keyword = useRef(state.keyword);
+  // const keyword = useRef(state.keyword);
   // console.log(keyword);
 
-  const [studys] = useStudys(`/studies?keyword=${keyword.current}`);
+  const [studys] = useStudys(`/studies?keyword=${state.keyword}`);
   // console.log(studys);
 
   return (
@@ -24,7 +24,7 @@ function ReadStudy() {
       <SearchBar />
       <StFlexBox sort="space-between">
         <StReadStudyH1>
-          {keyword.current}로 검색결과 {studys.length}건
+          {state.keyword} 검색결과 {studys.length}건
         </StReadStudyH1>
         <select>
           {/* 이 부분은 모달로 처리하네..? */}

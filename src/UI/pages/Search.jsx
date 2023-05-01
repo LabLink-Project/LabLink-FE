@@ -30,7 +30,6 @@ import { useNavigate } from 'react-router-dom';
 
 function Search() {
   // normal search code
-  const [keyword, keywordHandler] = useInput('');
 
   // const [history] = useStudys('/search/latest');
 
@@ -43,13 +42,6 @@ function Search() {
     '애호박찌개',
     '촌돼지찌개',
   ];
-
-  const navigate = useNavigate();
-
-  const onSearchHandler = () => {
-    console.log('entered search bar : ', keyword);
-    navigate('/studys', { state: { keyword } });
-  };
 
   // 검색기록 같은 경우 배열을 string화: json.stringify/parse해서 처리하자
   // localStorage.setItem('history', keyword);
@@ -91,11 +83,7 @@ function Search() {
   return (
     <StSearchWrap>
       {/* searchbar 도메인 로직을 컴포넌트 안으로 분리 */}
-      <SearchBar
-        placeholder="어떤 공고를 찾으세요?"
-        handler={keywordHandler}
-        onEnterHandler={onSearchHandler}
-      />
+      <SearchBar placeholder="어떤 공고를 찾으세요?" />
 
       {/* Search 코드 */}
       <StSearchHistoryTitle>최근에 검색 하셨어요</StSearchHistoryTitle>

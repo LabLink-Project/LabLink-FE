@@ -11,7 +11,7 @@ function useStudys(URI) {
 
   useEffect(() => {
     getStudys();
-  }, []);
+  }, [URI]);
 
   return [studys];
 }
