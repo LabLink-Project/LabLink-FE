@@ -3,7 +3,11 @@ import { StFlexBox } from 'src/UI/styles/common.styled';
 import PopularStudyLi from './PopularStudyLi';
 import styled from 'styled-components';
 
+import useStudys from 'src/hooks/useStudys';
+
 function PopularStudyListWrap() {
+  // const [datas] = useStudys('/search/rank');
+
   const datas = [
     { score: 1, keyword: '당일 테스트' },
     { score: 2, keyword: '서울' },
@@ -19,7 +23,7 @@ function PopularStudyListWrap() {
 
   return (
     <StFlexBox>
-      {datas ? (
+      {datas.length ? (
         <>
           <StWrap>
             {datas
