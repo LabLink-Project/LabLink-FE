@@ -7,6 +7,7 @@ export const StSearchHistoryUI = styled.li`
   border-radius: 30px;
   padding: 6px 8px 6px 12px;
   white-space: nowrap;
+  cursor: pointer;
 `;
 
 export const StSearchHistoryUISpan = styled.span`
