@@ -116,7 +116,7 @@ function LoginUser() {
             >
               LapLink가 처음이신가요?
             </Link>
-            <Link
+            {/* <Link
               // 아이디 / 비밀번호 찾기 페이지 구현되면 수정
               to="/"
               style={{
@@ -124,7 +124,7 @@ function LoginUser() {
               }}
             >
               아이디/비밀번호 찾기
-            </Link>
+            </Link> */}
           </StLoginLinks>
         </Tab>
         <Tab

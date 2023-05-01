@@ -118,7 +118,7 @@ function LoginCompany() {
             >
               LapLink가 처음이신가요?
             </Link>
-            <Link
+            {/* <Link
               // 페이지 구현 후 수정하기
               to={URI.crud.home}
               style={{
@@ -126,7 +126,7 @@ function LoginCompany() {
               }}
             >
               아이디/비밀번호 찾기
-            </Link>
+            </Link> */}
           </StLoginLinks>
         </Tab>
       </Tabs>

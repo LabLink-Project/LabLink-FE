@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 
 function FooterNav() {
   const accountState = useSelector(state => state);
-  const { nickname, ...rest } = accountState.accountHandler;
+  const { nickname, role } = accountState.accountHandler;
 
   return (
     <footer>
@@ -32,7 +32,11 @@ function FooterNav() {
             )}
           </StFooterNavList>
           <StFooterNavList>
-            <Link to={URI.mypage.user.home}>내 정보</Link>
+            {role === 'USER' ? (
+              <Link to={URI.mypage.user.home}>내 정보</Link>
+            ) : (
+              <Link to={URI.mypage.company.home}>내 정보</Link>
+            )}
           </StFooterNavList>
         </StFooterNavUl>
       </nav>
