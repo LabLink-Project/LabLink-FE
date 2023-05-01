@@ -18,6 +18,7 @@ export const StSearchHeaderBackButton = styled.div`
 export const StSearchHeaderBackImage = styled.img`
   width: 28px;
   height: 26px;
+  cursor: pointer;
 `;
 
 export const StSearchHeaderWrap = styled(StFlexBox)`

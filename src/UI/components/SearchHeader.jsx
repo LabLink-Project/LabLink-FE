@@ -11,6 +11,7 @@ import {
 import Back from 'src/assets/back.svg';
 import Alarm from 'src/assets/Alarm.svg';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 // 합성 컴포넌트 패턴으로 변경
 
@@ -21,10 +22,15 @@ import { Link } from 'react-router-dom';
 // 4. 로그인/회원이름 + 검색 + 알림 -> 홈 화면
 
 function SearchHeader({ title }) {
+  const navigate = useNavigate();
   return (
     <StSearchHeaderWrap sort="space-between">
       <StFlexBox>
-        <StSearchHeaderBackButton>
+        <StSearchHeaderBackButton
+          onClick={() => {
+            navigate(-1);
+          }}
+        >
           <StSearchHeaderBackImage
             src={Back}
             alt="뒤로가기 버튼"
