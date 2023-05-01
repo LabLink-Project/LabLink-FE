@@ -135,8 +135,8 @@ function LoginUser() {
             onEnter={() => nav(URI.auth.signin.company)}
           />
         </Tabs>
+        <FooterNav />
       </Layout>
-      <FooterNav />
     </>
   );
 }
