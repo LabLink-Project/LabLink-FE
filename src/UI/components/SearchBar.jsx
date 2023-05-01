@@ -34,7 +34,7 @@ function SearchBar({ placeholder }) {
         type="text"
         id="search"
         onChange={keywordHandler}
-        placeholder={placeholder}
+        placeholder={placeholder ? placeholder : '검색어를 입력해 주세요'}
         onKeyPress={e => {
           if (e.key === 'Enter') onSearchHandler();
         }}
