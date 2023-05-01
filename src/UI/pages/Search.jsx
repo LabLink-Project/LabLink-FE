@@ -27,6 +27,7 @@ import FooterNav from '../components/FooterNav';
 import PopularStudyListWrap from '../components/PopularStudyList/PopularStudyListWrap';
 import useStudys from 'src/hooks/useStudys';
 import { useNavigate } from 'react-router-dom';
+import SearchHeader from '../components/SearchHeader';
 
 function Search() {
   // normal search code
@@ -82,9 +83,8 @@ function Search() {
 
   return (
     <StSearchWrap>
-      {/* searchbar 도메인 로직을 컴포넌트 안으로 분리 */}
+      <SearchHeader />
       <SearchBar placeholder="어떤 공고를 찾으세요?" />
-
       {/* Search 코드 */}
       <StSearchHistoryTitle>최근에 검색 하셨어요</StSearchHistoryTitle>
       <StSearchHistorys>
