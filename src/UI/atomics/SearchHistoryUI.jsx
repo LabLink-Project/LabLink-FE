@@ -18,12 +18,12 @@ function SearchHistoryUI({ children }) {
   return (
     <StSearchHistoryUI onClick={onSearchHandler}>
       <StSearchHistoryUISpan>{children}</StSearchHistoryUISpan>
-      <button>
+      {/* <button>
         <StSearchHistoryUICloseIcon
           src={close}
           alt="close button"
         />
-      </button>
+      </button> */}
     </StSearchHistoryUI>
   );
 }
