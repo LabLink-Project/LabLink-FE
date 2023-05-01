@@ -17,7 +17,7 @@ apiWithJWT.interceptors.request.use(
     return config;
   },
   error => {
-    console.error('token api interceptor', error);
+    console.error('token api request interceptor', error);
     return Promise.reject(error);
   }
 );
@@ -28,9 +28,12 @@ apiWithJWT.interceptors.response.use(
     return response;
   },
   error => {
-    console.error('token api interceptor', error.response.data.message);
-    deleteCookie('token');
-    window.location.reload();
+    const { message } = error.response.data;
+    console.error('token api response interceptor : ', message);
+    if (message === 'Token Error') {
+      deleteCookie('token');
+      window.location.reload();
+    }
     return Promise.reject(error);
   }
 );
