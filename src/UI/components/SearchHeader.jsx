@@ -12,6 +12,7 @@ import Back from 'src/assets/back.svg';
 import Alarm from 'src/assets/Alarm.svg';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import { soonDevelop } from 'src/utils/soonDevelop';
 
 // 합성 컴포넌트 패턴으로 변경
 
@@ -40,7 +41,10 @@ function SearchHeader({ title }) {
       </StFlexBox>
       <StSearchHeaderNotification>
         {/* 구현 후 수정 */}
-        <Link to="#">
+        <Link
+          to="#"
+          onClick={soonDevelop}
+        >
           <img
             src={Alarm}
             alt="알람 버튼"
