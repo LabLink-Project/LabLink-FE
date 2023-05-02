@@ -10,17 +10,14 @@ import {
 import { URI } from 'src/shared/URIs';
 import Search from 'src/assets/Search.svg';
 import Alarm from 'src/assets/Alarm.svg';
-import { useSelector } from 'react-redux';
 import { deleteCookie } from 'src/utils/cookieHandler';
+import styled from 'styled-components';
+import { serviceColors } from 'src/shared/designColors';
+import { soonDevelop } from 'src/utils/soonDevelop';
+import { useAccountState } from 'src/hooks/useReduxState';
 
 function HomeHeader() {
-  const account = useSelector(state => {
-    return state;
-  });
-
-  const state = account.accountHandler;
-  // console.log('state : ', state);
-  const { nickname, ...rest } = state;
+  const nickname = useAccountState('nickname');
 
   const signOutHandler = () => {
     deleteCookie('token');
@@ -31,17 +28,17 @@ function HomeHeader() {
     <StHomeHeaderWrap sort="space-between">
       <div>
         {nickname ? (
-          <>
+          <div>
             <strong>{nickname}</strong>님 환영합니다
-            <button onClick={signOutHandler}>로그아웃</button>
-          </>
+            <Button onClick={signOutHandler}>로그아웃</Button>
+          </div>
         ) : (
           <>
             {' '}
             <StHomeHeaderLink to={URI.auth.signin.user}>
               로그인
             </StHomeHeaderLink>{' '}
-            해주세요
+            해주세요{' '}
             <img
               src={right}
               alt="오른쪽 표시"
@@ -57,7 +54,10 @@ function HomeHeader() {
           />
         </Link>
         {/* 알림 페이지 구현 후 수정 필요 */}
-        <Link to="/">
+        <Link
+          to="/"
+          onClick={soonDevelop}
+        >
           <StHomeHeaderIcon
             src={Alarm}
             alt="알람 버튼"
@@ -67,5 +67,10 @@ function HomeHeader() {
     </StHomeHeaderWrap>
   );
 }
+
+const Button = styled.button`
+  margin-left: 5px;
+  color: ${serviceColors.secondary};
+`;
 
 export default HomeHeader;
