@@ -4,6 +4,7 @@ export const URI = {
     search: '/search',
     studys: '/studys',
     studyDetail: '/studys/:id',
+    studyApply: '/studys/:id/apply',
     bookmark: '/bookmarks',
   },
   auth: {

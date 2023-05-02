@@ -23,6 +23,7 @@ import CompanyPage from 'src/UI/pages/CompanyPage';
 import OngoingStudy from 'src/UI/pages/OngoingStudy';
 import Feedback from 'src/UI/pages/Feedback';
 import StudySchedule from 'src/UI/pages/StudySchedule';
+import Application from 'src/UI/pages/Application/Application';
 
 const Router = () => {
   return (
@@ -44,6 +45,10 @@ const Router = () => {
         <Route
           path={URI.crud.studyDetail}
           element={<ReadStudyDetail />}
+        />
+        <Route
+          path={URI.crud.studyApply}
+          element={<Application />}
         />
         <Route
           path={URI.crud.bookmark}
