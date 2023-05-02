@@ -27,11 +27,12 @@ import { api } from 'src/api/api';
 import DaumPostcode from 'react-daum-postcode';
 import { Modal } from 'bootstrap';
 import CreateUserAddress from '../molecules/CreateUserAddress';
-
-export const MyContext = createContext();
+import { useNavigate } from 'react-router-dom';
+import { URI } from 'src/shared/URIs';
 
 function EditPersonalProfile() {
   const token = cookies.get('token');
+  const nav = useNavigate();
 
   // 비밀번호 확인 state
   const [pwCheck, setPwCheck] = useState({
@@ -39,7 +40,7 @@ function EditPersonalProfile() {
   });
 
   // 비밀번호 확인 결과 state
-  const [pwStatus, setPwStatus] = useState(true);
+  const [pwStatus, setPwStatus] = useState(false);
 
   // 내 정보 수정 tap state
   const [myProfile, setMyProfile] = useState(true);
@@ -50,7 +51,7 @@ function EditPersonalProfile() {
     dateOfBirth: '',
     userGender: '',
     userPhone: '',
-    userPhoneCheck: '',
+    // userPhoneCheck: '',
     userAddress: '',
     userDetailAddress: '',
   });
@@ -97,7 +98,13 @@ function EditPersonalProfile() {
       alert('비밀번호 확인을 완료하였습니다.');
       setPwStatus(true);
     } catch (error) {
-      alert(`${error.response.data.message}`);
+      if (error.response.data.statusCode === 401) {
+        alert('다시 로그인 해주세요');
+        cookies.remove('token', { path: '/' });
+        nav(URI.auth.signin.user);
+      } else {
+        alert(`${error.response.data.message}`);
+      }
     }
   };
 
@@ -133,11 +140,16 @@ function EditPersonalProfile() {
     e.preventDefault();
     if (validateForm(userInfo)) {
       try {
-        await api.patch('/users/check/modifyProfile', userInfo, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        const { data } = await api.patch(
+          '/users/check/modifyProfile',
+          userInfo,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        alert(data.message);
       } catch (error) {
         alert(`${error.response.data.message}`);
       }
@@ -179,6 +191,9 @@ function EditPersonalProfile() {
           }
         );
         alert(data.message);
+        alert('다시 로그인 해주세요');
+        cookies.remove('token', { path: '/' });
+        nav(URI.auth.signin.user);
       } catch (error) {
         alert(`${error.response.data.message}`);
       }
@@ -292,15 +307,15 @@ function EditPersonalProfile() {
                 <StEditPersonalProfileTitle>
                   휴대폰 번호
                 </StEditPersonalProfileTitle>
-                <StCreateStudyAddressInput
+                <StEditPersonalProfileInput
                   type="text"
                   name="userPhone"
                   placeholder="휴대폰 번호 - 제외하고 입력"
                   value={userInfo.userPhone}
                   onChange={userInfoOnchange}
                 />
-                <StBlackButton>인증번호</StBlackButton>
-                <StEditPersonalProfileCheckDiv>
+                {/* <StBlackButton>인증번호</StBlackButton> */}
+                {/* <StEditPersonalProfileCheckDiv>
                   인증번호가 전송되었습니다
                 </StEditPersonalProfileCheckDiv>
                 <StCreateStudyAddressInput
@@ -313,7 +328,7 @@ function EditPersonalProfile() {
                 <StBlackButton>확인</StBlackButton>
                 <StEditPersonalProfileCheckDiv>
                   인증번호가 일치하지 않습니다
-                </StEditPersonalProfileCheckDiv>
+                </StEditPersonalProfileCheckDiv> */}
               </div>
               <CreateUserAddress
                 title="주소"

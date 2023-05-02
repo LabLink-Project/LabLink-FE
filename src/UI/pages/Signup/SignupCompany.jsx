@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Modal, Button } from 'react-bootstrap';
 import Layout from '../../components/Layout';
 import DaumPostcode from 'react-daum-postcode';
 import {
+  StAllAgreement,
+  StRequirement,
   StSignupForm,
   StSignupFormWrap,
   StSignupHeader,
@@ -13,7 +15,11 @@ import {
   StSignupInputWrap,
   StSignupLabel,
   StSignupLapLink,
+  StSignupTermTitle,
+  StSignupTermWrap,
   StSignupTitle,
+  StTermLabel,
+  StTerms,
 } from 'src/UI/styles/Signup.styled';
 import { cookies } from 'src/shared/Cookie';
 import { URI } from 'src/shared/URIs';
@@ -22,6 +28,12 @@ import axios from 'axios';
 
 function SignupCompany() {
   const nav = useNavigate();
+
+  // 모두 동의 state
+  const [allAgreed, setAllAgreed] = useState(false);
+
+  // 동의 후 보여질 form
+  const [showForm, setShowForm] = useState(false);
 
   // 회원가입 state
   const [newCompanies, setNewCompanies] = useState({
@@ -34,6 +46,9 @@ function SignupCompany() {
     address: '',
     detailAddress: '',
     companyLogo: '',
+    termsOfServiceAgreement: false,
+    privacyPolicyConsent: false,
+    marketingOptIn: false,
   });
 
   // 비밀번호 확인 state
@@ -57,6 +72,49 @@ function SignupCompany() {
       nav(URI.crud.home);
     }
   }, [cookies]);
+
+  // 모두 동의 체크박스 onchange
+  const handleAllAgreementChange = e => {
+    const { checked } = e.target;
+    setAllAgreed(checked);
+    setNewCompanies({
+      ...newCompanies,
+      termsOfServiceAgreement: checked,
+      privacyPolicyConsent: checked,
+      marketingOptIn: checked,
+    });
+  };
+
+  // 필수, 선택 체크박스 onchange
+  const handleAgreementChange = e => {
+    const { name, checked } = e.target;
+    setNewCompanies({ ...newCompanies, [name]: checked });
+  };
+
+  // 동의하고싶은 약관 선택 후 클릭하는 버튼
+  const onClickAgreement = e => {
+    if (
+      newCompanies.termsOfServiceAgreement === false ||
+      newCompanies.privacyPolicyConsent === false
+    ) {
+      alert('모든 필수 약관에 동의하셔야합니다');
+    } else {
+      setShowForm(true);
+    }
+  };
+
+  // 개별로 동의 박스 건드렸을때
+  useEffect(() => {
+    if (
+      newCompanies.termsOfServiceAgreement &&
+      newCompanies.privacyPolicyConsent &&
+      newCompanies.marketingOptIn
+    ) {
+      setAllAgreed(true);
+    } else {
+      setAllAgreed(false);
+    }
+  }, [newCompanies]);
 
   // 회원 정보 onchange
   const signupChangeHandler = e => {
@@ -157,8 +215,8 @@ function SignupCompany() {
           formData.append(key, value);
         }
 
-        const { data } = await axios.post(
-          `${process.env.REACT_APP_SERVER_URL}/companies/signup`,
+        const { data } = await api.post(
+          `/companies/signup`,
           formData
         );
 
@@ -174,216 +232,330 @@ function SignupCompany() {
 
   return (
     <>
-      <Layout>
-        <StSignupHeader>
-          <StSignupTitle>
-            <StSignupLapLink>LabLink</StSignupLapLink>
-            에 오신 고객님 <br />
-            환영합니다!
-          </StSignupTitle>
-        </StSignupHeader>
-        <StSignupFormWrap>
-          <StSignupForm onSubmit={signupSubmitHandler}>
-            <div>
-              <StSignupInputWrap>
-                <StSignupLabel>
-                  <StSignupInputName>이메일</StSignupInputName>
-                  <br />
-                  <StSignupInput
-                    type="email"
-                    name="email"
-                    placeholder="이메일"
-                    value={newCompanies.email}
-                    onChange={signupChangeHandler}
-                    required
-                  />
-                </StSignupLabel>
-                <Button
-                  type="button"
-                  onClick={emailCheckButton}
-                  variant="dark"
-                  style={{
-                    height: '50px',
-                  }}
-                >
-                  중복확인
-                </Button>
-              </StSignupInputWrap>
-              <StSignupInputCondition>
-                이메일 형식으로 입력해주세요
-              </StSignupInputCondition>
-            </div>
-            <div>
-              <div>
-                <StSignupLabel width={'100%'}>
-                  <StSignupInputName>비밀번호</StSignupInputName>
-                  <StSignupInput
-                    type="password"
-                    name="password"
-                    placeholder="비밀번호 입력"
-                    value={newCompanies.password}
-                    onChange={signupChangeHandler}
-                    required
-                    width={'100%'}
-                  />
-                </StSignupLabel>
-                <StSignupInputCondition>
-                  영문, 숫자, 특수문자가 포함된 8~20글자로 <br />
-                  입력해주세요
-                </StSignupInputCondition>
-              </div>
+      {!showForm ? (
+        <Layout>
+          <StSignupHeader>
+            <StSignupTitle>
+              <StSignupLapLink>LabLink</StSignupLapLink>
+              에 오신 고객님 <br />
+              환영합니다!
+            </StSignupTitle>
+          </StSignupHeader>
+          <StSignupTermWrap>
+            <StSignupTermTitle>
+              회원가입을 위해
+              <br />
+              약관에 동의해주세요
+            </StSignupTermTitle>
+          </StSignupTermWrap>
+          <div>
+            <StAllAgreement>
+              <input
+                type="checkbox"
+                name="all"
+                checked={allAgreed}
+                onChange={handleAllAgreementChange}
+              />
+              &nbsp; 모두 동의
+            </StAllAgreement>
+            <StTerms>
+              <StTermLabel>
+                <div>
+                  <input
+                    type="checkbox"
+                    name="termsOfServiceAgreement"
+                    checked={newCompanies.termsOfServiceAgreement}
+                    onChange={handleAgreementChange}
+                  />{' '}
+                  <StRequirement>(필수)</StRequirement> 서비스 이용약관
+                  동의&nbsp;
+                </div>
+                <div>
+                  <Link
+                    to={URI.auth.signup.serviceTerm}
+                    style={{
+                      color: 'gray',
+                      fontSize: '15px',
+                    }}
+                  >
+                    보기
+                  </Link>
+                </div>
+              </StTermLabel>
+              <StTermLabel>
+                <div>
+                  <input
+                    type="checkbox"
+                    name="privacyPolicyConsent"
+                    checked={newCompanies.privacyPolicyConsent}
+                    onChange={handleAgreementChange}
+                  />{' '}
+                  <StRequirement>(필수)</StRequirement> 개인정보 처리방침
+                  동의&nbsp;
+                </div>
+                <div>
+                  <Link
+                    to={URI.auth.signup.personalTerm}
+                    style={{
+                      color: 'gray',
+                      fontSize: '15px',
+                    }}
+                  >
+                    보기
+                  </Link>
+                </div>
+              </StTermLabel>
+              <StTermLabel>
+                <div>
+                  <input
+                    type="checkbox"
+                    name="marketingOptIn"
+                    checked={newCompanies.marketingOptIn}
+                    onChange={handleAgreementChange}
+                  />{' '}
+                  (선택) 마케팅 수신동의
+                </div>
+                <div>
+                  <Link
+                    to={URI.auth.signup.marketingTerm}
+                    style={{
+                      color: 'gray',
+                      fontSize: '15px',
+                    }}
+                  >
+                    보기
+                  </Link>
+                </div>
+              </StTermLabel>
               <div
+                className="d-grid gap-2"
                 style={{
-                  marginTop: '10px',
+                  marginTop: '72px',
                 }}
               >
-                <StSignupLabel width={'100%'}>
-                  <StSignupInput
-                    type="password"
-                    name="passwordCk"
-                    placeholder="비밀번호 확인"
-                    value={pwCheck.passwordCk}
-                    onChange={signupChangeHandler}
-                    required
-                    width={'100%'}
-                  />
-                </StSignupLabel>
-                <StSignupInputCondition>{isSamePw}</StSignupInputCondition>
+                <Button
+                  variant="dark"
+                  size="lg"
+                  onClick={onClickAgreement}
+                >
+                  동의
+                </Button>
               </div>
-            </div>
-            <div>
-              <StSignupLabel width={'100%'}>
-                <StSignupInputName>전화번호</StSignupInputName>
-                <br />
-                <StSignupInput
-                  type="text"
-                  name="managerPhone"
-                  placeholder="전화번호 '-'제외하고 입력"
-                  value={newCompanies.managerPhone}
-                  onChange={signupChangeHandler}
-                  required
-                  width={'100%'}
-                />
-              </StSignupLabel>
-            </div>
-            <div>
-              <StSignupLabel width={'100%'}>
-                <StSignupInputName>회사/단체명</StSignupInputName>
-                <br />
-                <StSignupInput
-                  type="text"
-                  name="companyName"
-                  placeholder="회사/단체명 입력"
-                  value={newCompanies.companyName}
-                  onChange={signupChangeHandler}
-                  required
-                  width={'100%'}
-                />
-              </StSignupLabel>
-            </div>
-            <div>
-              <StSignupLabel width={'100%'}>
-                <StSignupInputName>업종</StSignupInputName>
-                <br />
-                <StSignupInput
-                  type="text"
-                  name="business"
-                  placeholder="업종 입력 ex)제약업"
-                  value={newCompanies.business}
-                  onChange={signupChangeHandler}
-                  required
-                  width={'100%'}
-                />
-              </StSignupLabel>
-            </div>
-            <div>
-              <StSignupLabel width={'100%'}>
-                <StSignupInputName>대표자명</StSignupInputName>
-                <br />
-                <StSignupInput
-                  type="text"
-                  name="ownerName"
-                  placeholder="대표자명 입력"
-                  value={newCompanies.ownerName}
-                  onChange={signupChangeHandler}
-                  required
-                  width={'100%'}
-                />
-              </StSignupLabel>
-            </div>
-            <div>
-              <StSignupInputWrap>
-                <StSignupLabel>
-                  <StSignupInputName>회사/단체 주소</StSignupInputName>
+            </StTerms>
+          </div>
+        </Layout>
+      ) : (
+        <Layout>
+          <StSignupHeader>
+            <StSignupTitle>
+              <StSignupLapLink>LabLink</StSignupLapLink>
+              에 오신 고객님 <br />
+              환영합니다!
+            </StSignupTitle>
+          </StSignupHeader>
+          <StSignupFormWrap>
+            <StSignupForm onSubmit={signupSubmitHandler}>
+              <div>
+                <StSignupInputWrap>
+                  <StSignupLabel>
+                    <StSignupInputName>이메일</StSignupInputName>
+                    <br />
+                    <StSignupInput
+                      type="email"
+                      name="email"
+                      placeholder="이메일"
+                      value={newCompanies.email}
+                      onChange={signupChangeHandler}
+                      required
+                    />
+                  </StSignupLabel>
+                  <Button
+                    type="button"
+                    onClick={emailCheckButton}
+                    variant="dark"
+                    style={{
+                      height: '50px',
+                    }}
+                  >
+                    중복확인
+                  </Button>
+                </StSignupInputWrap>
+                <StSignupInputCondition>
+                  이메일 형식으로 입력해주세요
+                </StSignupInputCondition>
+              </div>
+              <div>
+                <div>
+                  <StSignupLabel width={'100%'}>
+                    <StSignupInputName>비밀번호</StSignupInputName>
+                    <StSignupInput
+                      type="password"
+                      name="password"
+                      placeholder="비밀번호 입력"
+                      value={newCompanies.password}
+                      onChange={signupChangeHandler}
+                      required
+                      width={'100%'}
+                    />
+                  </StSignupLabel>
+                  <StSignupInputCondition>
+                    영문, 숫자, 특수문자가 포함된 8~20글자로 <br />
+                    입력해주세요
+                  </StSignupInputCondition>
+                </div>
+                <div
+                  style={{
+                    marginTop: '10px',
+                  }}
+                >
+                  <StSignupLabel width={'100%'}>
+                    <StSignupInput
+                      type="password"
+                      name="passwordCk"
+                      placeholder="비밀번호 확인"
+                      value={pwCheck.passwordCk}
+                      onChange={signupChangeHandler}
+                      required
+                      width={'100%'}
+                    />
+                  </StSignupLabel>
+                  <StSignupInputCondition>{isSamePw}</StSignupInputCondition>
+                </div>
+              </div>
+              <div>
+                <StSignupLabel width={'100%'}>
+                  <StSignupInputName>전화번호</StSignupInputName>
                   <br />
                   <StSignupInput
                     type="text"
-                    name="address"
-                    placeholder="주소검색 버튼을 눌러주세요"
-                    value={newCompanies.address}
+                    name="managerPhone"
+                    placeholder="전화번호 '-'제외하고 입력"
+                    value={newCompanies.managerPhone}
                     onChange={signupChangeHandler}
                     required
+                    width={'100%'}
                   />
                 </StSignupLabel>
-                <Button
-                  type="button"
-                  onClick={handleShow}
-                  variant="dark"
-                  style={{
-                    height: '50px',
-                  }}
-                >
-                  주소찾기
-                </Button>
-              </StSignupInputWrap>
-              <Modal
-                show={show}
-                onHide={handleClose}
-              >
-                <Modal.Body>
-                  <DaumPostcode
-                    onComplete={completeHandler}
-                    style={{
-                      height: '600px',
-                    }}
+              </div>
+              <div>
+                <StSignupLabel width={'100%'}>
+                  <StSignupInputName>회사/단체명</StSignupInputName>
+                  <br />
+                  <StSignupInput
+                    type="text"
+                    name="companyName"
+                    placeholder="회사/단체명 입력"
+                    value={newCompanies.companyName}
+                    onChange={signupChangeHandler}
+                    required
+                    width={'100%'}
                   />
-                </Modal.Body>
-              </Modal>
-              <br />
-              <StSignupInput
-                type="text"
-                name="detailAddress"
-                placeholder="상세주소 입력"
-                value={newCompanies.detailAddress}
-                onChange={signupChangeHandler}
-                required
-                width={'100%'}
-              />
-            </div>
-            <div>
-              <StSignupLabel width={'100%'}>
-                <StSignupInputName>로고</StSignupInputName>
+                </StSignupLabel>
+              </div>
+              <div>
+                <StSignupLabel width={'100%'}>
+                  <StSignupInputName>업종</StSignupInputName>
+                  <br />
+                  <StSignupInput
+                    type="text"
+                    name="business"
+                    placeholder="업종 입력 ex)제약업"
+                    value={newCompanies.business}
+                    onChange={signupChangeHandler}
+                    required
+                    width={'100%'}
+                  />
+                </StSignupLabel>
+              </div>
+              <div>
+                <StSignupLabel width={'100%'}>
+                  <StSignupInputName>대표자명</StSignupInputName>
+                  <br />
+                  <StSignupInput
+                    type="text"
+                    name="ownerName"
+                    placeholder="대표자명 입력"
+                    value={newCompanies.ownerName}
+                    onChange={signupChangeHandler}
+                    required
+                    width={'100%'}
+                  />
+                </StSignupLabel>
+              </div>
+              <div>
+                <StSignupInputWrap>
+                  <StSignupLabel>
+                    <StSignupInputName>회사/단체 주소</StSignupInputName>
+                    <br />
+                    <StSignupInput
+                      type="text"
+                      name="address"
+                      placeholder="주소검색 버튼을 눌러주세요"
+                      value={newCompanies.address}
+                      onChange={signupChangeHandler}
+                      required
+                    />
+                  </StSignupLabel>
+                  <Button
+                    type="button"
+                    onClick={handleShow}
+                    variant="dark"
+                    style={{
+                      height: '50px',
+                    }}
+                  >
+                    주소찾기
+                  </Button>
+                </StSignupInputWrap>
+                <Modal
+                  show={show}
+                  onHide={handleClose}
+                >
+                  <Modal.Body>
+                    <DaumPostcode
+                      onComplete={completeHandler}
+                      style={{
+                        height: '600px',
+                      }}
+                    />
+                  </Modal.Body>
+                </Modal>
                 <br />
-                <input
-                  type="file"
-                  name="companyLogo"
-                  accept="image/png, image/jpeg, image/jpg"
-                  onChange={signUpFileHandler}
+                <StSignupInput
+                  type="text"
+                  name="detailAddress"
+                  placeholder="상세주소 입력"
+                  value={newCompanies.detailAddress}
+                  onChange={signupChangeHandler}
+                  required
+                  width={'100%'}
                 />
-              </StSignupLabel>
-            </div>
-            <div className="d-grid gap-2">
-              <Button
-                variant="dark"
-                size="lg"
-                type="submit"
-              >
-                회원가입
-              </Button>
-            </div>
-          </StSignupForm>
-        </StSignupFormWrap>
-      </Layout>
+              </div>
+              <div>
+                <StSignupLabel width={'100%'}>
+                  <StSignupInputName>로고</StSignupInputName>
+                  <br />
+                  <input
+                    type="file"
+                    name="companyLogo"
+                    accept="image/png, image/jpeg, image/jpg"
+                    onChange={signUpFileHandler}
+                  />
+                </StSignupLabel>
+              </div>
+              <div className="d-grid gap-2">
+                <Button
+                  variant="dark"
+                  size="lg"
+                  type="submit"
+                >
+                  회원가입
+                </Button>
+              </div>
+            </StSignupForm>
+          </StSignupFormWrap>
+        </Layout>
+      )}
     </>
   );
 }

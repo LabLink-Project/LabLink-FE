@@ -5,7 +5,7 @@ import SignupUser from '../UI/pages/Signup/SignupUser';
 import SignupCompany from '../UI/pages/Signup/SignupCompany';
 import LoginUser from '../UI/pages/Login/LoginUser';
 import LoginCompany from '../UI/pages/Login/LoginCompany';
-import UserTerms from '../UI/pages/Signup/UserTerms';
+import ServiceTerms from '../UI/pages/Terms/ServiceTerms';
 import SignupSuccess from '../UI/pages/Signup/SignupSuccess';
 import Home from 'src/UI/pages/Home';
 import ReadStudyDetail from 'src/UI/pages/ReadStudyDetail';
@@ -14,16 +14,29 @@ import PersonalPage from 'src/UI/pages/PersonalPage';
 import EditPersonalProfile from 'src/UI/pages/EditPersonalProfile';
 import PersonalRequest from 'src/UI/pages/PersonalRequest';
 import CompanyApplicant from 'src/UI/pages/CompanyApplicant';
-import EndStudyList from 'src/UI/pages/EndStudyList';
+import EndStudyList from 'src/UI/pages/CompanyEndStudyList';
 import ReadStudy from 'src/UI/pages/ReadStudy';
 import Search from 'src/UI/pages/Search';
 import CreateStudy from 'src/UI/pages/CreateStudy';
 import { URI } from './URIs';
 import CompanyPage from 'src/UI/pages/CompanyPage';
-import OngoingStudy from 'src/UI/pages/OngoingStudy';
-import Feedback from 'src/UI/pages/Feedback';
+import OngoingStudy from 'src/UI/pages/CompanyOngoingStudy';
+import Feedback from 'src/UI/pages/ReadFeedback';
 import StudySchedule from 'src/UI/pages/StudySchedule';
 import Application from 'src/UI/pages/Application/Application';
+import PersonalTerms from 'src/UI/pages/Terms/PersonalTerms';
+import MarketingTerms from 'src/UI/pages/Terms/MarketingTerms';
+import EditCompanyProfile from 'src/UI/pages/EditCompanyProfile';
+import CompanyOngoingStudy from 'src/UI/pages/CompanyOngoingStudy';
+import CompanyEndStudyList from 'src/UI/pages/CompanyEndStudyList';
+import UserOngoingStudy from 'src/UI/pages/PersonalOngoingStudy';
+import UserEndStudy from 'src/UI/pages/PersonalEndStudy';
+import PersonalOngoingStudy from 'src/UI/pages/PersonalOngoingStudy';
+import PersonalEndStudy from 'src/UI/pages/PersonalEndStudy';
+import CompanyFeedback from 'src/UI/pages/ReadFeedback';
+import PersonalFeedback from 'src/UI/pages/CreateFeedback';
+import CreateFeedback from 'src/UI/pages/CreateFeedback';
+import ReadFeedback from 'src/UI/pages/ReadFeedback';
 
 const Router = () => {
   return (
@@ -56,11 +69,6 @@ const Router = () => {
         />
 
         {/* auths */}
-        {/* 로그인 선택 예정
-        <Route
-          path={URI.auth.signin.home}
-          element={</>}
-        /> */}
         <Route
           path={URI.auth.signin.user}
           element={<LoginUser />}
@@ -78,22 +86,30 @@ const Router = () => {
           element={<SignupUser />}
         />
         <Route
-          path={URI.auth.signup.userTerm}
-          element={<UserTerms />}
-        />
-        <Route
           path={URI.auth.signup.company}
           element={<SignupCompany />}
+        />
+        <Route
+          path={URI.auth.signup.serviceTerm}
+          element={<ServiceTerms />}
+        />
+        <Route
+          path={URI.auth.signup.personalTerm}
+          element={<PersonalTerms />}
+        />
+        <Route
+          path={URI.auth.signup.marketingTerm}
+          element={<MarketingTerms />}
+        />
+        <Route
+          path={URI.auth.signup.done}
+          element={<SignupSuccess />}
         />
         {/* 기업 회원가입 약관 예정
         <Route
           path={URI.auth.signup.companyTerm}
           element={< />}
         /> */}
-        <Route
-          path={URI.auth.signup.done}
-          element={<SignupSuccess />}
-        />
         {/* 아이디/비밀번호 찾기 예정
         <Route
           path={URI.auth.signup.findID}
@@ -110,10 +126,24 @@ const Router = () => {
           path={URI.mypage.user.editInfo}
           element={<EditPersonalProfile />}
         />
-        {/* 신청할, 진행할, 완료된 실험 수정 예정 */}
+        {/* 신청한 실험 */}
         <Route
-          path={URI.mypage.user.apply}
+          path={URI.mypage.user.applyStudy}
           element={<PersonalRequest />}
+        />
+        {/* 진행할 실험 */}
+        <Route
+          path={URI.mypage.user.ongoingStudy}
+          element={<PersonalOngoingStudy />}
+        />
+        {/* 완료한 실험 */}
+        <Route
+          path={URI.mypage.user.endStudy}
+          element={<PersonalEndStudy />}
+        />
+         <Route
+          path={`${URI.mypage.user.feedback}/:id`}
+          element={<CreateFeedback />}
         />
         {/* 신청서 작성 페이지 구현 예정 */}
         {/* <Route
@@ -122,10 +152,13 @@ const Router = () => {
         /> */}
 
         {/* 기업 마이페이지 */}
-        {/* 기업 마이페이지 구현 예정 */}
         <Route
           path={URI.mypage.company.home}
           element={<CompanyPage />}
+        />
+        <Route
+          path={URI.mypage.company.editInfo}
+          element={<EditCompanyProfile />}
         />
         <Route
           path={URI.mypage.company.createStudy}
@@ -133,11 +166,11 @@ const Router = () => {
         />
         <Route
           path={URI.mypage.company.ongoingStudy}
-          element={<OngoingStudy />}
+          element={<CompanyOngoingStudy />}
         />
         <Route
           path={URI.mypage.company.endStudy}
-          element={<EndStudyList />}
+          element={<CompanyEndStudyList />}
         />
         <Route
           path={URI.mypage.company.studySchedule}
@@ -149,7 +182,7 @@ const Router = () => {
         />
         <Route
           path={`${URI.mypage.company.feedback}/:id`}
-          element={<Feedback />}
+          element={<ReadFeedback />}
         />
       </Routes>
     </BrowserRouter>

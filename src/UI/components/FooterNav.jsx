@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom';
 import { URI } from 'src/shared/URIs';
 
 function FooterNav() {
+  const accountState = useSelector(state => state);
+  const { nickname, role } = accountState.accountHandler;
+
   return (
     <footer>
       <nav>
@@ -20,7 +23,11 @@ function FooterNav() {
             <Link to={URI.crud.bookmark}>찜목록</Link>
           </StFooterNavList>
           <StFooterNavList>
-            <Link to={URI.mypage.user.home}>내 정보</Link>
+            {role === 'USER' ? (
+              <Link to={URI.mypage.user.home}>내 정보</Link>
+            ) : (
+              <Link to={URI.mypage.company.home}>내 정보</Link>
+            )}
           </StFooterNavList>
         </StFooterNavUl>
       </nav>

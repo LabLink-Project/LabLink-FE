@@ -14,21 +14,27 @@ import {
   StPersonalRequestTitle,
   StPersonalRequestWrap,
 } from '../styles/PersonalRequest.styled';
+import { URI } from 'src/shared/URIs';
+import { useNavigate } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
 
-function PersonalRequest() {
+function PersonalEndStudy() {
+  const nav = useNavigate();
   return (
     <StPersonalRequestPaddingWrap>
       <SearchHeader title="실험 관리" />
       <StPersonalRequestWrap sort="space-between">
-        <StPersonalRequestTitle>신청한 실험</StPersonalRequestTitle>
-        <StPersonalRequestDiv>최근 1주일</StPersonalRequestDiv>
+        <StPersonalRequestTitle>완료한 실험</StPersonalRequestTitle>
+        <StPersonalRequestDiv>최근 1개월</StPersonalRequestDiv>
       </StPersonalRequestWrap>
       <ul>
         <li>
           <StPersonalRequestListWrap>
             <StPersonalRequestHeaderWrap sort="space-between">
               <StPersonalRequestCompany>(주)항해99</StPersonalRequestCompany>
-              <StPersonalRequestTime>2시간 전 지원</StPersonalRequestTime>
+              <StPersonalRequestTime>
+                5월5일까지 피드백 작성 가능
+              </StPersonalRequestTime>
             </StPersonalRequestHeaderWrap>
             <StPersonalRequestStudyTitle>
               APP 사용성테스트 지원자 모집
@@ -41,9 +47,18 @@ function PersonalRequest() {
             </StPersonalRequestStudyPay>
             <StPersonalRequestHeaderWrap sort="space-between">
               <StPersonalRequestStudyPay>
-                온라인 | 4월 12일 마감
+                온라인 | 4월 12일 완료
               </StPersonalRequestStudyPay>
-              <p>열람</p>
+              <Button
+                variant="dark"
+                style={{
+                  height: '100%',
+                  fontSize: '15px',
+                }}
+                onClick={() => nav(`${URI.mypage.user.feedback}/1`)}
+              >
+                피드백 작성
+              </Button>
             </StPersonalRequestHeaderWrap>
           </StPersonalRequestListWrap>
         </li>
@@ -52,4 +67,4 @@ function PersonalRequest() {
   );
 }
 
-export default PersonalRequest;
+export default PersonalEndStudy;
