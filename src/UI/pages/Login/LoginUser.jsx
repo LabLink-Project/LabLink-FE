@@ -18,6 +18,9 @@ import { URI } from 'src/shared/URIs';
 import { api } from 'src/api/api';
 import FooterNav from 'src/UI/components/FooterNav';
 import { openKakaoLogin } from 'src/utils/socialLogin';
+import kakao from 'src/assets/design/kakao.svg';
+import styled from 'styled-components';
+import { StFlexBox } from 'src/UI/styles/common.styled';
 
 function LoginUser() {
   const nav = useNavigate();
@@ -109,9 +112,14 @@ function LoginUser() {
             </div>
           </StLoginForm>
           <StLoginSNS>SNS로 간편하게 로그인하기</StLoginSNS>
-          <div>
-            <button onClick={openKakaoLogin}>Kakao</button>
-          </div>
+          <StDiv>
+            <button onClick={openKakaoLogin}>
+              <img
+                src={kakao}
+                alt="카카오 소셜 로그인 버튼 이미지"
+              />
+            </button>
+          </StDiv>
           <StLoginLinks>
             <Link
               to={URI.auth.signup.home}
@@ -141,5 +149,14 @@ function LoginUser() {
     </Layout>
   );
 }
+
+const StDiv = styled(StFlexBox)`
+  width: 192px;
+  height: 48px;
+
+  justify-content: center;
+
+  margin: 16px auto 0;
+`;
 
 export default LoginUser;
