@@ -108,9 +108,8 @@ function ReadStudyDetail() {
       </StReadStudyDetailWrap>
       <StReadStudyDetailDateAndPayWrap sort="space-between">
         <StReadStudyDetailDate>
-          모집기간{' '}
           <StReadStudyDetailDateSpan>
-            ~{convertToShortDate(studys.endDate)}까지
+            {studys.address} | {convertToShortDate(studys.endDate)}일 지원 마감
           </StReadStudyDetailDateSpan>
         </StReadStudyDetailDate>
         <StReadStudyDetailPay>{studys.pay}원</StReadStudyDetailPay>
