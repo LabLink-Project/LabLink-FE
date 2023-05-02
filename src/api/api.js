@@ -24,7 +24,7 @@ apiWithJWT.interceptors.request.use(
 
 apiWithJWT.interceptors.response.use(
   response => {
-    console.log(response);
+    // console.log(response);
     return response;
   },
   error => {
