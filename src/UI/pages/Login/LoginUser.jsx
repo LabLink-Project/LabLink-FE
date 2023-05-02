@@ -60,44 +60,48 @@ function LoginUser() {
   };
 
   return (
-    <>
-      <Layout>
-        <StLoginHeader>
-          <StLoginTitle>LabLink</StLoginTitle>
-        </StLoginHeader>
-        <Tabs
-          activeKey={key}
-          onSelect={k => setKey(k)}
-          variant="pills"
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-          }}
+    <Layout>
+      <StLoginHeader>
+        <StLoginTitle>LabLink</StLoginTitle>
+      </StLoginHeader>
+      <Tabs
+        activeKey={key}
+        onSelect={k => setKey(k)}
+        variant="pills"
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+        }}
+      >
+        <Tab
+          eventKey="user"
+          title="개인회원"
         >
-          <Tab
-            eventKey="user"
-            title="개인회원"
-          >
-            <StLoginForm onSubmit={loginSubmitHandler}>
-              <StLoginInput
-                type="text"
-                name="email"
-                value={login.email}
-                onChange={signupChangeHandler}
-                placeholder="이메일"
-              />
-              <StLoginInput
-                type="password"
-                name="password"
-                value={login.password}
-                onChange={signupChangeHandler}
-                placeholder="비밀번호"
-              />
-              <div
-                className="d-grid gap-2"
-                style={{
-                  width: '90%',
-                }}
+          <StLoginForm onSubmit={loginSubmitHandler}>
+            <StLoginInput
+              type="text"
+              name="email"
+              value={login.email}
+              onChange={signupChangeHandler}
+              placeholder="이메일"
+            />
+            <StLoginInput
+              type="password"
+              name="password"
+              value={login.password}
+              onChange={signupChangeHandler}
+              placeholder="비밀번호"
+            />
+            <div
+              className="d-grid gap-2"
+              style={{
+                width: '90%',
+              }}
+            >
+              <Button
+                variant="dark"
+                size="lg"
+                type="sumbit"
               >
                 로그인
               </Button>
@@ -131,7 +135,6 @@ function LoginUser() {
         />
       </Tabs>
     </Layout>
-
   );
 }
 

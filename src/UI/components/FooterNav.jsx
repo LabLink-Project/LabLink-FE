@@ -2,6 +2,7 @@ import React from 'react';
 import { StFooterNavList, StFooterNavUl } from '../styles/FooterNav.styled';
 import { Link } from 'react-router-dom';
 import { URI } from 'src/shared/URIs';
+import { useSelector } from 'react-redux';
 
 function FooterNav() {
   const accountState = useSelector(state => state);

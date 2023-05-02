@@ -16,6 +16,7 @@ import FooterNav from '../components/FooterNav';
 import { useSelector } from 'react-redux';
 import Collapse from 'react-bootstrap/Collapse';
 import { useNavigate } from 'react-router-dom';
+import { cookies } from 'src/shared/Cookie';
 
 function CompanyPage() {
   const nav = useNavigate();
