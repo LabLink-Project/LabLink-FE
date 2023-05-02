@@ -33,7 +33,7 @@ export const URI = {
       ongoingStudy: '/mypage/user/ongoingstudy',
       endStudy: '/mypage/user/endstudy',
       application: '/mypage/user/application',
-      feedback: '/mypage/user/feedback'
+      feedback: '/mypage/user/feedback',
     },
     company: {
       home: '/mypage/company',
@@ -45,5 +45,8 @@ export const URI = {
       feedback: '/mypage/company/feedbacks',
       studySchedule: '/mypage/company/studyschedule',
     },
+  },
+  social: {
+    kakao: '/users/kakao/login',
   },
 };

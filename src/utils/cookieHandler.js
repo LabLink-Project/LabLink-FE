@@ -1,10 +1,10 @@
 /**
  * Get a Cookie
- * @param {String} cname, cookie name
+ * @param {String} cookieName
  * @return {String} cookie value
  */
-export const getCookie = cname => {
-  const name = cname + '=';
+export const getCookie = cookieName => {
+  const name = cookieName + '=';
   const cArr = window.document.cookie.split(';');
   // console.log(name);
 
@@ -33,3 +33,22 @@ export const deleteCookie = cname => {
   var expires = 'expires=' + d.toGMTString();
   window.document.cookie = cname + '=' + '; ' + expires;
 };
+
+/**
+ * Set a cookie
+ * @param {String} cookieName
+ * @param {String} value
+ * @param {Number} days
+ */
+
+// 쿠키 설정이 안되서 잠시 보류
+// export function setCookie(cookieName, value, days) {
+//   var exdate = new Date();
+//   exdate.setDate(exdate.getDate() + days);
+
+//   console.log(cookieName, value, days);
+
+//   var cookie_value =
+//     escape(value) + (days == null ? '' : '; expires=' + exdate.toUTCString());
+//   document.cookie = cookieName + '=' + cookie_value;
+// }

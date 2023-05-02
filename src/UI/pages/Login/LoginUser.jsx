@@ -17,6 +17,7 @@ import {
 import { URI } from 'src/shared/URIs';
 import { api } from 'src/api/api';
 import FooterNav from 'src/UI/components/FooterNav';
+import { openKakaoLogin } from 'src/utils/socialLogin';
 
 function LoginUser() {
   const nav = useNavigate();
@@ -108,6 +109,9 @@ function LoginUser() {
             </div>
           </StLoginForm>
           <StLoginSNS>SNS로 간편하게 로그인하기</StLoginSNS>
+          <div>
+            <button onClick={openKakaoLogin}>Kakao</button>
+          </div>
           <StLoginLinks>
             <Link
               to={URI.auth.signup.home}
