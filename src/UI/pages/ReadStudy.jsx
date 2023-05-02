@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import Study from 'src/UI/components/Study';
 import SearchBar from 'src/UI/components/SearchBar';
 import { StFlexBox } from 'src/UI/styles/common.styled';
@@ -9,10 +9,7 @@ import useStudys from 'src/hooks/useStudys';
 
 function ReadStudy() {
   const { state } = useLocation();
-  console.log(state);
-
-  // const keyword = useRef(state.keyword);
-  // console.log(keyword);
+  // console.log(state);
 
   const [studys] = useStudys(`/studies?keyword=${state.keyword}`);
   // console.log(studys);
@@ -26,12 +23,11 @@ function ReadStudy() {
         <StReadStudyH1>
           {state.keyword} 검색결과 {studys.length}건
         </StReadStudyH1>
-        <select>
-          {/* 이 부분은 모달로 처리하네..? */}
+        {/* <select>
           <option value="">최신순</option>
           <option value="">급여순</option>
           <option value="">인기순</option>
-        </select>
+        </select> */}
       </StFlexBox>
       <ul>
         {/* 와이어프레임 기준 */}
