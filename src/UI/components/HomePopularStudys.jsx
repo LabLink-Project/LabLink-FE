@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { StFlexBox } from '../styles/common.styled';
 import { StHomeBannerCircle } from '../styles/HomeBanner.styled';
 import {
@@ -6,26 +6,29 @@ import {
   StHomeStudysUl,
 } from '../styles/HomePopularStudy.styled';
 import StudyColumn from './StudyColumn';
-import { apiWithJWT } from 'src/api/api';
+import useReduxState from 'src/hooks/useReduxState';
+import useStudys from 'src/hooks/useStudys';
 
 function HomePopularStudys() {
-  const [studys, setStudys] = useState([]);
-  const getStudys = async () => {
-    const response = await apiWithJWT.get('/studies?sortedType=popularity');
-    console.log('popular studys : ', response.data.data);
-    setStudys([...response.data.data]);
-  };
-
-  useEffect(() => {
-    getStudys();
-  }, []);
+  const [studys] = useStudys('/studies?sortedType=popularity');
+  const { studyType, detailAddress } = useReduxState();
+  // console.log(studyType, detailAddress);
+  // 맨 처음 값이 all(소문자)로 되어있는 현상 버그 찾아야됨
 
   return (
     <div>
       <StHomePopularStudysH2>오늘의 인기 공고</StHomePopularStudysH2>
       <StHomeStudysUl>
         {studys
-          .filter((obj, index) => {
+          .filter(obj => {
+            if (studyType === 'ALL') return obj;
+            return obj.category === studyType;
+          })
+          .filter(obj => {
+            if (detailAddress === '전체') return obj;
+            return obj.address === detailAddress;
+          })
+          .filter((_, index) => {
             return index < 4;
           })
           .map(obj => {
@@ -37,12 +40,13 @@ function HomePopularStudys() {
             );
           })}
       </StHomeStudysUl>
-      <StFlexBox sort="center">
+      {/* 시간 나면 추가로 수정해야 할 부분 */}
+      {/* <StFlexBox sort="center">
+        <StHomeBannerCircle current />
         <StHomeBannerCircle />
         <StHomeBannerCircle />
         <StHomeBannerCircle />
-        <StHomeBannerCircle />
-      </StFlexBox>
+      </StFlexBox> */}
     </div>
   );
 }

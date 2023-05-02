@@ -6,8 +6,22 @@ import {
   StSearchBarIconLabel,
   StSearchBarWrap,
 } from '../styles/SearchBar.styled';
+import { useInput } from 'src/hooks/useInput';
+import { useNavigate } from 'react-router-dom';
 
-function SearchBar({ placeholder, handler, onEnterHandler }) {
+function SearchBar({ placeholder }) {
+  // handler={keywordHandler}
+  // onEnterHandler={onSearchHandler}
+
+  const [keyword, keywordHandler] = useInput('');
+
+  const navigate = useNavigate();
+
+  const onSearchHandler = () => {
+    console.log('entered search bar : ', keyword);
+    navigate('/studys', { state: { keyword } });
+  };
+
   return (
     <StSearchBarWrap>
       <StSearchBarIconLabel htmlFor="search">
@@ -19,10 +33,10 @@ function SearchBar({ placeholder, handler, onEnterHandler }) {
       <StSearchBar
         type="text"
         id="search"
-        onChange={handler}
-        placeholder={placeholder}
+        onChange={keywordHandler}
+        placeholder={placeholder ? placeholder : '검색어를 입력해 주세요'}
         onKeyPress={e => {
-          if (e.key === 'Enter') onEnterHandler();
+          if (e.key === 'Enter') onSearchHandler();
         }}
       />
     </StSearchBarWrap>

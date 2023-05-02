@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { StFlexBox } from './common.styled';
 import { StudyColors, StudyFontOptions } from 'src/shared/Colors';
 
@@ -13,6 +13,10 @@ export const StHomeSelectAddress = styled.div`
 `;
 
 export const StHomeSelectAddressButton = styled.div`
-  ${StudyFontOptions.caption}
-  color: ${StudyColors.paragraph}
+  ${StudyFontOptions.caption};
+  color: ${StudyColors.paragraph};
+
+  &:hover {
+    cursor: pointer;
+  }
 `;

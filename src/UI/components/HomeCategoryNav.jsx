@@ -3,13 +3,31 @@ import {
   StHomeCategoryNav,
   StHomeCategoryNavButton,
 } from '../styles/HomeCategoryNav.styled';
+import useHomeAddress from 'src/hooks/useHomeAddress';
 
 function HomeCategoryNav() {
+  const [address, allHandler, onlineHandler, offlineHandler] = useHomeAddress();
+
   return (
     <StHomeCategoryNav>
-      {/* 보더 2px 늘어나는 거 생각해서 수정해라 */}
-      <StHomeCategoryNavButton>지역</StHomeCategoryNavButton>
-      <StHomeCategoryNavButton>온라인</StHomeCategoryNavButton>
+      <StHomeCategoryNavButton
+        onClick={allHandler}
+        current={address === 'ALL' ? true : false}
+      >
+        전체
+      </StHomeCategoryNavButton>
+      <StHomeCategoryNavButton
+        onClick={offlineHandler}
+        current={address === 'OFFLINE' ? true : false}
+      >
+        지역
+      </StHomeCategoryNavButton>
+      <StHomeCategoryNavButton
+        onClick={onlineHandler}
+        current={address === 'ONLINE' ? true : false}
+      >
+        온라인
+      </StHomeCategoryNavButton>
     </StHomeCategoryNav>
   );
 }

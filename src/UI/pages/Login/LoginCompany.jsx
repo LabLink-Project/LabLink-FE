@@ -14,6 +14,7 @@ import {
 } from 'src/UI/styles/Login.styled';
 import { URI } from 'src/shared/URIs';
 import { api } from 'src/api/api';
+import FooterNav from 'src/UI/components/FooterNav';
 
 function LoginCompany() {
   const nav = useNavigate();
@@ -130,6 +131,7 @@ function LoginCompany() {
           </StLoginLinks>
         </Tab>
       </Tabs>
+      <FooterNav />
     </Layout>
   );
 }

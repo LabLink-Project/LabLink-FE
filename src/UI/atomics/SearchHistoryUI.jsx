@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import React from 'react';
 import {
   StSearchHistoryUICloseIcon,
@@ -7,15 +8,22 @@ import {
 import close from 'src/assets/Close.svg';
 
 function SearchHistoryUI({ children }) {
+  const navigate = useNavigate();
+
+  const onSearchHandler = () => {
+    console.log('entered search bar : ', children);
+    navigate('/studys', { state: { keyword: children } });
+  };
+
   return (
-    <StSearchHistoryUI>
+    <StSearchHistoryUI onClick={onSearchHandler}>
       <StSearchHistoryUISpan>{children}</StSearchHistoryUISpan>
-      <button>
+      {/* <button>
         <StSearchHistoryUICloseIcon
           src={close}
           alt="close button"
         />
-      </button>
+      </button> */}
     </StSearchHistoryUI>
   );
 }

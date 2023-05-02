@@ -2,6 +2,7 @@ import { StudyColors, StudyFontOptions } from 'src/shared/Colors';
 import styled from 'styled-components';
 import StudyInput from '../atomics/StudyInput';
 import Study from '../components/Study';
+import { fontOptions } from 'src/shared/designFontOptions';
 
 export const StRequiredInputSpan = styled.span`
   ${StudyFontOptions.subtitle}
@@ -51,11 +52,13 @@ export const StCreateStudyTextarea = styled.textarea`
 
   padding: 12px;
   border: 1px solid ${StudyColors.inputBorder};
+  border-radius: 5px;
   box-sizing: border-box;
   resize: none;
 
   &::placeholder {
     font-family: Pretendard, sans-serif;
+    ${fontOptions.caption};
   }
 
   &:focus {

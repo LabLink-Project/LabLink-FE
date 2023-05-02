@@ -23,6 +23,7 @@ import CompanyPage from 'src/UI/pages/CompanyPage';
 import OngoingStudy from 'src/UI/pages/CompanyOngoingStudy';
 import Feedback from 'src/UI/pages/ReadFeedback';
 import StudySchedule from 'src/UI/pages/StudySchedule';
+import Application from 'src/UI/pages/Application/Application';
 import PersonalTerms from 'src/UI/pages/Terms/PersonalTerms';
 import MarketingTerms from 'src/UI/pages/Terms/MarketingTerms';
 import EditCompanyProfile from 'src/UI/pages/EditCompanyProfile';
@@ -57,6 +58,10 @@ const Router = () => {
         <Route
           path={URI.crud.studyDetail}
           element={<ReadStudyDetail />}
+        />
+        <Route
+          path={URI.crud.studyApply}
+          element={<Application />}
         />
         <Route
           path={URI.crud.bookmark}
