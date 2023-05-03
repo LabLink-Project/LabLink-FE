@@ -9,6 +9,7 @@ export const GlobalStyle = createGlobalStyle`
 
     .App {
         width: 377px;
+        min-height: 100vh;
         margin: 0 auto;
     }
 
