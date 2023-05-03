@@ -8,7 +8,7 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     .App {
-        width: 375px;
+        width: 377px;
         margin: 0 auto;
     }
 
