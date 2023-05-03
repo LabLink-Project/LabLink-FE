@@ -124,6 +124,10 @@ export const StReadStudyDetailInfoParagraph = styled.p`
   white-space: pre-line;
 `;
 
+export const StParagraph = styled(StReadStudyDetailInfoParagraph)`
+  margin-bottom: 8px;
+`;
+
 export const StReadStudyDetailQuestion = styled.button`
   min-width: 109px;
   min-height: 56px;
