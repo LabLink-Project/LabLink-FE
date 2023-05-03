@@ -5,9 +5,12 @@ import styled, { css } from 'styled-components';
 import { StudyColors } from 'src/shared/Colors';
 import tutorialBanner from 'src/assets/design/banner/tutorialBanner.svg';
 import feedbackBanner from 'src/assets/design/banner/feedbackBanner.svg';
+import { URI } from 'src/shared/URIs';
+import { Link } from 'react-router-dom';
 
 function HomeBanner() {
   const images = useRef([tutorialBanner, feedbackBanner]);
+  const urls = useRef([URI.banner.tutorial, URI.banner.feedback]);
 
   const imgSize = useRef(images.current.length);
 
@@ -47,10 +50,12 @@ function HomeBanner() {
           <StCarouselFlexBox current={current}>
             {images.current.map((img, i) => {
               return (
-                <StImage
-                  key={i}
-                  src={img}
-                />
+                <Link to={urls.current[i]}>
+                  <StImage
+                    key={i}
+                    src={img}
+                  />
+                </Link>
               );
             })}
           </StCarouselFlexBox>

@@ -195,11 +195,11 @@ const Router = () => {
 
         {/* home banner routes */}
         <Route
-          path={'/banner/tutorial'}
+          path={URI.banner.tutorial}
           element={<TutorialBanner />}
         />
         <Route
-          path={'/banner/feedback'}
+          path={URI.banner.feedback}
           element={<FeedbackBanner />}
         />
       </Routes>

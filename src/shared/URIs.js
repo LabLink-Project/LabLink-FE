@@ -49,4 +49,8 @@ export const URI = {
   social: {
     kakao: '/users/kakao/login',
   },
+  banner: {
+    tutorial: '/banner/tutorial',
+    feedback: '/banner/feedback',
+  },
 };
