@@ -45,11 +45,17 @@ import {
 function ReadStudyDetail() {
   const { id } = useParams();
   const [studys] = useStudy(`/studies/${id}`);
-  const [isbookmark, BookmarkHandler] = useBookmark(studys.isbookmark);
+  const [isbookmark, BookmarkHandler] = useBookmark(id, studys.isbookmark);
 
   const navigate = useNavigate();
   const applyHandler = () => {
-    navigate(`${URI.crud.studys}/${id}/apply`);
+    if (studys.isapplied) {
+      alert('이미 지원한 공고에는 한번 더 지원할 수 없습니다 🥺');
+    }
+
+    if (!studys.isapplied) {
+      navigate(`${URI.crud.studys}/${id}/apply`);
+    }
   };
 
   return (
