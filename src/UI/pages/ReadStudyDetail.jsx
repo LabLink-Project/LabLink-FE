@@ -41,6 +41,7 @@ import {
   isDefaultImage,
   isNull,
 } from 'src/utils/parseData';
+import { useAccountState } from 'src/hooks/useReduxState';
 
 function ReadStudyDetail() {
   const { id } = useParams();
@@ -48,14 +49,12 @@ function ReadStudyDetail() {
   const [isbookmark, BookmarkHandler] = useBookmark(id, studys.isbookmark);
 
   const navigate = useNavigate();
-  const applyHandler = () => {
-    if (studys.isapplied) {
-      alert('이미 지원한 공고에는 한번 더 지원할 수 없습니다 🥺');
-    }
+  const userType = useAccountState('role');
 
-    if (!studys.isapplied) {
-      navigate(`${URI.crud.studys}/${id}/apply`);
-    }
+  const applyHandler = () => {
+    if (userType !== 'USER') return alert('공고에 지원하실 수 없습니다 😥');
+    if (studys.isapplied) return alert('이미 지원한 공고입니다 🥺');
+    if (!studys.isapplied) navigate(`${URI.crud.studys}/${id}/apply`);
   };
 
   return (
