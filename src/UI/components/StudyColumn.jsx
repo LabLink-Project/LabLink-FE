@@ -9,6 +9,7 @@ import CompanyName from '../atomics/popularStudy/CompanyName';
 import Title from '../atomics/popularStudy/Title';
 import Deadline from '../atomics/popularStudy/Deadline';
 import Pay from '../atomics/popularStudy/Pay';
+import { URI } from 'src/shared/URIs';
 
 // 합성 컴포넌트 패턴으로 처리해보자 도전!!
 function StudyColumn({ obj }) {
@@ -23,7 +24,7 @@ function StudyColumn({ obj }) {
           />
         </StFlexWrap>
         <StWrap>
-          <Link>
+          <Link to={`${URI.crud.studys}/${obj.id}`}>
             <CompanyName>{obj.companyName}</CompanyName>
             <Title>{obj.title}</Title>
           </Link>
