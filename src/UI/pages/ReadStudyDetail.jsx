@@ -148,6 +148,7 @@ const StH3 = styled.h3`
 `;
 
 const StImage = styled.img`
+  min-width: 335px;
   max-width: 335px;
 `;
 
