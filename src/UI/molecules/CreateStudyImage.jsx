@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   StCreateStudyFileInput,
   StCreateStudyFileUploadLabel,
@@ -8,13 +8,21 @@ import {
   StCreateStudyWrap,
 } from '../styles/CreateStudy.styled';
 import { StFlexBox } from '../styles/common.styled';
+import { useSetCreateStudyState } from 'src/hooks/useReduxState';
 
 function CreateStudyImage() {
+  const [file, setFile] = useState(null);
+  const handler = useSetCreateStudyState();
+
+  useEffect(() => {
+    if (file) handler('thumbnailImage', file);
+  }, [file]);
+
   return (
     <StCreateStudyWrap>
       <StFlexBox sort="space-between">
         <StCreateStudyLabelWrap>
-          <StCreateStudyLabel htmlFor="">이미지 첨부</StCreateStudyLabel>
+          <StCreateStudyLabel htmlFor="">썸네일 이미지 첨부</StCreateStudyLabel>
           <StCreateStudyParagraph>
             500kB 이하의 jpg, png, pdf 파일만 등록 가능합니다.
           </StCreateStudyParagraph>
@@ -24,14 +32,11 @@ function CreateStudyImage() {
         </StCreateStudyFileUploadLabel>
         <StCreateStudyFileInput
           type="file"
-          name=""
           id="upload"
+          onChange={e => setFile(e.target.files[0])}
         />
       </StFlexBox>
-      {/* <ul>
-        <li>Document.jpg</li>
-        <li>image.pdf</li>
-      </ul> */}
+      <div>{file?.name}</div>
     </StCreateStudyWrap>
   );
 }

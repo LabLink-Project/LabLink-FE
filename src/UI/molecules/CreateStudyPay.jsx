@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   StCreateStudyLabel,
   StCreateStudyLabelWrap,
@@ -6,8 +6,17 @@ import {
   StCreateStudyWrap,
   StRequiredInputSpan,
 } from '../styles/CreateStudy.styled';
+import { useSetCreateStudyState } from 'src/hooks/useReduxState';
+import { useInput } from 'src/hooks/useInput';
 
 function CreateStudyPay() {
+  const [pay, payHandler] = useInput();
+  const handler = useSetCreateStudyState();
+
+  useEffect(() => {
+    handler('pay', pay);
+  }, [pay]);
+
   return (
     <StCreateStudyWrap>
       <StCreateStudyLabelWrap>
@@ -15,9 +24,9 @@ function CreateStudyPay() {
         <StRequiredInputSpan>*필수</StRequiredInputSpan>
       </StCreateStudyLabelWrap>
       <StCreateStudyPayInput
-        type="text"
-        // value={study.pay}
-        // onChange={e => setStudy({ ...study, title: e.target.value })}
+        type="number"
+        value={pay}
+        onChange={payHandler}
       />
     </StCreateStudyWrap>
   );

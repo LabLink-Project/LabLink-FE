@@ -14,6 +14,7 @@ export const StReadStudyDetailImage = styled.img`
   max-height: 216px;
 
   background-color: ${StudyColors.searchBar};
+  object-fit: contain;
 `;
 
 export const StReadStudyDetailOnline = styled(StStudyOnline)`

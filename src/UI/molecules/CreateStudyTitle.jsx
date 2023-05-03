@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   StCreateStudyLabel,
   StCreateStudyLabelWrap,
@@ -6,9 +6,17 @@ import {
   StRequiredInputSpan,
 } from '../styles/CreateStudy.styled';
 import StudyInput from '../atomics/StudyInput';
+import { useSetCreateStudyState } from 'src/hooks/useReduxState';
+import { useInput } from 'src/hooks/useInput';
 
-function CreateStudyTitle({ state }) {
-  // console.log(state);
+function CreateStudyTitle() {
+  const [title, titleHandler] = useInput();
+  const handler = useSetCreateStudyState();
+
+  useEffect(() => {
+    handler('title', title);
+  }, [title]);
+
   return (
     <StCreateStudyWrap>
       <StCreateStudyLabelWrap>
@@ -18,11 +26,8 @@ function CreateStudyTitle({ state }) {
       <StudyInput
         type="text"
         placeholder="공고명을 입력해 주세요."
-        value={state[0].title}
-        onChange={e => {
-          console.log(state[0].title);
-          state[1](e.target.value);
-        }}
+        value={title}
+        onChange={titleHandler}
       />
     </StCreateStudyWrap>
   );

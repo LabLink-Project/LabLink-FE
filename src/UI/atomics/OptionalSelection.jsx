@@ -4,6 +4,7 @@ import {
   StOptionalSelectionWrap,
 } from '../styles/OptionalSelection.styled';
 import { StCheckbox } from '../styles/common.styled';
+import { useSetCreateStudyState } from 'src/hooks/useReduxState';
 
 function OptionalSelection({ label }) {
   return (

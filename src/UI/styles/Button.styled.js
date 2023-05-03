@@ -8,10 +8,12 @@ export const StButton = styled.button`
   border: 1px solid ${StudyColors.buttonBorder};
   padding: 10px;
 
-  &:focus {
-    background-color: ${StudyColors.buttonFocus};
-    color: ${StudyColors.white};
-  }
+  ${props =>
+    props.current &&
+    css`
+      background-color: ${StudyColors.buttonFocus};
+      color: ${StudyColors.white};
+    `}
 
   ${props =>
     props.children === '온라인' &&

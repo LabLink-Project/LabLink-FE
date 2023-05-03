@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   StCreateStudyDueDateWrap,
   StCreateStudyLabel,
@@ -11,12 +11,17 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import 'src/UI/styles/customDatePicker.css';
 import calendar from 'src/assets/calendar.svg';
+import formatDate from 'src/utils/formatDate';
+import { useSetCreateStudyState } from 'src/hooks/useReduxState';
 
 function CreateStudyDueDate() {
-  const [dates, setDates] = useState({
-    date: new Date(),
-    endDate: new Date(),
-  });
+  const [date, setDate] = useState(new Date());
+  const dateHandler = useSetCreateStudyState();
+
+  useEffect(() => {
+    const editDate = formatDate(date);
+    dateHandler('date', editDate);
+  }, [date]);
 
   return (
     <StCreateStudyWrap>
@@ -28,11 +33,10 @@ function CreateStudyDueDate() {
         {/* custom datepicker css 적용해야 됨......... */}
         <StCreateStudyDueDateWrap>
           <DatePicker
-            selected={dates.date}
-            // onChange={date => {
-            //   setDates({ ...dates, date: date });
-            //   remakeDates('date');
-            // }}
+            selected={date}
+            onChange={value => {
+              setDate(value);
+            }}
             showTimeSelect
           />
           <img
