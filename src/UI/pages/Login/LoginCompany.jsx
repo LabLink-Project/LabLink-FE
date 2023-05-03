@@ -110,7 +110,11 @@ function LoginCompany() {
               </Button>
             </div>
           </StLoginForm>
-          <StLoginLinks>
+          <StLoginLinks
+            style={{
+              marginTop: '220px',
+            }}
+          >
             <Link
               to={URI.auth.signup.home}
               style={{

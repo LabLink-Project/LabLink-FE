@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import SearchHeader from '../components/SearchHeader';
 import { StCheckbox, StFlexBox } from '../styles/common.styled';
 import {
@@ -19,8 +19,32 @@ import {
   StCompanyApplicantWrap,
   StCompanyApplicationPayStrong,
 } from '../styles/CompanyApplicant.styled';
+import { api } from 'src/api/api';
+import { useParams } from 'react-router-dom';
+import { cookies } from 'src/shared/Cookie';
 
 function CompanyApplicant() {
+  const param = useParams();
+  const token = cookies.get('token');
+
+  const [applications, sestApplications] = useState();
+
+  const getApplicant = async () => {
+    try {
+      const { data } = await api.get(`/studies/${param.id}/applications`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      sestApplications(data.data);
+    } catch (error) {
+      alert(`${error.response.data.message}`);
+    }
+  };
+
+  useEffect(() => {
+    getApplicant();
+  }, []);
   return (
     <StCompanyApplicantWrap>
       <SearchHeader title="지원자 확인" />

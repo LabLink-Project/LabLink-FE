@@ -13,21 +13,11 @@ import DaumPostcode from 'react-daum-postcode';
 import { MyContext } from '../pages/EditPersonalProfile';
 import { useContext } from 'react';
 
-function CreateUserAddress({ title, userInfo, setUserInfo,userInfoOnchange }) {
+function CreateUserAddress({ title, userInfo, setUserInfo, userInfoOnchange }) {
   // 모달 열기/닫기 state
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
-  // const { userInfo, setUserInfo, userInfoOnchange } = useContext(MyContext);
-  // const props = useContext(MyContext);
-  // console.log(p);
-
-  // 유저정보 onchange
-  // const userInfoOnchange = e => {
-  //   const { name, value } = e.target;
-  //   setUserInfo({ ...userInfo, [name]: value });
-  // };
 
   // 주소 선택 후
   const completeHandler = data => {
@@ -49,7 +39,8 @@ function CreateUserAddress({ title, userInfo, setUserInfo,userInfoOnchange }) {
           name="userAddress"
           placeholder="주소검색 버튼을 눌러주세요."
           value={userInfo.userAddress}
-          onChange={userInfoOnchange}
+          onChange={()=>
+            userInfoOnchange()}
         />
         <StBlackButton
           onClick={e => {

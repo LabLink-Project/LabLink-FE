@@ -141,7 +141,7 @@ const Router = () => {
           path={URI.mypage.user.endStudy}
           element={<PersonalEndStudy />}
         />
-         <Route
+        <Route
           path={`${URI.mypage.user.feedback}/:id`}
           element={<CreateFeedback />}
         />
@@ -177,7 +177,7 @@ const Router = () => {
           element={<StudySchedule />}
         />
         <Route
-          path={URI.mypage.company.applicant}
+          path={`${URI.mypage.company.applicant}/:id`}
           element={<CompanyApplicant />}
         />
         <Route

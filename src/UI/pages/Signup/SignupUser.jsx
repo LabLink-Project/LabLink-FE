@@ -505,7 +505,7 @@ function SignupUser() {
                     </Button> */}
                   </StSignupInputWrap>
                 </div>
-                <div
+                {/* <div
                   style={{
                     marginTop: '10px',
                   }}
@@ -522,7 +522,7 @@ function SignupUser() {
                         width={'100%'}
                       />
                     </StSignupLabel>
-                    {/* <Button
+                    <Button
                       type="button"
                       onClick={emailCheckButton}
                       variant="dark"
@@ -531,9 +531,9 @@ function SignupUser() {
                       }}
                     >
                       인증확인
-                    </Button> */}
+                    </Button>
                   </StSignupInputWrap>
-                </div>
+                </div> */}
               </div>
               <div className="d-grid gap-2">
                 <Button
