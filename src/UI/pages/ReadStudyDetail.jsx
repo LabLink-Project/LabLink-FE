@@ -38,6 +38,7 @@ import {
   formatAge,
   formatBenefit,
   formatGender,
+  isDefaultImage,
   isNull,
 } from 'src/utils/parseData';
 
@@ -121,11 +122,14 @@ function ReadStudyDetail() {
           상세 설명은 아래 이미지 참고 부탁드립니다.
         </StReadStudyDetailInfoParagraph>
       </StReadStudyDetailInfoWrap>
-      {/* 디테일 이미지 추후 작업하면 반영 */}
-      {/* <StImage
-        src={studys.detailImageURL}
-        alt="이미지"
-      /> */}
+      {isDefaultImage(studys.detailImageURL) ? (
+        ''
+      ) : (
+        <StImage
+          src={studys.detailImageURL}
+          alt="이미지"
+        />
+      )}
       <div style={{ marginBottom: '16px' }}></div>
       <StFlexBox>
         <StReadStudyDetailQuestion onClick={soonDevelop}>

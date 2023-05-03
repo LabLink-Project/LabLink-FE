@@ -43,3 +43,16 @@ export const isNull = element => {
   if (element === null || element === 'null') return true;
   return false;
 };
+
+/**
+ * is this default image?
+ * @param {string} url
+ * @returns
+ */
+export const isDefaultImage = url => {
+  if (
+    url ===
+    'https://cdn.icon-icons.com/icons2/931/PNG/512/empty_file_icon-icons.com_72420.png'
+  )
+    return true;
+};
