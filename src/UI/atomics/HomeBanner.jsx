@@ -1,19 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
-import {
-  StHomeBannerCircle,
-  StHomeBannerImg,
-} from '../styles/HomeBanner.styled';
+import { StHomeBannerCircle } from '../styles/HomeBanner.styled';
 import { StFlexBox } from '../styles/common.styled';
-import lab from 'src/assets/lab.jpg';
 import styled, { css } from 'styled-components';
 import { StudyColors } from 'src/shared/Colors';
+import tutorialBanner from 'src/assets/design/banner/tutorialBanner.svg';
+import feedbackBanner from 'src/assets/design/banner/feedbackBanner.svg';
 
 function HomeBanner() {
-  const images = useRef([
-    'https://img.shields.io/badge/-JavaScript-F7DF1E?style=flat-square&logo=JavaScript&logoColor=black',
-    'https://img.shields.io/badge/-React-61DAFB?style=flat-square&logo=React&logoColor=black',
-    'https://img.shields.io/badge/-TypeScript-3178C6?style=flat-square&logo=TypeScript&logoColor=white',
-  ]);
+  const images = useRef([tutorialBanner, feedbackBanner]);
 
   const imgSize = useRef(images.current.length);
 
@@ -80,22 +74,12 @@ function HomeBanner() {
           );
         })}
       </StFlexBox>
-      {/* <StHomeBannerImg
-        src={lab}
-        alt="배너 영역"
-      />
-      <StFlexBox sort="center">
-        <StHomeBannerCircle />
-        <StHomeBannerCircle />
-        <StHomeBannerCircle />
-        <StHomeBannerCircle />
-      </StFlexBox> */}
     </>
   );
 }
 
 const StCarouselWrap = styled.div`
-  width: 335px;
+  width: 355px;
   height: 200px;
   overflow: hidden;
   position: relative;
@@ -103,7 +87,7 @@ const StCarouselWrap = styled.div`
 
 const StImage = styled.img`
   // image로 하면 bg에 full fill
-  width: 335px;
+  width: 355px;
   height: 200px;
 
   // image로 contain 구현하기
