@@ -50,11 +50,11 @@ function HomeBanner() {
           <StCarouselFlexBox current={current}>
             {images.current.map((img, i) => {
               return (
-                <Link to={urls.current[i]}>
-                  <StImage
-                    key={i}
-                    src={img}
-                  />
+                <Link
+                  to={urls.current[i]}
+                  key={i}
+                >
+                  <StImage src={img} />
                 </Link>
               );
             })}
