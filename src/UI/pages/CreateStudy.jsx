@@ -18,6 +18,7 @@ import { apiWithJWT } from 'src/api/api';
 import { isSignIn } from 'src/hooks/useCheckToken';
 import { useNavigate } from 'react-router-dom';
 import { useCreateStudyState } from 'src/hooks/useReduxState';
+import CreateStudyDetailImage from '../molecules/CreateStudyDetailImage';
 
 function CreateStudy() {
   // 하나의 커스텀 훅으로 묶을 수 있지 않을까..????
@@ -35,6 +36,7 @@ function CreateStudy() {
 
   const onSubmitHandler = e => {
     e.preventDefault();
+    console.log(study);
 
     // validation object
     for (let key in study) {
@@ -75,6 +77,7 @@ function CreateStudy() {
       <SearchHeader title="글 작성" />
       <form>
         <CreateStudyTitle />
+        <CreateStudyImage />
         <CreateStudyCategory />
         <CreateStudyAddress />
         <CreateStudyDueDate />
@@ -85,8 +88,7 @@ function CreateStudy() {
         <CreateStudyBenefit />
         <CreateStudyIntro />
         <CreateStudyDetail />
-        <CreateStudyImage />
-
+        <CreateStudyDetailImage />
         <StCreateStudySubmit
           type="submit"
           value="작성 완료"
