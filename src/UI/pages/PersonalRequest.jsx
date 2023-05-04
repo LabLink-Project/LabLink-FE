@@ -17,8 +17,11 @@ import {
 } from '../styles/PersonalRequest.styled';
 import { api } from 'src/api/api';
 import { cookies } from 'src/shared/Cookie';
+import { useNavigate } from 'react-router-dom';
+import { URI } from 'src/shared/URIs';
 
 function PersonalRequest() {
+  const nav = useNavigate();
   const token = cookies.get('token');
 
   const [appliedStudies, setAppliedStudies] = useState();
@@ -36,7 +39,6 @@ function PersonalRequest() {
     }
   };
 
-
   useEffect(() => {
     getPersonalAppliedStudies();
   }, []);
@@ -53,7 +55,10 @@ function PersonalRequest() {
           <>
             {appliedStudies?.map(appliedStudy => {
               return (
-                <li key={appliedStudy.id}>
+                <li
+                  key={appliedStudy.id}
+                  onClick={() => nav(`${URI.crud.studys}/${appliedStudy.id}`)}
+                >
                   <StPersonalRequestListWrap>
                     <StPersonalRequestHeaderWrap sort="space-between">
                       <StPersonalRequestCompany>
