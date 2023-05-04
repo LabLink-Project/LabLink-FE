@@ -32,17 +32,7 @@ import SearchHeader from '../components/SearchHeader';
 function Search() {
   // normal search code
 
-  // const [history] = useStudys('/search/latest');
-
-  // mockup data
-  // const history = [];
-  const history = [
-    '김치찌개',
-    '된장찌개',
-    '고추장찌개',
-    '애호박찌개',
-    '촌돼지찌개',
-  ];
+  const [history] = useStudys('/search/latest');
 
   // 검색기록 같은 경우 배열을 string화: json.stringify/parse해서 처리하자
   // localStorage.setItem('history', keyword);
