@@ -25,11 +25,11 @@ function BookmarkList() {
 
   const [category, setCategory] = useState('ONLINE');
   const onlineClickHandler = () => {
-    console.log(category);
+    // console.log(category);
     setCategory('ONLINE');
   };
   const offlineClickHandler = () => {
-    console.log(category);
+    // console.log(category);
     setCategory('OFFLINE');
   };
 

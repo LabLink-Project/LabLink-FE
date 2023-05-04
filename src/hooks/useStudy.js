@@ -5,7 +5,7 @@ function useStudy(URI) {
   const [studys, setStudys] = useState({});
   const getStudys = async () => {
     const response = await apiWithJWT.get(URI);
-    console.log(`${URI} response : `, response.data.data);
+    // console.log(`${URI} response : `, response.data.data);
     setStudys(() => response.data.data);
   };
 
