@@ -35,7 +35,7 @@ export const StLoginSNS = styled.p`
 
 export const StLoginLinks = styled.div`
   font-size: 14px;
-  margin-top: 172px;
+  margin: 172px 0 54px;
   display: flex;
   justify-content: center;
   justify-content: space-evenly;
