@@ -180,7 +180,7 @@ const Router = () => {
           element={<StudySchedule />}
         />
         <Route
-          path={URI.mypage.company.applicant}
+          path={`${URI.mypage.company.applicant}/:id`}
           element={<CompanyApplicant />}
         />
         <Route

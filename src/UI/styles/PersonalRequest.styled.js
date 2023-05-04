@@ -20,11 +20,15 @@ export const StPersonalRequestDiv = styled.div`
 
 export const StPersonalRequestListWrap = styled.div`
   padding: 16px 12px;
-  border: 1px solid ${StudyColors.studyBorder};
+  border: 1px solid ${StudyColors.black};
+  margin-bottom: 10px;
+  gap: 13px;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const StPersonalRequestHeaderWrap = styled(StFlexBox)`
-  margin-bottom: 14px;
+  /* margin-top: 14px; */
 `;
 
 export const StPersonalRequestCompany = styled.div`
@@ -46,10 +50,14 @@ export const StPersonalRequestStudyTitle = styled.div`
 export const StPersonalRequestStudyPay = styled.div`
   ${StudyFontOptions.caption};
   color: ${StudyColors.paragraph};
-  margin-top: 8px;
+  /* margin-top: 8px; */
 `;
 
 export const StPersonalRequestStudyPayStrong = styled.strong`
   ${StudyFontOptions.subtitle};
   color: ${StudyColors.studyPay};
+`;
+
+export const StapplicationViewstatus = styled.p`
+  font-size: 14px;
 `;

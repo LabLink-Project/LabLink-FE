@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import SearchHeader from '../components/SearchHeader';
 import {
   StEndStudyListButton,
@@ -19,9 +19,38 @@ import {
 } from '../styles/EndStudyList.styled';
 import { useNavigate } from 'react-router-dom';
 import { URI } from 'src/shared/URIs';
+import { cookies } from 'src/shared/Cookie';
+import { api } from 'src/api/api';
 
 function CompanyEndStudyList() {
-  const nav = useNavigate()
+  const nav = useNavigate();
+  const token = cookies.get('token');
+
+  const [endStudies, setEndStudies] = useState();
+
+  const getEndStudies = async () => {
+    try {
+      const { data } = await api.get('/companies/studies', {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setEndStudies(data.data);
+    } catch (error) {
+      alert(`${error.response.data.message}`);
+    }
+  };
+
+  // const endStudy = endStudies?.filter(
+  //   endStudy => endStudy.studyStatus === 'END'
+  // );
+  const endStudy = endStudies?.filter(
+    endStudy => endStudy.studyStatus === 'ONGOING'
+  );
+
+  useEffect(() => {
+    getEndStudies();
+  }, []);
 
   return (
     <StEndStudyListWrap>
@@ -42,26 +71,47 @@ function CompanyEndStudyList() {
           value="조회"
         />
       </StEndStudyListDateWrap>
-      <StEndStudyListDivWrap>
-        <StEndStudyListOnlineFlexWrap sort="space-between">
-          <StEndStudyListOnline>온라인</StEndStudyListOnline>
-          <StEndStudyListCount>2명 작성</StEndStudyListCount>
-        </StEndStudyListOnlineFlexWrap>
-        <StEndStudyListTitle>APP 사용성테스트 지원자 모집</StEndStudyListTitle>
-        <StEndStudyListFlexWrap sort="space-between">
-          <div>
-            <StEndStudyListPay>
-              <StEndStudyListPayStrong>30000</StEndStudyListPayStrong>원
-            </StEndStudyListPay>
-            <StEndStudyListPay>4월 12일 실험마감</StEndStudyListPay>
-          </div>
-          <StEndStudyListFeedbackButton
-          onClick={()=>nav(`${URI.mypage.company.feedback}/1`)}
-          >
-            피드백 확인
-          </StEndStudyListFeedbackButton>
-        </StEndStudyListFlexWrap>
-      </StEndStudyListDivWrap>
+      {endStudy?.length ? (
+        <>
+          {endStudy.map(endStudy => {
+            return (
+              <StEndStudyListDivWrap key={endStudy.id}>
+                <StEndStudyListOnlineFlexWrap sort="space-between">
+                  <StEndStudyListOnline>
+                    {endStudy.category}
+                  </StEndStudyListOnline>
+                  <StEndStudyListCount>
+                    {endStudy.subjectCount}명 작성
+                  </StEndStudyListCount>
+                </StEndStudyListOnlineFlexWrap>
+                <StEndStudyListTitle>{endStudy.title}</StEndStudyListTitle>
+                <StEndStudyListFlexWrap sort="space-between">
+                  <div>
+                    <StEndStudyListPay>
+                      <StEndStudyListPayStrong>
+                        {endStudy.pay}
+                      </StEndStudyListPayStrong>
+                      원
+                    </StEndStudyListPay>
+                    <StEndStudyListPay>
+                      {endStudy.endDate}에 신청 마감
+                    </StEndStudyListPay>
+                  </div>
+                  <StEndStudyListFeedbackButton
+                    onClick={() =>
+                      nav(`${URI.mypage.company.feedback}/${endStudy.id}`)
+                    }
+                  >
+                    피드백 확인
+                  </StEndStudyListFeedbackButton>
+                </StEndStudyListFlexWrap>
+              </StEndStudyListDivWrap>
+            );
+          })}
+        </>
+      ) : (
+        <p>완료한 공고가 없습니다.</p>
+      )}
     </StEndStudyListWrap>
   );
 }

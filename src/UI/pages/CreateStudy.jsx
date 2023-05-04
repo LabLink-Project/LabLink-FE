@@ -24,11 +24,16 @@ function CreateStudy() {
   // 하나의 커스텀 훅으로 묶을 수 있지 않을까..????
   // 글 작성, 찜 목록, 내 정보 모두 들어감
   const navigate = useNavigate();
+  const accountState = useSelector(state => state);
+  const { role } = accountState.accountHandler;
 
   useEffect(() => {
     if (!isSignIn()) {
       alert('로그인이 필요한 기능입니다.');
       navigate('/auth/signin/user');
+    } else if (role === 'USER') {
+      alert('기업회원만 작성할 수 있습니다.');
+      navigate(-1);
     }
   }, []);
 

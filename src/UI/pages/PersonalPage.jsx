@@ -77,11 +77,11 @@ function PersonalPage() {
         </Collapse>
         <StPersonalPageList>
           {/* 신청서 작성 구현 완료시 수정 */}
-          <Link to="#">신청서 작성</Link>
+          {/* <Link to="#">신청서 작성</Link>
           <img
             src={triangle}
             alt=""
-          />
+          /> */}
         </StPersonalPageList>
         <StPersonalPageList>
           {/* 설정 부분 구현 완료시 수정 */}
