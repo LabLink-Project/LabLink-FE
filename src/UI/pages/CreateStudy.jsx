@@ -19,6 +19,7 @@ import { isSignIn } from 'src/hooks/useCheckToken';
 import { useNavigate } from 'react-router-dom';
 import { useCreateStudyState } from 'src/hooks/useReduxState';
 import CreateStudyDetailImage from '../molecules/CreateStudyDetailImage';
+import { useSelector } from 'react-redux';
 
 function CreateStudy() {
   // 하나의 커스텀 훅으로 묶을 수 있지 않을까..????
