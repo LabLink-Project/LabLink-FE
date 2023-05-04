@@ -21,6 +21,7 @@ export const StPersonalRequestDiv = styled.div`
 export const StPersonalRequestListWrap = styled.div`
   padding: 16px 12px;
   border: 1px solid ${StudyColors.black};
+  border-radius: 5px;
   margin-bottom: 10px;
   gap: 13px;
   display: flex;

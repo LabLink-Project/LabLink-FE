@@ -72,6 +72,7 @@ function EditPersonalProfile() {
   const userInfoOnchange = e => {
     const { name, value } = e.target;
     setUserInfo({ ...userInfo, [name]: value });
+    console.log(userInfo);
   };
 
   // 비밀번호 변경 onchange
@@ -278,7 +279,7 @@ function EditPersonalProfile() {
                   <StEditPersonalProfileYear
                     type="text"
                     name="dateOfBirth"
-                    placeholder="생년월일을 입력해주세요 ex) 2023.04.01"
+                    placeholder="생년월일을 입력해주세요 ex) 2023-04-01"
                     value={userInfo.dateOfBirth}
                     onChange={userInfoOnchange}
                   />

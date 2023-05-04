@@ -225,9 +225,7 @@ function SignupUser() {
         alert(data.message);
         nav(URI.auth.signup.done);
       } catch (error) {
-        if (error.response.status === 409) {
-          alert(`${error.response.data.message}`);
-        }
+        alert(`${error.response.data.message}`);
       }
     }
   };

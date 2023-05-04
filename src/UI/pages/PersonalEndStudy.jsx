@@ -19,6 +19,7 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import { cookies } from 'src/shared/Cookie';
 import { api } from 'src/api/api';
+import FooterNav from '../components/FooterNav';
 
 function PersonalEndStudy() {
   const nav = useNavigate();
@@ -121,6 +122,7 @@ function PersonalEndStudy() {
           <p>완료한 실험이 없습니다.</p>
         )}
       </ul>
+      <FooterNav />
     </StPersonalRequestPaddingWrap>
   );
 }
