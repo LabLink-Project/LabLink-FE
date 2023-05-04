@@ -32,7 +32,7 @@ import SearchHeader from '../components/SearchHeader';
 function Search() {
   // normal search code
 
-  const [history] = useStudys('/search/latest');
+  const [history] = useStudys('/studies/search/latest');
 
   // 검색기록 같은 경우 배열을 string화: json.stringify/parse해서 처리하자
   // localStorage.setItem('history', keyword);
