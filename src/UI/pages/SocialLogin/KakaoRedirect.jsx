@@ -15,7 +15,7 @@ function KakaoRedirect() {
       api
         .get(`/users/kakao/login?code=${code}`)
         .then(res => {
-          console.log(res);
+          // console.log(res);
           // 토큰 저장
           cookies.set('token', res.headers.authorization.split(' ')[1], {
             path: '/',
