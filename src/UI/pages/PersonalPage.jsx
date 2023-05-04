@@ -27,8 +27,8 @@ function PersonalPage() {
   const account = useSelector(state => {
     return state;
   });
-  const { nickname, ...rest } = account.accountHandler;
-
+  const { nickname } = account.accountHandler;
+  
   // 비로그인 상태면 못 들어오게 막기
   useEffect(() => {
     const token = cookies.get('token');

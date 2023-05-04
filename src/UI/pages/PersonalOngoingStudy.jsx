@@ -17,6 +17,7 @@ import {
 import { Button } from 'react-bootstrap';
 import { cookies } from 'src/shared/Cookie';
 import { api } from 'src/api/api';
+import FooterNav from '../components/FooterNav';
 
 function PersonalOngoingStudy() {
   const token = cookies.get('token');
@@ -95,6 +96,7 @@ function PersonalOngoingStudy() {
           <p>진행할 실험이 없습니다.</p>
         )}
       </ul>
+      <FooterNav />
     </StPersonalRequestPaddingWrap>
   );
 }

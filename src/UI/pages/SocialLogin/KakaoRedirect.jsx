@@ -25,7 +25,7 @@ function KakaoRedirect() {
           navigate('/');
         })
         .catch(err => {
-          console.error(err);
+          console.log(err)
           // 얼럿 창 띄우기
           alert('소셜 로그인 과정에서 오류가 발생했습니다 😥');
 

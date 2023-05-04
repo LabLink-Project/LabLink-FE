@@ -6,6 +6,7 @@ import { useParams } from 'react-router-dom';
 import { cookies } from 'src/shared/Cookie';
 import { useNavigate } from 'react-router-dom';
 import { StFeedbackInput } from '../styles/CreateFeedback.styled';
+import FooterNav from '../components/FooterNav';
 
 function CreateFeedback() {
   const studyId = useParams();
@@ -70,6 +71,7 @@ function CreateFeedback() {
           </Button>
         </div>
       </form>
+      <FooterNav />
     </Layout>
   );
 }

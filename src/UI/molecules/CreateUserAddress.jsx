@@ -39,8 +39,7 @@ function CreateUserAddress({ title, userInfo, setUserInfo, userInfoOnchange }) {
           name="userAddress"
           placeholder="주소검색 버튼을 눌러주세요."
           value={userInfo.userAddress}
-          onChange={()=>
-            userInfoOnchange()}
+          onChange={userInfoOnchange}
         />
         <StBlackButton
           onClick={e => {
