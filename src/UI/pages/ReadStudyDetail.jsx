@@ -124,7 +124,7 @@ function ReadStudyDetail() {
       <StReadStudyDetailInfoWrap>
         <StH3>상세 설명</StH3>
         <StReadStudyDetailInfoParagraph>
-          상세 설명은 아래 이미지 참고 부탁드립니다.
+          {studys.description}
         </StReadStudyDetailInfoParagraph>
       </StReadStudyDetailInfoWrap>
       {isDefaultImage(studys.detailImageURL) ? (
