@@ -8,7 +8,8 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     .App {
-        width: 375px;
+        width: 377px;
+        min-height: 100vh;
         margin: 0 auto;
     }
 

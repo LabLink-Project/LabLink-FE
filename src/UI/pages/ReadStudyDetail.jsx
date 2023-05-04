@@ -19,6 +19,7 @@ import {
   StReadStudyDetailInfoParagraph,
   StReadStudyDetailQuestion,
   StReadStudyDetailApplication,
+  StParagraph,
 } from '../styles/ReadStudyDetail.styled';
 import { StReadStudyWrap } from '../styles/ReadStudy.styled';
 import filledHeart from 'src/assets/Favorite_on.svg';
@@ -33,38 +34,28 @@ import { fontOptions } from 'src/shared/designFontOptions';
 import { soonDevelop } from 'src/utils/soonDevelop';
 import { useNavigate } from 'react-router-dom';
 import { URI } from 'src/shared/URIs';
+import {
+  formatAge,
+  formatBenefit,
+  formatGender,
+  isDefaultImage,
+  isNull,
+} from 'src/utils/parseData';
+import { useAccountState } from 'src/hooks/useReduxState';
 
 function ReadStudyDetail() {
   const { id } = useParams();
   const [studys] = useStudy(`/studies/${id}`);
-  const [isbookmark, BookmarkHandler] = useBookmark(studys.isbookmark);
+  const [isbookmark, BookmarkHandler] = useBookmark(id, studys.isbookmark);
 
   const navigate = useNavigate();
-  const applyHandler = () => {
-    navigate(`${URI.crud.studys}/${id}/apply`);
-  };
+  const userType = useAccountState('role');
 
-  // object data
-  /*
-    "id": 1,
-    "title": "test1",
-    "studyInfo": "연구 소개",
-    "studyPurpose": "연구 목적",
-    "studyAction": "실험 진행 방법",
-    "subjectCount": 32,
-    "category": "OFFLINE",
-    "date": "2023-03-12 22:34",
-    "address": "부산",
-    "pay": 10000,
-    "subjectGender": "남",
-    "subjectMinAge": 14,
-    "subjectMaxAge": 100,
-    "repearCount": 0,
-    "endDate": "2023-04-13 22:34",
-    "imageURL": "https://cdn.icon-icons.com/icons2/931/PNG/512/empty_file_icon-icons.com_72420.png",
-    "isbookmarked": false,
-    "currentApplicantCount": 5
- */
+  const applyHandler = () => {
+    if (userType !== 'USER') return alert('공고에 지원하실 수 없습니다 😥');
+    if (studys.isapplied) return alert('이미 지원한 공고입니다 🥺');
+    if (!studys.isapplied) navigate(`${URI.crud.studys}/${id}/apply`);
+  };
 
   return (
     <StReadStudyWrap>
@@ -108,13 +99,22 @@ function ReadStudyDetail() {
       </StReadStudyDetailWrap>
       <StReadStudyDetailDateAndPayWrap sort="space-between">
         <StReadStudyDetailDate>
-          모집기간{' '}
           <StReadStudyDetailDateSpan>
-            ~{convertToShortDate(studys.endDate)}까지
+            {studys.address} | {convertToShortDate(studys.endDate)}일 지원 마감
           </StReadStudyDetailDateSpan>
         </StReadStudyDetailDate>
         <StReadStudyDetailPay>{studys.pay}원</StReadStudyDetailPay>
       </StReadStudyDetailDateAndPayWrap>
+      <StReadStudyDetailInfoWrap>
+        <StReadStudyDetailInfoTitle>지원자 조건</StReadStudyDetailInfoTitle>
+        <StParagraph>성별 : {formatGender(studys.subjectGender)}</StParagraph>
+        <StParagraph>
+          연령 : {formatAge(studys.subjectMinAge, studys.subjectMaxAge)}
+        </StParagraph>
+        {isNull(studys.benefit) ? null : (
+          <StParagraph>우대사항 : {formatBenefit(studys.benefit)}</StParagraph>
+        )}
+      </StReadStudyDetailInfoWrap>
       <StReadStudyDetailRequireWrap>
         <StReadStudyDetailRequireTitle>연구 소개</StReadStudyDetailRequireTitle>
         <StReadStudyDetailInfoParagraph>
@@ -122,33 +122,26 @@ function ReadStudyDetail() {
         </StReadStudyDetailInfoParagraph>
       </StReadStudyDetailRequireWrap>
       <StReadStudyDetailInfoWrap>
-        <StReadStudyDetailInfoTitle>연구 목적</StReadStudyDetailInfoTitle>
-        <StReadStudyDetailInfoParagraph>
-          {studys.studyPurpose}
-        </StReadStudyDetailInfoParagraph>
-      </StReadStudyDetailInfoWrap>
-      <StReadStudyDetailInfoWrap>
-        <StReadStudyDetailInfoTitle>연구 방법</StReadStudyDetailInfoTitle>
-        <StReadStudyDetailInfoParagraph>
-          {studys.studyAction}
-        </StReadStudyDetailInfoParagraph>
-      </StReadStudyDetailInfoWrap>
-      <StReadStudyDetailInfoWrap>
         <StH3>상세 설명</StH3>
         <StReadStudyDetailInfoParagraph>
           상세 설명은 아래 이미지 참고 부탁드립니다.
         </StReadStudyDetailInfoParagraph>
       </StReadStudyDetailInfoWrap>
-      <StImage
-        src={studys.detailImageURL}
-        alt="이미지"
-      />
+      {isDefaultImage(studys.detailImageURL) ? (
+        ''
+      ) : (
+        <StImage
+          src={studys.detailImageURL}
+          alt="이미지"
+        />
+      )}
+      <div style={{ marginBottom: '16px' }}></div>
       <StFlexBox>
         <StReadStudyDetailQuestion onClick={soonDevelop}>
           문의하기
         </StReadStudyDetailQuestion>
         <StReadStudyDetailApplication onClick={applyHandler}>
-          지원하기
+          {studys.isapplied ? '지원완료' : '지원하기'}
         </StReadStudyDetailApplication>
       </StFlexBox>
     </StReadStudyWrap>
@@ -160,6 +153,7 @@ const StH3 = styled.h3`
 `;
 
 const StImage = styled.img`
+  min-width: 335px;
   max-width: 335px;
 `;
 

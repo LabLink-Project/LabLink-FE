@@ -8,3 +8,9 @@ export const StStudyInput = styled.input`
   box-sizing: border-box;
   ${StudyFontOptions.body}
 `;
+
+export const StAgeInput = styled(StStudyInput)`
+  min-width: 140px;
+  max-width: 140px;
+  margin-right: 4px;
+`;

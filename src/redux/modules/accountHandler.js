@@ -23,13 +23,13 @@ const accountHandler = (state = initialState, action) => {
     case GET_ACCOUNT_INFO:
       // 아직 nickname 토큰에 담기 전
       // payload = jwt token
-      const { role, nickname } = jwtDecode(action.payload);
-      // console.log(role, nickname);
+      const { role, nickname, companyName } = jwtDecode(action.payload);
+      console.log(role, nickname, companyName);
       if (!role) return state;
       // if (!nickname) return state;
 
       // 기업 회원가입에 nickname이 추가되면 수정할 예정
-      if (role === 'BUSINESS') return { role, nickname: '기업 회원' };
+      if (role === 'BUSINESS') return { role, nickname: companyName };
       return { role, nickname };
     default:
       return state;

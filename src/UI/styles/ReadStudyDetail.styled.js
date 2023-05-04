@@ -14,6 +14,7 @@ export const StReadStudyDetailImage = styled.img`
   max-height: 216px;
 
   background-color: ${StudyColors.searchBar};
+  object-fit: contain;
 `;
 
 export const StReadStudyDetailOnline = styled(StStudyOnline)`
@@ -121,6 +122,10 @@ export const StReadStudyDetailInfoParagraph = styled.p`
   color: ${StudyColors.paragraph};
   vertical-align: baseline;
   white-space: pre-line;
+`;
+
+export const StParagraph = styled(StReadStudyDetailInfoParagraph)`
+  margin-bottom: 8px;
 `;
 
 export const StReadStudyDetailQuestion = styled.button`

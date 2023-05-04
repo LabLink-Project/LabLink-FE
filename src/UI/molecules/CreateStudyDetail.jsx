@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   StCreateStudyLabel,
   StCreateStudyLabelWrap,
@@ -6,8 +6,17 @@ import {
   StCreateStudyWrap,
   StRequiredInputSpan,
 } from '../styles/CreateStudy.styled';
+import { useInput } from 'src/hooks/useInput';
+import { useSetCreateStudyState } from 'src/hooks/useReduxState';
 
 function CreateStudyDetail() {
+  const [description, descriptionHandler] = useInput();
+  const handler = useSetCreateStudyState();
+
+  useEffect(() => {
+    handler('description', description);
+  }, [description]);
+
   return (
     <StCreateStudyWrap>
       <StCreateStudyLabelWrap>
@@ -15,7 +24,11 @@ function CreateStudyDetail() {
         <StRequiredInputSpan>*필수</StRequiredInputSpan>
       </StCreateStudyLabelWrap>
       <StCreateStudyWrap>
-        <StCreateStudyTextarea placeholder="10자 이상 입력해주세요." />
+        <StCreateStudyTextarea
+          placeholder="10자 이상 입력해주세요."
+          value={description}
+          onChange={descriptionHandler}
+        />
       </StCreateStudyWrap>
     </StCreateStudyWrap>
   );

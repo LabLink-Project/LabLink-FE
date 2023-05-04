@@ -37,6 +37,9 @@ import CompanyFeedback from 'src/UI/pages/ReadFeedback';
 import PersonalFeedback from 'src/UI/pages/CreateFeedback';
 import CreateFeedback from 'src/UI/pages/CreateFeedback';
 import ReadFeedback from 'src/UI/pages/ReadFeedback';
+import KakaoRedirect from 'src/UI/pages/SocialLogin/KakaoRedirect';
+import TutorialBanner from 'src/UI/pages/Banner/TutorialBanner';
+import FeedbackBanner from 'src/UI/pages/Banner/FeedbackBanner';
 
 const Router = () => {
   return (
@@ -183,6 +186,21 @@ const Router = () => {
         <Route
           path={`${URI.mypage.company.feedback}/:id`}
           element={<ReadFeedback />}
+        />
+        {/* Social Login */}
+        <Route
+          path={URI.social.kakao}
+          element={<KakaoRedirect />}
+        />
+
+        {/* home banner routes */}
+        <Route
+          path={URI.banner.tutorial}
+          element={<TutorialBanner />}
+        />
+        <Route
+          path={URI.banner.feedback}
+          element={<FeedbackBanner />}
         />
       </Routes>
     </BrowserRouter>
