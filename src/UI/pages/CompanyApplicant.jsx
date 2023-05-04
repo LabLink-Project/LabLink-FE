@@ -22,12 +22,14 @@ import {
 import { api } from 'src/api/api';
 import { useParams } from 'react-router-dom';
 import { cookies } from 'src/shared/Cookie';
+import useStudy from 'src/hooks/useStudy';
+import { convertToShortDate } from 'src/utils/formatDate';
 
 function CompanyApplicant() {
   const param = useParams();
   const token = cookies.get('token');
 
-  const [applications, sestApplications] = useState();
+  const [applications, setApplications] = useState();
 
   const getApplicant = async () => {
     try {
@@ -36,7 +38,7 @@ function CompanyApplicant() {
           Authorization: `Bearer ${token}`,
         },
       });
-      sestApplications(data.data);
+      setApplications(data.data);
     } catch (error) {
       alert(`${error.response.data.message}`);
     }
@@ -45,6 +47,10 @@ function CompanyApplicant() {
   useEffect(() => {
     getApplicant();
   }, []);
+
+  const [study] = useStudy(`/studies/${param.id}`);
+  console.log(applications, param, study);
+
   return (
     <StCompanyApplicantWrap>
       <SearchHeader title="지원자 확인" />
@@ -55,7 +61,7 @@ function CompanyApplicant() {
       <StCompanyApplicantStudyWrap>
         <StCompanyApplicantFlexWrap sort="space-between">
           <StCompanyApplicantStudyTitle>
-            APP 사용성테스트 지원자 모집
+            {study.title}
           </StCompanyApplicantStudyTitle>
           <div>
             <StCompanyApplicantDiv>2시간 전 등록</StCompanyApplicantDiv>
@@ -65,11 +71,13 @@ function CompanyApplicant() {
         <StFlexBox sort="space-between">
           <StCompanyApplicantPay>
             <StCompanyApplicationPayStrong>
-              30,000
+              {study.pay}
             </StCompanyApplicationPayStrong>
             원
           </StCompanyApplicantPay>
-          <StCompanyApplicantPay>온라인 | 4월 12일 마감</StCompanyApplicantPay>
+          <StCompanyApplicantPay>
+            {study.category} | {convertToShortDate(study.endDate)}
+          </StCompanyApplicantPay>
         </StFlexBox>
       </StCompanyApplicantStudyWrap>
       <ul>
