@@ -79,9 +79,9 @@ function Search() {
       <StSearchHistoryTitle>최근에 검색 하셨어요</StSearchHistoryTitle>
       <StSearchHistorys>
         {history.length
-          ? history.map((searchedTitle, index) => {
+          ? history.map(({ latestKeyword }, index) => {
               return (
-                <SearchHistoryUI key={index}>{searchedTitle}</SearchHistoryUI>
+                <SearchHistoryUI key={index}>{latestKeyword}</SearchHistoryUI>
               );
             })
           : '최근에 검색한 공고가 없어요 😥'}
