@@ -12,6 +12,7 @@ import FooterNav from '../components/FooterNav';
 import { useNavigate } from 'react-router-dom';
 import { isSignIn } from 'src/hooks/useCheckToken';
 import useStudys from 'src/hooks/useStudys';
+import { StMarginWrap } from '../styles/SharedStyle/MarginWrap.styled';
 
 function BookmarkList() {
   const navigate = useNavigate();
@@ -37,7 +38,7 @@ function BookmarkList() {
 
   // 이 페이지에선 북마크 취소 시 화면에 반영되어야 함
   return (
-    <StBookmarkListWrap>
+    <div>
       <SearchHeader title="찜 목록" />
       <StBookmarkListButtonWrap>
         <StBookmarkListButton
@@ -53,7 +54,7 @@ function BookmarkList() {
           오프라인
         </StBookmarkListButton>
       </StBookmarkListButtonWrap>
-      <div>
+      <StMarginWrap>
         <StBookmarkTitles sort="space-between">
           <StBookmarkListTitle>내가 찜한 공고</StBookmarkListTitle>
         </StBookmarkTitles>
@@ -70,9 +71,9 @@ function BookmarkList() {
               })
           : '내가 찜한 공고가 아직 없습니다 😥'}
         {}
-      </div>
+      </StMarginWrap>
       <FooterNav />
-    </StBookmarkListWrap>
+    </div>
   );
 }
 

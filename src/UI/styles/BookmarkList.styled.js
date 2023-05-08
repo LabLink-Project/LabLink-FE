@@ -9,7 +9,7 @@ export const StBookmarkListButtonWrap = styled.div`
 `;
 
 export const StBookmarkListButton = styled.button`
-  min-width: 167px;
+  min-width: 187.5px;
   min-height: 40px;
 
   padding: 10px auto;
@@ -37,7 +37,7 @@ export const StBookmarkListOptions = styled.div`
 `;
 
 export const StBookmarkListWrap = styled.div`
-  padding: 20px;
+  /* padding: 20px; */
 `;
 
 export const StBookmarkTitles = styled(StFlexBox)`

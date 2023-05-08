@@ -4,6 +4,7 @@ import { StHomeBannerCircle } from '../styles/HomeBanner.styled';
 import {
   StHomePopularStudysH2,
   StHomeStudysUl,
+  StOverlap,
 } from '../styles/HomePopularStudy.styled';
 import StudyColumn from './StudyColumn';
 import useReduxState from 'src/hooks/useReduxState';
@@ -16,8 +17,8 @@ function HomePopularStudys() {
   // 맨 처음 값이 all(소문자)로 되어있는 현상 버그 찾아야됨
 
   return (
-    <div>
-      <StHomePopularStudysH2>오늘의 인기 공고</StHomePopularStudysH2>
+    <StOverlap>
+      <StHomePopularStudysH2>오늘의 인기공고</StHomePopularStudysH2>
       <StHomeStudysUl>
         {studys.length
           ? studys
@@ -43,13 +44,13 @@ function HomePopularStudys() {
           : '오늘의 인기 공고를 불러오지 못했어요 😥'}
       </StHomeStudysUl>
       {/* 시간 나면 추가로 수정해야 할 부분 */}
-      {/* <StFlexBox sort="center">
+      <StFlexBox sort="center">
         <StHomeBannerCircle current />
         <StHomeBannerCircle />
         <StHomeBannerCircle />
         <StHomeBannerCircle />
-      </StFlexBox> */}
-    </div>
+      </StFlexBox>
+    </StOverlap>
   );
 }
 

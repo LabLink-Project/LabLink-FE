@@ -15,6 +15,7 @@ import styled from 'styled-components';
 import { serviceColors } from 'src/shared/designColors';
 import { soonDevelop } from 'src/utils/soonDevelop';
 import { useAccountState } from 'src/hooks/useReduxState';
+import { fontOptions } from 'src/shared/designFontOptions';
 
 function HomeHeader() {
   const nickname = useAccountState('nickname');
@@ -28,12 +29,12 @@ function HomeHeader() {
     <StHomeHeaderWrap sort="space-between">
       <div>
         {nickname ? (
-          <div>
-            <strong>{nickname}</strong>님 환영합니다
+          <WelcomeMessage>
+            <Username>{nickname}</Username>님 환영합니다
             <Button onClick={signOutHandler}>로그아웃</Button>
-          </div>
+          </WelcomeMessage>
         ) : (
-          <>
+          <WelcomeMessage>
             {' '}
             <StHomeHeaderLink to={URI.auth.signin.user}>
               로그인
@@ -43,7 +44,7 @@ function HomeHeader() {
               src={right}
               alt="오른쪽 표시"
             />
-          </>
+          </WelcomeMessage>
         )}
       </div>
       <div>
@@ -67,6 +68,14 @@ function HomeHeader() {
     </StHomeHeaderWrap>
   );
 }
+
+const WelcomeMessage = styled.div`
+  ${fontOptions.body1}
+`;
+
+const Username = styled.strong`
+  ${fontOptions.subtitle}
+`;
 
 const Button = styled.button`
   margin-left: 5px;

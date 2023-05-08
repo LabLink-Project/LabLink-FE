@@ -1,6 +1,6 @@
 import React from 'react';
 import SearchHeader from 'src/UI/components/SearchHeader';
-import tutorialPage from 'src/assets/design/bannerPage/tutorialPage.jpeg';
+import tutorialPage from 'src/assets/design/home/bannerPage/tutorialPage.jpeg';
 
 function TutorialBanner() {
   return (

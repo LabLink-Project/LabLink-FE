@@ -3,8 +3,8 @@ import { StHomeBannerCircle } from '../styles/HomeBanner.styled';
 import { StFlexBox } from '../styles/common.styled';
 import styled, { css } from 'styled-components';
 import { StudyColors } from 'src/shared/Colors';
-import tutorialBanner from 'src/assets/design/banner/tutorialBanner.svg';
-import feedbackBanner from 'src/assets/design/banner/feedbackBanner.svg';
+import tutorialBanner from 'src/assets/design/home/banner/tutorialBanner.svg';
+import feedbackBanner from 'src/assets/design/home/banner/feedbackBanner.svg';
 import { URI } from 'src/shared/URIs';
 import { Link } from 'react-router-dom';
 
@@ -37,7 +37,7 @@ function HomeBanner() {
   });
 
   return (
-    <>
+    <div>
       <div>
         <StCarouselWrap>
           <StCarouselButton
@@ -79,21 +79,21 @@ function HomeBanner() {
           );
         })}
       </StFlexBox>
-    </>
+    </div>
   );
 }
 
 const StCarouselWrap = styled.div`
-  width: 355px;
-  height: 200px;
+  width: 375px;
+  /* height: 200px; */
   overflow: hidden;
   position: relative;
 `;
 
 const StImage = styled.img`
   // image로 하면 bg에 full fill
-  width: 355px;
-  height: 200px;
+  width: 375px;
+  /* height: 200px; */
 
   // image로 contain 구현하기
   /* object-fit: contain; */

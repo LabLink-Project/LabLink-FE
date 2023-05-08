@@ -35,7 +35,7 @@ function Home() {
       <HomeBanner />
       <HomeSelectAddress />
       <HomePopularStudys />
-      {/* <HomeCurrentStudy /> */}
+      <HomeCurrentStudy />
       <HomeRealTimeUpdate />
       <FooterNav />
     </StHomeWrap>

@@ -18,7 +18,7 @@ function SearchBar({ placeholder }) {
   const navigate = useNavigate();
 
   const onSearchHandler = () => {
-    console.log('entered search bar : ', keyword);
+    // console.log('entered search bar : ', keyword);
     navigate('/studys', { state: { keyword } });
   };
 

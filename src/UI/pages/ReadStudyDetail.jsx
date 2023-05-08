@@ -42,119 +42,134 @@ import {
   isNull,
 } from 'src/utils/parseData';
 import { useAccountState } from 'src/hooks/useReduxState';
+import { StMarginWrap } from '../styles/SharedStyle/MarginWrap.styled';
+import Place from '../atomics/popularStudy/Place';
+import Bookmark from '../atomics/popularStudy/Bookmark';
+import Title from '../atomics/popularStudy/Title';
+import CompanyName from '../atomics/popularStudy/CompanyName';
+import Address from '../atomics/Study/Address';
+import sectionLine from 'src/assets/design/sectionLine.svg';
+import Deadline from '../atomics/popularStudy/Deadline';
+import Pay from '../atomics/popularStudy/Pay';
+import { fontColors } from 'src/shared/designColors';
+import Applicant from '../atomics/StudyDetail/Applicant';
+import StudyInfomation from '../atomics/StudyDetail/StudyInfomation';
+import Detail from '../atomics/StudyDetail/Detail';
 
 function ReadStudyDetail() {
   const { id } = useParams();
   const [studys] = useStudy(`/studies/${id}`);
-  const [isbookmark, BookmarkHandler] = useBookmark(id, studys.isbookmark);
 
   const navigate = useNavigate();
   const userType = useAccountState('role');
 
   const applyHandler = () => {
-    if (userType !== 'USER') return alert('공고에 지원하실 수 없습니다 😥');
+    if (!userType) {
+      alert('공고에 지원하시려면 로그인이 필요합니다 🤔');
+      navigate(`${URI.auth.signin.user}`);
+      return;
+    }
+    if (userType === 'BUSINESS')
+      return alert('기업 회원은 공고에 지원하실 수 없습니다 😥');
     if (studys.isapplied) return alert('이미 지원한 공고입니다 🥺');
     if (!studys.isapplied) navigate(`${URI.crud.studys}/${id}/apply`);
   };
 
   return (
-    <StReadStudyWrap>
+    <div>
       <SearchHeader />
       <StReadStudyDetailImage
         src={studys.thumbnailImageURL}
         alt="섬네일 이미지"
       />
+      <StMarginWrap>
+        <StReadStudyDetailHeader sort="space-between">
+          <Place category={studys.category} />
+          <StFlexBox>
+            {/* n분 전 */}
+            <Bookmark
+              id={studys.id}
+              isbookmarked={studys.isbookmarked}
+            />
+          </StFlexBox>
+        </StReadStudyDetailHeader>
+        <StReadStudyDetailWrap>
+          <CompanyName>{studys.companyName}</CompanyName>
+          <Title>{studys.title}</Title>
+        </StReadStudyDetailWrap>
+        <StReadStudyDetailDateAndPayWrap sort="space-between">
+          <StReadStudyDetailDate>
+            <StFlexBox>
+              {studys.address === 'ONLINE' ? (
+                ''
+              ) : (
+                <>
+                  <Address>{studys.address}</Address>
+                  <StImg
+                    src={sectionLine}
+                    alt="구분선"
+                  />
+                </>
+              )}
 
-      <StReadStudyDetailHeader sort="space-between">
-        <StReadStudyDetailOnline>
-          {studys.address === 'online' ? '온라인' : '오프라인'}
-        </StReadStudyDetailOnline>
-        <StFlexBox>
-          <StReadStudyDetailDueDate>
-            {convertToShortDate(studys.endDate)}
-          </StReadStudyDetailDueDate>
-          <button
-            onClick={BookmarkHandler}
-            style={{ display: 'flex' }}
-          >
-            {isbookmark ? (
-              <img
-                src={filledHeart}
-                alt="북마크"
-              />
-            ) : (
-              <img
-                src={outlineHeart}
-                alt="북마크"
-              />
-            )}
-          </button>
-        </StFlexBox>
-      </StReadStudyDetailHeader>
-      <StReadStudyDetailWrap>
-        <StReadStudyDetailCompany>
-          {studys.companyAddress}
-        </StReadStudyDetailCompany>
-        <StReadStudyDetailTitle>{studys.title}</StReadStudyDetailTitle>
-      </StReadStudyDetailWrap>
-      <StReadStudyDetailDateAndPayWrap sort="space-between">
-        <StReadStudyDetailDate>
-          <StReadStudyDetailDateSpan>
-            {studys.address} | {convertToShortDate(studys.endDate)}일 지원 마감
-          </StReadStudyDetailDateSpan>
-        </StReadStudyDetailDate>
-        <StReadStudyDetailPay>{studys.pay}원</StReadStudyDetailPay>
-      </StReadStudyDetailDateAndPayWrap>
-      <StReadStudyDetailInfoWrap>
-        <StReadStudyDetailInfoTitle>지원자 조건</StReadStudyDetailInfoTitle>
-        <StParagraph>성별 : {formatGender(studys.subjectGender)}</StParagraph>
-        <StParagraph>
-          연령 : {formatAge(studys.subjectMinAge, studys.subjectMaxAge)}
-        </StParagraph>
-        {isNull(studys.benefit) ? null : (
-          <StParagraph>우대사항 : {formatBenefit(studys.benefit)}</StParagraph>
-        )}
-      </StReadStudyDetailInfoWrap>
-      <StReadStudyDetailRequireWrap>
-        <StReadStudyDetailRequireTitle>연구 소개</StReadStudyDetailRequireTitle>
-        <StReadStudyDetailInfoParagraph>
-          {studys.studyInfo}
-        </StReadStudyDetailInfoParagraph>
-      </StReadStudyDetailRequireWrap>
-      <StReadStudyDetailInfoWrap>
-        <StH3>상세 설명</StH3>
-        <StReadStudyDetailInfoParagraph>
-          {studys.description}
-        </StReadStudyDetailInfoParagraph>
-      </StReadStudyDetailInfoWrap>
-      {isDefaultImage(studys.detailImageURL) ? (
-        ''
-      ) : (
-        <StImage
-          src={studys.detailImageURL}
-          alt="이미지"
+              <Deadline>{studys.date}</Deadline>
+            </StFlexBox>
+          </StReadStudyDetailDate>
+          <Pay>{studys.pay}</Pay>
+        </StReadStudyDetailDateAndPayWrap>
+      </StMarginWrap>
+
+      <BackgroundWrap>
+        <Applicant
+          gender={studys.subjectGender}
+          minAge={studys.subjectMinAge}
+          maxAge={studys.subjectMaxAge}
+          benefit={studys.benefit}
         />
-      )}
-      <div style={{ marginBottom: '16px' }}></div>
-      <StFlexBox>
-        <StReadStudyDetailQuestion onClick={soonDevelop}>
-          문의하기
-        </StReadStudyDetailQuestion>
-        <StReadStudyDetailApplication onClick={applyHandler}>
-          {studys.isapplied ? '지원완료' : '지원하기'}
-        </StReadStudyDetailApplication>
-      </StFlexBox>
-    </StReadStudyWrap>
+        <StudyInfomation infomation={studys.studyInfo} />
+        <Detail description={studys.description} />
+
+        {/* 이미지가 불러와지지 않았을 때 처리 고민하기 */}
+        {isDefaultImage(studys.detailImageURL) ? (
+          ''
+        ) : (
+          <StImage
+            src={studys.detailImageURL}
+            alt="이미지"
+          />
+        )}
+      </BackgroundWrap>
+      <ButtonsWrap>
+        <StFlexBox>
+          <StReadStudyDetailQuestion onClick={soonDevelop}>
+            문의하기
+          </StReadStudyDetailQuestion>
+          <StReadStudyDetailApplication onClick={applyHandler}>
+            {studys.isapplied ? '지원완료' : '지원하기'}
+          </StReadStudyDetailApplication>
+        </StFlexBox>
+      </ButtonsWrap>
+    </div>
   );
 }
-
-const StH3 = styled.h3`
-  ${fontOptions.subtitle};
-`;
 
 const StImage = styled.img`
   min-width: 335px;
   max-width: 335px;
+`;
+
+const StImg = styled.img`
+  margin: 0 4px;
+`;
+
+const BackgroundWrap = styled.div`
+  background-color: ${fontColors.background};
+  padding: 32px 20px 0;
+  border-radius: 24px 24px 0 0;
+`;
+
+const ButtonsWrap = styled(StFlexBox)`
+  margin: 16px 20px;
 `;
 
 export default ReadStudyDetail;

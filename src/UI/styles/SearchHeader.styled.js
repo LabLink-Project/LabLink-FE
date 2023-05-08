@@ -1,13 +1,13 @@
-import { StudyColors, StudyFontOptions } from 'src/shared/Colors';
 import styled from 'styled-components';
 import { StFlexBox } from './common.styled';
+import { fontOptions } from 'src/shared/designFontOptions';
 
 export const StSearchHeaderNotification = styled.div`
   margin: 14px 0;
 `;
 
 export const StSearchHeaderTitle = styled.h1`
-  ${StudyFontOptions.body};
+  ${fontOptions.body1};
   font-weight: 600;
 `;
 
@@ -22,5 +22,6 @@ export const StSearchHeaderBackImage = styled.img`
 `;
 
 export const StSearchHeaderWrap = styled(StFlexBox)`
-  border-bottom: 1px solid ${StudyColors.searchBorder};
+  margin: 20px 20px 0;
+  max-height: 48px;
 `;

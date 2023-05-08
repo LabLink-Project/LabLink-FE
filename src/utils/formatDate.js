@@ -4,7 +4,7 @@ export const convertToShortDate = dateAndTime => {
   const [fullDate, time] = dateAndTime.split(' ');
   const [year, month, date] = fullDate.split('-');
 
-  return `${month}/${date}`;
+  return `${month}월 ${date}일`;
 };
 
 export default function formatDate(time) {

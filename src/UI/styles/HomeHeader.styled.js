@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 import { StFlexBox } from './common.styled';
+import { fontOptions } from 'src/shared/designFontOptions';
 
 export const StHomeHeaderWrap = styled(StFlexBox)`
+  margin: 20px 20px 0;
   padding: 14px 0;
 `;
 
@@ -18,7 +20,7 @@ export const StHomeHeaderIcon = styled.img`
 `;
 
 export const StHomeHeaderLink = styled(Link)`
-  font-weight: 600;
+  ${fontOptions.subtitle}
   color: inherit;
   text-decoration: none;
 `;
