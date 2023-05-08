@@ -1,20 +1,24 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { StFlexBox } from './common.styled';
 import { StudyColors, StudyFontOptions } from 'src/shared/Colors';
+import { fontOptions } from 'src/shared/designFontOptions';
+import { fontColors } from 'src/shared/designColors';
 
 export const StHomeSelectAddressWrap = styled(StFlexBox)`
   padding: 14px 16px;
-  background-color: ${StudyColors.bannerBg};
   margin-top: 24px;
+  border-radius: 8px;
+  background-color: ${StudyColors.bannerBg};
 `;
 
 export const StHomeSelectAddress = styled.div`
-  ${StudyFontOptions.body}
+  ${fontOptions.body1};
+  color: ${fontColors.body};
 `;
 
 export const StHomeSelectAddressButton = styled.div`
-  ${StudyFontOptions.caption};
-  color: ${StudyColors.paragraph};
+  ${fontOptions.captionEmphasize};
+  color: ${fontColors.title};
 
   &:hover {
     cursor: pointer;
