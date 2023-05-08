@@ -53,6 +53,7 @@ import Deadline from '../atomics/popularStudy/Deadline';
 import Pay from '../atomics/popularStudy/Pay';
 import { fontColors } from 'src/shared/designColors';
 import Applicant from '../atomics/StudyDetail/Applicant';
+import StudyInfomation from '../atomics/StudyDetail/StudyInfomation';
 
 function ReadStudyDetail() {
   const { id } = useParams();
@@ -124,14 +125,8 @@ function ReadStudyDetail() {
           maxAge={studys.subjectMaxAge}
           benefit={studys.benefit}
         />
-        <StReadStudyDetailRequireWrap>
-          <StReadStudyDetailRequireTitle>
-            연구 소개
-          </StReadStudyDetailRequireTitle>
-          <StReadStudyDetailInfoParagraph>
-            {studys.studyInfo}
-          </StReadStudyDetailInfoParagraph>
-        </StReadStudyDetailRequireWrap>
+        <StudyInfomation infomation={studys.studyInfo} />
+
         <StReadStudyDetailInfoWrap>
           <StH3>상세 설명</StH3>
           <StReadStudyDetailInfoParagraph>

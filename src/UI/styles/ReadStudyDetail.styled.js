@@ -69,15 +69,12 @@ export const StReadStudyDetailRequireWrap = styled.div`
 
   padding: 16px;
   margin-bottom: 8px;
-
-  box-sizing: border-box;
-
-  background-color: ${StudyColors.bannerBg};
+  background-color: ${fontColors.white};
 `;
 
 export const StReadStudyDetailRequireTitle = styled.h3`
-  ${StudyFontOptions.subtitle}
-  margin-bottom: 16px;
+  ${fontOptions.subtitle}
+  margin-bottom: 0;
 `;
 
 export const StReadStudyDetailTable = styled.table`
