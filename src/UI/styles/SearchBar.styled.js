@@ -1,9 +1,11 @@
-import { StudyColors, StudyFontOptions } from 'src/shared/Colors';
+import { fontColors } from 'src/shared/designColors';
+import { fontOptions } from 'src/shared/designFontOptions';
 import styled from 'styled-components';
 
 export const StSearchBarWrap = styled.div`
-  background-color: ${StudyColors.searchBar};
-  padding: 14px 8px;
+  background-color: ${fontColors.background};
+  padding: 10px 8px;
+  border-radius: 90px;
 `;
 
 export const StSearchBarIconLabel = styled.label`
@@ -16,5 +18,6 @@ export const StSearchBarIcon = styled.img`
 `;
 
 export const StSearchBar = styled.input`
-  ${StudyFontOptions.body}
+  ${fontOptions.body1};
+  color: ${fontColors.caption};
 `;

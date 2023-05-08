@@ -21,6 +21,4 @@ export const StSearchHeaderBackImage = styled.img`
   cursor: pointer;
 `;
 
-export const StSearchHeaderWrap = styled(StFlexBox)`
-  border-bottom: 1px solid ${StudyColors.searchBorder};
-`;
+export const StSearchHeaderWrap = styled(StFlexBox)``;
