@@ -3,11 +3,10 @@ import { StHomeBannerCircle } from '../styles/HomeBanner.styled';
 import { StFlexBox } from '../styles/common.styled';
 import styled, { css } from 'styled-components';
 import { StudyColors } from 'src/shared/Colors';
-import tutorialBanner from 'src/assets/design/banner/tutorialBanner.svg';
-import feedbackBanner from 'src/assets/design/banner/feedbackBanner.svg';
+import tutorialBanner from 'src/assets/design/home/banner/tutorialBanner.svg';
+import feedbackBanner from 'src/assets/design/home/banner/feedbackBanner.svg';
 import { URI } from 'src/shared/URIs';
 import { Link } from 'react-router-dom';
-import { StMarginWrap } from '../styles/SharedStyle/MarginWrap.styled';
 
 function HomeBanner() {
   const images = useRef([tutorialBanner, feedbackBanner]);

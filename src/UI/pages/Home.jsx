@@ -37,7 +37,7 @@ function Home() {
       <HomePopularStudys />
       <HomeCurrentStudy />
       <HomeRealTimeUpdate />
-      {/* <FooterNav /> */}
+      <FooterNav />
     </StHomeWrap>
   );
 }

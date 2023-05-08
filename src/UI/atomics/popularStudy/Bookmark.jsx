@@ -1,7 +1,7 @@
 import React from 'react';
 import { StBookmark } from 'src/UI/styles/PopularStudy/Bookmark.styled';
-import BookmarkOn from 'src/assets/design/Favorite_on.svg';
-import BookmarkOff from 'src/assets/design/Favorite_off.svg';
+import BookmarkOn from 'src/assets/design/home/Favorite_on.svg';
+import BookmarkOff from 'src/assets/design/home/Favorite_off.svg';
 import useBookmark from 'src/hooks/useBookmark';
 
 function Bookmark({ id, isbookmarked }) {

@@ -1,4 +1,4 @@
-import { StudyColors } from 'src/shared/Colors';
+import { fontColors } from 'src/shared/designColors';
 import styled from 'styled-components';
 
 export const StFooterNavList = styled.li`
@@ -6,7 +6,7 @@ export const StFooterNavList = styled.li`
   min-height: 56px;
   padding: 17px auto;
 
-  background-color: ${StudyColors.footer};
+  background-color: ${fontColors.white};
 
   display: flex;
   align-items: center;
@@ -23,6 +23,5 @@ export const StFooterNavUl = styled.ul`
   justify-content: center;
 
   position: fixed;
-  margin-left: -20px;
   bottom: 0;
 `;
