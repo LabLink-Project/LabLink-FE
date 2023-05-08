@@ -7,6 +7,7 @@ import { fontColors, serviceColors } from 'src/shared/designColors';
 import { fontOptions } from 'src/shared/designFontOptions';
 import styled from 'styled-components';
 import { useParams, useNavigate } from 'react-router-dom';
+import { StMarginWrap } from 'src/UI/styles/SharedStyle/MarginWrap.styled';
 
 function Application() {
   const [text, textHandler] = useInput('');
@@ -35,20 +36,21 @@ function Application() {
   return (
     <StPaddingWrap>
       <SearchHeader title="지원하기" />
-      <StH2>하고 싶은 한마디</StH2>
-      <StCreateStudyTextarea
-        value={text}
-        onChange={textHandler}
-        placeholder="10자 이상 입력해주세요."
-      />
-      <StButton onClick={onClickSubmitHandler}>지원 완료</StButton>
+      <StMarginWrap>
+        <StH2>하고 싶은 한마디</StH2>
+        <StCreateStudyTextarea
+          value={text}
+          onChange={textHandler}
+          placeholder="10자 이상 입력해주세요."
+        />
+        <StButton onClick={onClickSubmitHandler}>지원 완료</StButton>
+      </StMarginWrap>
     </StPaddingWrap>
   );
 }
 
 const StPaddingWrap = styled.div`
   height: 100vh;
-  padding: 20px;
   position: relative;
 `;
 
