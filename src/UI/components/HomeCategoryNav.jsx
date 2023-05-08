@@ -17,16 +17,16 @@ function HomeCategoryNav() {
         전체
       </StHomeCategoryNavButton>
       <StHomeCategoryNavButton
-        onClick={offlineHandler}
-        current={address === 'OFFLINE' ? true : false}
-      >
-        지역
-      </StHomeCategoryNavButton>
-      <StHomeCategoryNavButton
         onClick={onlineHandler}
         current={address === 'ONLINE' ? true : false}
       >
         온라인
+      </StHomeCategoryNavButton>
+      <StHomeCategoryNavButton
+        onClick={offlineHandler}
+        current={address === 'OFFLINE' ? true : false}
+      >
+        오프라인
       </StHomeCategoryNavButton>
     </StHomeCategoryNav>
   );
