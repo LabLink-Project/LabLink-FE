@@ -1,9 +1,10 @@
 import { StudyColors, StudyFontOptions } from 'src/shared/Colors';
+import { fontOptions } from 'src/shared/designFontOptions';
 import styled from 'styled-components';
 
 export const StHomeRealTimeUpdateH2 = styled.h2`
-  ${StudyFontOptions.title}
-  margin: 32px 0 16px;
+  ${fontOptions.title}
+  margin-bottom : 16px;
 `;
 
 export const StHomeRealTimeMoreButton = styled.button`

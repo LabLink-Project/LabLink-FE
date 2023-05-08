@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 export const StOverlap = styled.div`
   margin-top: 24px;
-  padding: 32px 20px;
+  padding: 32px 20px 47px;
   background-color: ${fontColors.background};
   border-radius: 24px 24px 0 0;
 `;

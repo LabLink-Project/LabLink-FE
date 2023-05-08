@@ -1,13 +1,20 @@
 import { StudyColors, StudyFontOptions } from 'src/shared/Colors';
+import { fontColors } from 'src/shared/designColors';
 import styled from 'styled-components';
 
 export const StStudy = styled.li`
   max-width: 335px;
-  font-size: 12px;
-  background-color: ${StudyColors.bg};
+  max-height: 156px;
 
-  margin-bottom: 10px;
-  padding: 12px;
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin-bottom: 8px;
+
+  background-color: ${fontColors.white};
+`;
+
+export const StStudyWrap = styled.div`
+  margin-bottom: 12px;
 `;
 
 export const StStudyOnline = styled.div`

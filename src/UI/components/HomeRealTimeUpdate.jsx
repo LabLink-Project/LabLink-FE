@@ -2,7 +2,6 @@ import React from 'react';
 import Study from './Study';
 import { StHomeRealTimeUpdateH2 } from '../styles/HomeRealTimeUpdate.styled';
 import useStudys from 'src/hooks/useStudys';
-import styled from 'styled-components';
 import useReduxState from 'src/hooks/useReduxState';
 import { StOverlap } from '../styles/HomePopularStudy.styled';
 
