@@ -39,12 +39,14 @@ function HomeCurrentStudy() {
               })
           : '최근 본 공고를 불러오지 못했어요 😥'}
       </StHomeStudysUl>
-      <StFlexBox sort="center">
-        <StHomeBannerCircle />
-        <StHomeBannerCircle />
-        <StHomeBannerCircle />
-        <StHomeBannerCircle />
-      </StFlexBox>
+      {/* {(
+        <StFlexBox sort="center">
+          <StHomeBannerCircle />
+          <StHomeBannerCircle />
+          <StHomeBannerCircle />
+          <StHomeBannerCircle />
+        </StFlexBox>
+      ) && studys.length} */}
     </StHomeWrap>
   );
 }

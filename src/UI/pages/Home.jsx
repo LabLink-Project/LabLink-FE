@@ -36,7 +36,7 @@ function Home() {
       <HomeSelectAddress />
       <HomePopularStudys />
       <HomeCurrentStudy />
-      {/* <HomeRealTimeUpdate /> */}
+      <HomeRealTimeUpdate />
       {/* <FooterNav /> */}
     </StHomeWrap>
   );
