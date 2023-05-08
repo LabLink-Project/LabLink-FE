@@ -1,9 +1,16 @@
+import React from 'react';
 import { fontColors } from 'src/shared/designColors';
 import { fontOptions } from 'src/shared/designFontOptions';
 import styled from 'styled-components';
 
-export const StTitle = styled.h2`
-  width: 140px;
+function Title2({ children }) {
+  return <StTitle>{children}</StTitle>;
+}
+
+export default Title2;
+
+const StTitle = styled.div`
+  width: 240px;
   height: 44px;
 
   overflow: hidden;
