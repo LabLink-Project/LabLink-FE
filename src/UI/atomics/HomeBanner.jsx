@@ -37,7 +37,7 @@ function HomeBanner() {
   });
 
   return (
-    <>
+    <StBannerWrap>
       <div>
         <StCarouselWrap>
           <StCarouselButton
@@ -79,9 +79,13 @@ function HomeBanner() {
           );
         })}
       </StFlexBox>
-    </>
+    </StBannerWrap>
   );
 }
+
+const StBannerWrap = styled.div`
+  margin: 0 20px;
+`;
 
 const StCarouselWrap = styled.div`
   width: 355px;

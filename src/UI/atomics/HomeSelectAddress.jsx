@@ -16,7 +16,7 @@ function HomeSelectAddress() {
   const detailAddress = useReduxState('detailAddress');
 
   return (
-    <>
+    <StMarginWrap>
       <StHomeSelectAddressWrap sort="space-between">
         <StHomeSelectAddress>
           {detailAddress === '전체' ? '지역 전체' : `${detailAddress} > 전체`}
@@ -43,9 +43,13 @@ function HomeSelectAddress() {
           <Option closeHandler={isShowHandler}>경상</Option>
         </StOptionsWrap>
       )}
-    </>
+    </StMarginWrap>
   );
 }
+
+const StMarginWrap = styled.div`
+  margin: 0 20px;
+`;
 
 const StOptionsWrap = styled(StFlexBox)`
   flex-wrap: wrap;

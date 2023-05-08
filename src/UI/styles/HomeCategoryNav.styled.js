@@ -1,7 +1,9 @@
 import { StudyColors, StudyFontOptions } from 'src/shared/Colors';
 import styled, { css } from 'styled-components';
 
-export const StHomeCategoryNav = styled.nav``;
+export const StHomeCategoryNav = styled.nav`
+  margin: 0 20px;
+`;
 
 export const StHomeCategoryNavList = styled.li``;
 

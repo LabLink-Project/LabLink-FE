@@ -4,6 +4,7 @@ import { StFlexBox } from './common.styled';
 import { fontOptions } from 'src/shared/designFontOptions';
 
 export const StHomeHeaderWrap = styled(StFlexBox)`
+  margin: 20px 20px 0;
   padding: 14px 0;
 `;
 
