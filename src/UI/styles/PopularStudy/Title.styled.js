@@ -3,7 +3,7 @@ import { fontOptions } from 'src/shared/designFontOptions';
 import styled from 'styled-components';
 
 export const StTitle = styled.h2`
-  width: 140px;
+  width: 236px;
   height: 44px;
 
   overflow: hidden;

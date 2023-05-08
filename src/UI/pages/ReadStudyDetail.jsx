@@ -58,7 +58,7 @@ function ReadStudyDetail() {
   };
 
   return (
-    <StReadStudyWrap>
+    <div>
       <SearchHeader />
       <StReadStudyDetailImage
         src={studys.thumbnailImageURL}
@@ -144,7 +144,7 @@ function ReadStudyDetail() {
           {studys.isapplied ? '지원완료' : '지원하기'}
         </StReadStudyDetailApplication>
       </StFlexBox>
-    </StReadStudyWrap>
+    </div>
   );
 }
 
