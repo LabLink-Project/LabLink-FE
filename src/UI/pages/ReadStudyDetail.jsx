@@ -54,6 +54,7 @@ import Pay from '../atomics/popularStudy/Pay';
 import { fontColors } from 'src/shared/designColors';
 import Applicant from '../atomics/StudyDetail/Applicant';
 import StudyInfomation from '../atomics/StudyDetail/StudyInfomation';
+import Detail from '../atomics/StudyDetail/Detail';
 
 function ReadStudyDetail() {
   const { id } = useParams();
@@ -126,13 +127,7 @@ function ReadStudyDetail() {
           benefit={studys.benefit}
         />
         <StudyInfomation infomation={studys.studyInfo} />
-
-        <StReadStudyDetailInfoWrap>
-          <StH3>상세 설명</StH3>
-          <StReadStudyDetailInfoParagraph>
-            {studys.description}
-          </StReadStudyDetailInfoParagraph>
-        </StReadStudyDetailInfoWrap>
+        <Detail description={studys.description} />
         {isDefaultImage(studys.detailImageURL) ? (
           ''
         ) : (
@@ -155,10 +150,6 @@ function ReadStudyDetail() {
     </div>
   );
 }
-
-const StH3 = styled.h3`
-  ${fontOptions.subtitle};
-`;
 
 const StImage = styled.img`
   min-width: 335px;

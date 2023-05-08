@@ -69,6 +69,8 @@ export const StReadStudyDetailRequireWrap = styled.div`
 
   padding: 16px;
   margin-bottom: 8px;
+  border-radius: 24px;
+
   background-color: ${fontColors.white};
 `;
 
@@ -102,7 +104,7 @@ export const StReadStudyDetailInfoWrap = styled.div`
 
   padding: 16px;
   margin-bottom: 8px;
-  border-radius: 12px;
+  border-radius: 24px;
 
   background-color: ${fontColors.white};
 `;
