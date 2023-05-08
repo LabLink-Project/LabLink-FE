@@ -128,6 +128,8 @@ function ReadStudyDetail() {
         />
         <StudyInfomation infomation={studys.studyInfo} />
         <Detail description={studys.description} />
+
+        {/* 이미지가 불러와지지 않았을 때 처리 고민하기 */}
         {isDefaultImage(studys.detailImageURL) ? (
           ''
         ) : (
@@ -137,16 +139,16 @@ function ReadStudyDetail() {
           />
         )}
       </BackgroundWrap>
-
-      <div style={{ marginBottom: '16px' }}></div>
-      <StFlexBox>
-        <StReadStudyDetailQuestion onClick={soonDevelop}>
-          문의하기
-        </StReadStudyDetailQuestion>
-        <StReadStudyDetailApplication onClick={applyHandler}>
-          {studys.isapplied ? '지원완료' : '지원하기'}
-        </StReadStudyDetailApplication>
-      </StFlexBox>
+      <ButtonsWrap>
+        <StFlexBox>
+          <StReadStudyDetailQuestion onClick={soonDevelop}>
+            문의하기
+          </StReadStudyDetailQuestion>
+          <StReadStudyDetailApplication onClick={applyHandler}>
+            {studys.isapplied ? '지원완료' : '지원하기'}
+          </StReadStudyDetailApplication>
+        </StFlexBox>
+      </ButtonsWrap>
     </div>
   );
 }
@@ -164,6 +166,10 @@ const BackgroundWrap = styled.div`
   background-color: ${fontColors.background};
   padding: 32px 20px 0;
   border-radius: 24px 24px 0 0;
+`;
+
+const ButtonsWrap = styled(StFlexBox)`
+  margin: 16px 20px;
 `;
 
 export default ReadStudyDetail;

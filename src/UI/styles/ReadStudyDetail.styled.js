@@ -2,7 +2,7 @@ import { StudyColors, StudyFontOptions } from 'src/shared/Colors';
 import styled from 'styled-components';
 import { StStudyOnline } from './Study.styled';
 import { StFlexBox } from './common.styled';
-import { fontColors } from 'src/shared/designColors';
+import { fontColors, serviceColors } from 'src/shared/designColors';
 import { fontOptions } from 'src/shared/designFontOptions';
 
 export const StReadStudyWrap = styled.div`
@@ -12,6 +12,7 @@ export const StReadStudyWrap = styled.div`
 export const StReadStudyDetailImage = styled.img`
   min-width: 375px;
   max-width: 375px;
+  min-height: 200px;
   max-height: 500px;
 
   background-color: ${StudyColors.searchBar};
@@ -69,7 +70,7 @@ export const StReadStudyDetailRequireWrap = styled.div`
 
   padding: 16px;
   margin-bottom: 8px;
-  border-radius: 24px;
+  border-radius: 12px;
 
   background-color: ${fontColors.white};
 `;
@@ -104,7 +105,7 @@ export const StReadStudyDetailInfoWrap = styled.div`
 
   padding: 16px;
   margin-bottom: 8px;
-  border-radius: 24px;
+  border-radius: 12px;
 
   background-color: ${fontColors.white};
 `;
@@ -126,20 +127,24 @@ export const StParagraph = styled(StReadStudyDetailInfoParagraph)`
 `;
 
 export const StReadStudyDetailQuestion = styled.button`
-  min-width: 109px;
+  min-width: 76px;
   min-height: 56px;
-  padding: 16px 12px;
-  border: 1px solid ${StudyColors.studyButtonBorder};
-  ${StudyFontOptions.subtitle}
+  padding: 18px 13.5px;
+  border: 1px solid ${fontColors.caption};
+  border-radius: 8px;
+  ${fontOptions.body1};
   margin-right: 4px;
+  /* box-sizing: border-box; */
 `;
 
 export const StReadStudyDetailApplication = styled.button`
-  min-width: 222px;
-  min-height: 56px;
+  min-width: 253px;
+  min-height: 58px;
+
   padding: 16px auto;
-  color: ${StudyColors.white};
-  background-color: ${StudyColors.black};
-  ${StudyFontOptions.subtitle};
-  margin-right: 4px;
+  border-radius: 8px;
+
+  color: ${fontColors.title};
+  background-color: ${serviceColors.primary};
+  ${fontOptions.subtitle};
 `;
