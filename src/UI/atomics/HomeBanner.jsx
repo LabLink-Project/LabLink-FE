@@ -7,6 +7,7 @@ import tutorialBanner from 'src/assets/design/banner/tutorialBanner.svg';
 import feedbackBanner from 'src/assets/design/banner/feedbackBanner.svg';
 import { URI } from 'src/shared/URIs';
 import { Link } from 'react-router-dom';
+import { StMarginWrap } from '../styles/SharedStyle/MarginWrap.styled';
 
 function HomeBanner() {
   const images = useRef([tutorialBanner, feedbackBanner]);
@@ -37,7 +38,7 @@ function HomeBanner() {
   });
 
   return (
-    <StBannerWrap>
+    <div>
       <div>
         <StCarouselWrap>
           <StCarouselButton
@@ -79,25 +80,21 @@ function HomeBanner() {
           );
         })}
       </StFlexBox>
-    </StBannerWrap>
+    </div>
   );
 }
 
-const StBannerWrap = styled.div`
-  margin: 0 20px;
-`;
-
 const StCarouselWrap = styled.div`
-  width: 355px;
-  height: 200px;
+  width: 375px;
+  /* height: 200px; */
   overflow: hidden;
   position: relative;
 `;
 
 const StImage = styled.img`
   // image로 하면 bg에 full fill
-  width: 355px;
-  height: 200px;
+  width: 375px;
+  /* height: 200px; */
 
   // image로 contain 구현하기
   /* object-fit: contain; */
