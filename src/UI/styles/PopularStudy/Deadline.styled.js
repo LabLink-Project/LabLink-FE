@@ -5,5 +5,5 @@ import styled from 'styled-components';
 export const StDeadline = styled.div`
   ${fontOptions.caption};
   color: ${fontColors.caption};
-  margin-bottom: 2px;
+  /* margin-bottom: 2px; */
 `;

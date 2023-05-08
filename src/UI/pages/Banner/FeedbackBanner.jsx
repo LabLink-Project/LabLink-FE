@@ -1,6 +1,6 @@
 import React from 'react';
 import SearchHeader from 'src/UI/components/SearchHeader';
-import feedbackPage from 'src/assets/design/bannerPage/eventPage.jpeg';
+import feedbackPage from 'src/assets/design/home/bannerPage/eventPage.jpeg';
 
 function FeedbackBanner() {
   return (
