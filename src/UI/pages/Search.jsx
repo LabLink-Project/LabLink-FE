@@ -92,7 +92,6 @@ function Search() {
       <StSearchHistorys>
         <PopularStudyListWrap />
       </StSearchHistorys>
-      <FooterNav />
     </StSearchWrap>
   );
 }

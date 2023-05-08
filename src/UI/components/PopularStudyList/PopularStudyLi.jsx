@@ -27,6 +27,10 @@ const StStudyLi = styled.li`
   margin-bottom: 8px;
   ${fontOptions.body1};
   cursor: pointer;
+
+  max-width: 110px;
+  max-height: 20px;
+  overflow: hidden;
 `;
 
 const StSpan = styled.div`

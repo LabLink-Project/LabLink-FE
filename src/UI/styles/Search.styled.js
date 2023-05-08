@@ -1,20 +1,24 @@
 import { StudyColors, StudyFontOptions } from 'src/shared/Colors';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { StCheckbox } from './common.styled';
 import { StButton } from './Button.styled';
+import { fontOptions } from 'src/shared/designFontOptions';
 
 export const StSearchWrap = styled.div`
-  padding: 20px;
+  /* padding: 20px; */
 `;
 
 export const StSearchHistoryTitle = styled.h2`
-  margin: 32px 0 16px;
-  ${StudyFontOptions.title}
+  margin: 32px 20px 16px;
+  ${fontOptions.title};
 `;
 
 export const StSearchHistorys = styled.ul`
   display: flex;
   overflow: scroll;
+  ${fontOptions.body1};
+
+  margin: 20px;
 
   /* 크롬, 사파리, 오페라, 엣지 지원 */
   /* 나머지 지원은 찾아보자 */
