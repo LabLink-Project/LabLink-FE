@@ -64,7 +64,7 @@ function CompanyOngoingStudy() {
                     <StPersonalRequestHeaderWrap sort="space-between">
                       <StPersonalRequestCompany></StPersonalRequestCompany>
                       <StPersonalRequestTime>
-                        현재 {ongoingStudy.subjectCount}명 지원
+                        현재 {ongoingStudy.currentApplicantCount}명 지원
                       </StPersonalRequestTime>
                     </StPersonalRequestHeaderWrap>
                     <StPersonalRequestStudyTitle>
@@ -78,7 +78,9 @@ function CompanyOngoingStudy() {
                     </StPersonalRequestStudyPay>
                     <StPersonalRequestHeaderWrap sort="space-between">
                       <StPersonalRequestStudyPay>
-                        {ongoingStudy.address} | {ongoingStudy.date}에 진행
+                        {ongoingStudy.address}
+                        <br />
+                        {ongoingStudy.date}에 진행
                       </StPersonalRequestStudyPay>
                       <Button
                         variant="dark"

@@ -54,7 +54,11 @@ export const StCompanyApplicantList = styled.div`
   min-height: 122px;
 
   border: 1px solid ${StudyColors.inputBorder};
+  border-radius: 12px;
   padding: 16px 12px;
+  gap: 12px;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const StCompanyApplicantListWrap = styled.div`
@@ -78,4 +82,20 @@ export const StCompanyApplicantListPhoneNumber = styled.div`
 `;
 export const StCompanyApplicantListAddress = styled.div`
   ${StudyFontOptions.body};
+`;
+
+export const StCompanyApplicantListMessage = styled.div``;
+
+export const StCompanyApplicantListMessageTitle = styled.p`
+  font-weight: 600;
+`;
+
+export const StCompanyApplicantListMessageBody = styled.p`
+  font-size: 13px;
+`;
+
+export const StCompanyApplicantListButtons = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 4px;
 `;
