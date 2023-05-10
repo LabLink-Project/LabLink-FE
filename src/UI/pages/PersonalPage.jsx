@@ -7,7 +7,6 @@ import {
   StPersonalPageH2,
   StPersonalPageWrap,
   StPersonalPageUserWrap,
-  StPersonalPageTemp,
   StPersonalPageList,
 } from '../styles/PersonalPage.styled';
 import { Link } from 'react-router-dom';
@@ -28,7 +27,7 @@ function PersonalPage() {
     return state;
   });
   const { nickname } = account.accountHandler;
-  
+
   // 비로그인 상태면 못 들어오게 막기
   useEffect(() => {
     const token = cookies.get('token');

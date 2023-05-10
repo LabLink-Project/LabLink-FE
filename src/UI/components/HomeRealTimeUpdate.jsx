@@ -1,14 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Study from './Study';
 import { StHomeRealTimeUpdateH2 } from '../styles/HomeRealTimeUpdate.styled';
-import useStudys from 'src/hooks/useStudys';
 import useReduxState from 'src/hooks/useReduxState';
 import { StOverlap } from '../styles/HomePopularStudy.styled';
 import { apiWithJWT } from 'src/api/api';
 
 function HomeRealTimeUpdate() {
   const { studyType, detailAddress } = useReduxState();
-  // const [studys] = useStudys(`/studies?pageIndex=${page}&pageCount=10`);
 
   // intersection observer api를 이용해 무한 스크롤 구현
   const [studys, setStudys] = useState([]);

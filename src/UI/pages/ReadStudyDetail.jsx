@@ -2,45 +2,21 @@ import React from 'react';
 import SearchHeader from '../components/SearchHeader';
 import {
   StReadStudyDetailImage,
-  StReadStudyDetailOnline,
-  StReadStudyDetailDueDate,
   StReadStudyDetailHeader,
   StReadStudyDetailWrap,
-  StReadStudyDetailCompany,
-  StReadStudyDetailTitle,
   StReadStudyDetailDateAndPayWrap,
   StReadStudyDetailDate,
-  StReadStudyDetailDateSpan,
-  StReadStudyDetailPay,
-  StReadStudyDetailRequireWrap,
-  StReadStudyDetailRequireTitle,
-  StReadStudyDetailInfoWrap,
-  StReadStudyDetailInfoTitle,
-  StReadStudyDetailInfoParagraph,
   StReadStudyDetailQuestion,
   StReadStudyDetailApplication,
-  StParagraph,
 } from '../styles/ReadStudyDetail.styled';
-import { StReadStudyWrap } from '../styles/ReadStudy.styled';
-import filledHeart from 'src/assets/Favorite_on.svg';
-import outlineHeart from 'src/assets/Favorite_off.svg';
 import { StFlexBox } from '../styles/common.styled';
 import { useParams } from 'react-router-dom';
-import { convertToShortDate } from 'src/utils/formatDate';
-import useBookmark from 'src/hooks/useBookmark';
 import useStudy from 'src/hooks/useStudy';
 import styled from 'styled-components';
-import { fontOptions } from 'src/shared/designFontOptions';
 import { soonDevelop } from 'src/utils/soonDevelop';
 import { useNavigate } from 'react-router-dom';
 import { URI } from 'src/shared/URIs';
-import {
-  formatAge,
-  formatBenefit,
-  formatGender,
-  isDefaultImage,
-  isNull,
-} from 'src/utils/parseData';
+import { isDefaultImage } from 'src/utils/parseData';
 import { useAccountState } from 'src/hooks/useReduxState';
 import { StMarginWrap } from '../styles/SharedStyle/MarginWrap.styled';
 import Place from '../atomics/popularStudy/Place';

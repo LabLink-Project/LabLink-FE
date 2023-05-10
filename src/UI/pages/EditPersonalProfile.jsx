@@ -1,13 +1,11 @@
-import React, { createContext, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import SearchHeader from '../components/SearchHeader';
 import {
   StEditPersonalProfileButton,
   StEditPersonalProfileChangeInfoInput,
   StEditPersonalProfileCheckDiv,
   StEditPersonalProfileCheckPw,
-  StEditPersonalProfileDate,
   StEditPersonalProfileDateWrap,
-  StEditPersonalProfileFixedButton,
   StEditPersonalProfileH2,
   StEditPersonalProfileInput,
   StEditPersonalProfilePwWrap,
@@ -18,14 +16,9 @@ import {
 } from '../styles/EditPersonalProfile.styled';
 import { StFlexBox } from '../styles/common.styled';
 import { StTopButton } from '../styles/TopButton.styled';
-import CreateStudyAddress from '../molecules/CreateStudyAddress';
-import { StCreateStudyAddressInput } from '../styles/CreateStudy.styled';
-import { StBlackButton } from '../styles/Button.styled';
 import { Button } from 'react-bootstrap';
 import { cookies } from 'src/shared/Cookie';
 import { api } from 'src/api/api';
-import DaumPostcode from 'react-daum-postcode';
-import { Modal } from 'bootstrap';
 import CreateUserAddress from '../molecules/CreateUserAddress';
 import { useNavigate } from 'react-router-dom';
 import { URI } from 'src/shared/URIs';

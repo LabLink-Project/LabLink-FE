@@ -19,31 +19,12 @@ export const StReadStudyDetailImage = styled.img`
   object-fit: contain;
 `;
 
-export const StReadStudyDetailOnline = styled(StStudyOnline)`
-  margin: 0;
-`;
-
 export const StReadStudyDetailHeader = styled(StFlexBox)`
   margin: 16px 0 10px;
 `;
 
-export const StReadStudyDetailDueDate = styled.span`
-  margin-right: 6px;
-`;
-
 export const StReadStudyDetailWrap = styled.div`
   margin-bottom: 10px;
-`;
-
-export const StReadStudyDetailCompany = styled.h2`
-  ${StudyFontOptions.body}
-  font-weight: 600;
-  margin-bottom: 4px;
-`;
-
-export const StReadStudyDetailTitle = styled.h1`
-  ${StudyFontOptions.subtitle}
-  font-weight: 400;
 `;
 
 export const StReadStudyDetailDateAndPayWrap = styled(StFlexBox)`
@@ -53,16 +34,6 @@ export const StReadStudyDetailDateAndPayWrap = styled(StFlexBox)`
 export const StReadStudyDetailDate = styled.div`
   ${StudyFontOptions.body};
   font-weight: 600;
-`;
-
-export const StReadStudyDetailDateSpan = styled.span`
-  ${StudyFontOptions.caption}
-  color: ${StudyColors.studyParagraph};
-  vertical-align: middle;
-`;
-
-export const StReadStudyDetailPay = styled.div`
-  ${StudyFontOptions.subtitle}
 `;
 
 export const StReadStudyDetailRequireWrap = styled.div`

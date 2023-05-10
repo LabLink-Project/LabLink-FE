@@ -13,8 +13,6 @@ import useStudys from 'src/hooks/useStudys';
 function HomePopularStudys() {
   const [studys] = useStudys('/studies?sortedType=popularity');
   const { studyType, detailAddress } = useReduxState();
-  // console.log(studyType, detailAddress);
-  // 맨 처음 값이 all(소문자)로 되어있는 현상 버그 찾아야됨
 
   return (
     <StOverlap>

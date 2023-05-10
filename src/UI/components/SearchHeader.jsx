@@ -9,7 +9,7 @@ import {
 } from 'src/UI/styles/SearchHeader.styled';
 
 import Back from 'src/assets/design/Search/Left.svg';
-import Alarm from 'src/assets/Alarm.svg';
+import Alarm from 'src/assets/design/Alarm_off.svg';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { soonDevelop } from 'src/utils/soonDevelop';

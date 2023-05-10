@@ -1,5 +1,5 @@
 import React from 'react';
-import search from 'src/assets/Search.svg';
+import search from 'src/assets/design/Search_off.svg';
 import {
   StSearchBar,
   StSearchBarIcon,
@@ -10,15 +10,11 @@ import { useInput } from 'src/hooks/useInput';
 import { useNavigate } from 'react-router-dom';
 
 function SearchBar({ placeholder }) {
-  // handler={keywordHandler}
-  // onEnterHandler={onSearchHandler}
-
   const [keyword, keywordHandler] = useInput('');
 
   const navigate = useNavigate();
 
   const onSearchHandler = () => {
-    // console.log('entered search bar : ', keyword);
     navigate('/studys', { state: { keyword } });
   };
 

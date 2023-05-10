@@ -10,8 +10,6 @@ import StudyInput from '../atomics/StudyInput';
 import { Modal } from 'react-bootstrap';
 import { StBlackButton } from '../styles/Button.styled';
 import DaumPostcode from 'react-daum-postcode';
-import { MyContext } from '../pages/EditPersonalProfile';
-import { useContext } from 'react';
 
 function CreateUserAddress({ title, userInfo, setUserInfo, userInfoOnchange }) {
   // 모달 열기/닫기 state

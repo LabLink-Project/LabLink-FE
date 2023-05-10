@@ -1,7 +1,6 @@
 import { StudyColors, StudyFontOptions } from 'src/shared/Colors';
 import styled from 'styled-components';
 import StudyInput from '../atomics/StudyInput';
-import Study from '../components/Study';
 import { fontOptions } from 'src/shared/designFontOptions';
 
 export const StRequiredInputSpan = styled.span`

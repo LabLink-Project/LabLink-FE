@@ -17,7 +17,3 @@ export const StSearchHistoryUISpan = styled.span`
   margin-right: 4px;
   ${StudyFontOptions.body}
 `;
-
-export const StSearchHistoryUICloseIcon = styled.img`
-  vertical-align: baseline;
-`;

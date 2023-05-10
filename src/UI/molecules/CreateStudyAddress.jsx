@@ -6,7 +6,6 @@ import {
   StCreateStudyWrap,
   StRequiredInputSpan,
 } from '../styles/CreateStudy.styled';
-import StudyInput from '../atomics/StudyInput';
 import ModalPortal from '../components/Portal';
 import Modal from '../components/Modal';
 import { EmbedPostcode } from '../pages/PostcodeTest';

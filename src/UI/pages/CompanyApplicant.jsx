@@ -49,7 +49,6 @@ function CompanyApplicant() {
   }, []);
 
   const [study] = useStudy(`/studies/${param.id}`);
-  console.log(applications, param, study);
 
   return (
     <StCompanyApplicantWrap>
