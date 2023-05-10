@@ -21,7 +21,6 @@ import { useAccountState } from 'src/hooks/useReduxState';
 import { StMarginWrap } from '../styles/SharedStyle/MarginWrap.styled';
 import Place from '../atomics/popularStudy/Place';
 import Bookmark from '../atomics/popularStudy/Bookmark';
-import Title from '../atomics/popularStudy/Title';
 import CompanyName from '../atomics/popularStudy/CompanyName';
 import Address from '../atomics/Study/Address';
 import sectionLine from 'src/assets/design/sectionLine.svg';
@@ -31,6 +30,7 @@ import { fontColors } from 'src/shared/designColors';
 import Applicant from '../atomics/StudyDetail/Applicant';
 import StudyInfomation from '../atomics/StudyDetail/StudyInfomation';
 import Detail from '../atomics/StudyDetail/Detail';
+import Title2 from '../atomics/Study/Title2';
 
 function ReadStudyDetail() {
   const { id } = useParams();
@@ -71,7 +71,7 @@ function ReadStudyDetail() {
         </StReadStudyDetailHeader>
         <StReadStudyDetailWrap>
           <CompanyName>{studys.companyName}</CompanyName>
-          <Title>{studys.title}</Title>
+          <Title2>{studys.title}</Title2>
         </StReadStudyDetailWrap>
         <StReadStudyDetailDateAndPayWrap sort="space-between">
           <StReadStudyDetailDate>
