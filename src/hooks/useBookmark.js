@@ -21,8 +21,7 @@ function useBookmark(id, isbookmarked) {
   };
 
   const bookmarkRequest = async () => {
-    const response = await apiWithJWT.post(`/studies/${id}/bookmark`);
-    console.log(response.data);
+    apiWithJWT.post(`/studies/${id}/bookmark`);
   };
 
   return [isbookmark, onClickBookmarkHandler];
