@@ -27,18 +27,13 @@ const initialState = {
   subjectMaxAge: null,
 
   endDate: null,
-  //   thumbnailImage: null,
-  // 디테일 image 없음
-  //   detailImage: null,
 };
 
 // reducer
 const createStudyHandler = (state = initialState, action) => {
-  //   console.log('redux : ', action.payload);
   switch (action.type) {
     case CREATE_STUDY:
       const { name, value } = action.payload;
-      //   console.log(name, value);
       return { ...state, [name]: value };
     default:
       return state;

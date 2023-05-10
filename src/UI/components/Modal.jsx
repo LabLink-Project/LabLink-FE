@@ -19,12 +19,3 @@ const ModalBackground = styled.div`
   background-color: #141414;
   /* text-align: center; */
 `;
-
-const ModalContent = styled.div`
-  width: 950px;
-  height: 100%;
-  margin-top: 70px;
-  position: relative;
-  overflow: scroll;
-  background: #ffffff;
-`;

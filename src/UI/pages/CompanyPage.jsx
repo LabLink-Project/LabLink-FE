@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import SearchHeader from '../components/SearchHeader';
-import right from 'src/assets/right.svg';
 import triangle from 'src/assets/triangle.svg';
 import {
   StCompanyPageStrong,

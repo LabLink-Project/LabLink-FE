@@ -11,7 +11,6 @@ import { StMarginWrap } from 'src/UI/styles/SharedStyle/MarginWrap.styled';
 
 function Application() {
   const [text, textHandler] = useInput('');
-  //   console.log(text);
 
   const onClickSubmitHandler = () => {
     submitRequest();

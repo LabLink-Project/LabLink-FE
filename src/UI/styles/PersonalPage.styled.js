@@ -1,4 +1,4 @@
-import { StudyColors, StudyFontOptions } from 'src/shared/Colors';
+import { StudyFontOptions } from 'src/shared/Colors';
 import styled from 'styled-components';
 import { StFlexBox } from './common.styled';
 
@@ -17,13 +17,6 @@ export const StPersonalPageH2 = styled.h2`
 
 export const StPersonalPageStrong = styled.strong`
   ${StudyFontOptions.title}
-`;
-
-export const StPersonalPageTemp = styled.div`
-  min-width: 335px;
-  min-height: 100px;
-  background-color: ${StudyColors.searchBar};
-  margin-bottom: 32px;
 `;
 
 export const StPersonalPageList = styled.li`

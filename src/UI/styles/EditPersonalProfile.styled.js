@@ -53,17 +53,6 @@ export const StEditPersonalProfileYear = styled.input`
   color: ${StudyColors.inputPlaceholder};
 `;
 
-export const StEditPersonalProfileDate = styled.input`
-  min-width: 83px;
-  min-height: 40px;
-
-  padding: 10px 8px;
-  border: 1px solid ${StudyColors.inputBorder};
-
-  ${StudyFontOptions.caption};
-  color: ${StudyColors.inputPlaceholder};
-`;
-
 export const StEditPersonalProfileCheckPw = styled(StEditPersonalProfileInput)`
   margin-bottom: 4px;
 `;
@@ -87,19 +76,6 @@ export const StEditPersonalProfileButton = styled.input`
     border: 1px solid ${StudyColors.black};
     color: ${StudyColors.black};
   }
-`;
-
-export const StEditPersonalProfileFixedButton = styled.button`
-  min-width: 335px;
-  min-height: 56px;
-
-  padding: 16px auto;
-
-  background-color: ${StudyColors.title};
-  color: ${StudyColors.white};
-
-  position: fixed;
-  bottom: 66px;
 `;
 
 export const StEditPersonalProfileChangeInfoInput = styled(

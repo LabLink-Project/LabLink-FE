@@ -8,8 +8,8 @@ import {
   StHomeHeaderWrap,
 } from '../styles/HomeHeader.styled';
 import { URI } from 'src/shared/URIs';
-import Search from 'src/assets/Search.svg';
-import Alarm from 'src/assets/Alarm.svg';
+import Search from 'src/assets/design/Search_on.svg';
+import Alarm from 'src/assets/design/Alarm_off.svg';
 import { deleteCookie } from 'src/utils/cookieHandler';
 import styled from 'styled-components';
 import { serviceColors } from 'src/shared/designColors';

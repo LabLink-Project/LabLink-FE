@@ -16,8 +16,6 @@ function HomeBanner() {
 
   const [current, setCurrent] = useState(0);
 
-  // img 앞에 추가 : unshift
-  // img 뒤에 추가 : push
   const moveSlide = i => {
     let nextIndex = current + i;
     if (nextIndex >= imgSize.current) nextIndex = 0;
@@ -54,7 +52,10 @@ function HomeBanner() {
                   to={urls.current[i]}
                   key={i}
                 >
-                  <StImage src={img} />
+                  <StImage
+                    src={img}
+                    alt="이벤트 배너 이미지"
+                  />
                 </Link>
               );
             })}

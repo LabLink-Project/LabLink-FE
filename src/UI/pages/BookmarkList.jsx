@@ -4,7 +4,6 @@ import {
   StBookmarkListButton,
   StBookmarkListButtonWrap,
   StBookmarkListTitle,
-  StBookmarkListWrap,
   StBookmarkTitles,
 } from '../styles/BookmarkList.styled';
 import Study from '../components/Study';
@@ -26,11 +25,9 @@ function BookmarkList() {
 
   const [category, setCategory] = useState('ONLINE');
   const onlineClickHandler = () => {
-    // console.log(category);
     setCategory('ONLINE');
   };
   const offlineClickHandler = () => {
-    // console.log(category);
     setCategory('OFFLINE');
   };
 

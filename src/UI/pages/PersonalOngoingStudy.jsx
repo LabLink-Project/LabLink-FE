@@ -10,11 +10,9 @@ import {
   StPersonalRequestStudyPay,
   StPersonalRequestStudyPayStrong,
   StPersonalRequestStudyTitle,
-  StPersonalRequestTime,
   StPersonalRequestTitle,
   StPersonalRequestWrap,
 } from '../styles/PersonalRequest.styled';
-import { Button } from 'react-bootstrap';
 import { cookies } from 'src/shared/Cookie';
 import { api } from 'src/api/api';
 import FooterNav from '../components/FooterNav';

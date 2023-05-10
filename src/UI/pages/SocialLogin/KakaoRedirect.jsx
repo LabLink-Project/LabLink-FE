@@ -5,7 +5,6 @@ import { cookies } from 'src/shared/Cookie';
 
 function KakaoRedirect() {
   const href = new URL(window.location.href);
-  console.log(href.searchParams.get('code'));
   const code = href.searchParams.get('code');
 
   const navigate = useNavigate();
@@ -25,7 +24,7 @@ function KakaoRedirect() {
           navigate('/');
         })
         .catch(err => {
-          console.log(err)
+          console.log(err);
           // 얼럿 창 띄우기
           alert('소셜 로그인 과정에서 오류가 발생했습니다 😥');
 
