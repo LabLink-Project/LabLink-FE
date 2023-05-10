@@ -4,6 +4,7 @@ import {
   StCreateStudyFileUploadLabel,
   StCreateStudyLabel,
   StCreateStudyLabelWrap,
+  StCreateStudyParagraph,
   StCreateStudyWrap,
 } from '../styles/CreateStudy.styled';
 import { StFlexBox } from '../styles/common.styled';
@@ -22,6 +23,9 @@ function CreateStudyDetailImage() {
       <StFlexBox sort="space-between">
         <StCreateStudyLabelWrap>
           <StCreateStudyLabel htmlFor="">이미지 첨부</StCreateStudyLabel>
+          <StCreateStudyParagraph>
+            공고 내용 이미지는 1개의 이미지만 등록 가능합니다.
+          </StCreateStudyParagraph>
         </StCreateStudyLabelWrap>
         <StCreateStudyFileUploadLabel htmlFor="upload2">
           파일 선택
