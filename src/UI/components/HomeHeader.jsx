@@ -37,15 +37,13 @@ function HomeHeader() {
           </WelcomeMessage>
         ) : (
           <WelcomeMessage>
-            {' '}
             <StHomeHeaderLink to={URI.auth.signin.user}>
-              로그인
-            </StHomeHeaderLink>{' '}
-            해주세요{' '}
-            <img
-              src={right}
-              alt="오른쪽 표시"
-            />
+              <Login>로그인</Login> 해주세요{' '}
+              <img
+                src={right}
+                alt="오른쪽 표시"
+              />
+            </StHomeHeaderLink>
           </WelcomeMessage>
         )}
       </div>
@@ -85,6 +83,10 @@ const Username = styled.div`
 const Button = styled.button`
   margin-left: 5px;
   color: ${serviceColors.secondary};
+`;
+
+const Login = styled.strong`
+  ${fontOptions.subtitle}
 `;
 
 export default HomeHeader;

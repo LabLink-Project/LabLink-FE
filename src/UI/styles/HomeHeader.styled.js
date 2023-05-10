@@ -20,7 +20,6 @@ export const StHomeHeaderIcon = styled.img`
 `;
 
 export const StHomeHeaderLink = styled(Link)`
-  ${fontOptions.subtitle}
   color: inherit;
   text-decoration: none;
 `;
