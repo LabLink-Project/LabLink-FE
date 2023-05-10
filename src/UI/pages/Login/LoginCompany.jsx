@@ -135,7 +135,7 @@ function LoginCompany() {
           </StLoginLinks>
         </Tab>
       </Tabs>
-      <FooterNav />
+      {/* <FooterNav /> */}
     </Layout>
   );
 }

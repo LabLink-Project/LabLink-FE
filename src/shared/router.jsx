@@ -13,7 +13,7 @@ import BookmarkList from 'src/UI/pages/BookmarkList';
 import PersonalPage from 'src/UI/pages/PersonalPage';
 import EditPersonalProfile from 'src/UI/pages/EditPersonalProfile';
 import PersonalRequest from 'src/UI/pages/PersonalRequest';
-import CompanyApplicant from 'src/UI/pages/StudyApplicant';
+// import CompanyApplicant from 'src/UI/pages/StudyApplicant';
 import EndStudyList from 'src/UI/pages/CompanyEndStudyList';
 import ReadStudy from 'src/UI/pages/ReadStudy';
 import Search from 'src/UI/pages/Search';
