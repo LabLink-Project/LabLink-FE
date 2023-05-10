@@ -38,61 +38,68 @@ function PersonalPage() {
   }, []);
 
   return (
-    <StPersonalPageWrap>
-      <SearchHeader title="마이페이지" />
-      <StPersonalPageUserWrap sort="space-between">
-        <StPersonalPageH2>
-          안녕하세요! <StPersonalPageStrong>{nickname}님</StPersonalPageStrong>
-        </StPersonalPageH2>
-        <div>
-          <Link to={URI.mypage.user.editInfo}>내 정보 수정</Link>
-          <img
-            src={right}
-            alt="더보기"
-          />
-        </div>
-      </StPersonalPageUserWrap>
-      {/* <StPersonalPageTemp>나의 온도</StPersonalPageTemp> */}
-      <ul>
-        <StPersonalPageList
-          onClick={() => setOpen(!open)}
-          aria-controls="example-collapse-text"
-          aria-expanded={open}
-        >
-          <p>내 실험 관리</p>
-          <img
-            src={triangle}
-            alt=""
-          />
-        </StPersonalPageList>
-        <Collapse in={open}>
+    <>
+      <StPersonalPageWrap>
+        <SearchHeader title="마이페이지" />
+        <StPersonalPageUserWrap sort="space-between">
+          <StPersonalPageH2>
+            안녕하세요!{' '}
+            <StPersonalPageStrong>{nickname}님</StPersonalPageStrong>
+          </StPersonalPageH2>
           <div>
-            <StCompanyPageCollapse id="example-collapse-text">
-              <Link to={URI.mypage.user.applyStudy}>신청한 실험</Link>
-              <Link to={URI.mypage.user.ongoingStudy}>진행할 실험</Link>
-              <Link to={URI.mypage.user.endStudy}>완료한 실험</Link>
-            </StCompanyPageCollapse>
+            <Link to={URI.mypage.user.editInfo}>내 정보 수정</Link>
+            <img
+              src={right}
+              alt="더보기"
+            />
           </div>
-        </Collapse>
-        <StPersonalPageList>
-          {/* 신청서 작성 구현 완료시 수정 */}
-          {/* <Link to="#">신청서 작성</Link>
+        </StPersonalPageUserWrap>
+        {/* <StPersonalPageTemp>나의 온도</StPersonalPageTemp> */}
+        <ul>
+          <StPersonalPageList
+            onClick={() => setOpen(!open)}
+            aria-controls="example-collapse-text"
+            aria-expanded={open}
+          >
+            <p>내 실험 관리</p>
+            <img
+              src={triangle}
+              alt=""
+              style={{
+                width: '15px',
+                height: '15px',
+              }}
+            />
+          </StPersonalPageList>
+          <Collapse in={open}>
+            <div>
+              <StCompanyPageCollapse id="example-collapse-text">
+                <Link to={URI.mypage.user.applyStudy}>신청한 실험</Link>
+                <Link to={URI.mypage.user.ongoingStudy}>진행할 실험</Link>
+                <Link to={URI.mypage.user.endStudy}>완료한 실험</Link>
+              </StCompanyPageCollapse>
+            </div>
+          </Collapse>
+          <StPersonalPageList>
+            {/* 신청서 작성 구현 완료시 수정 */}
+            {/* <Link to="#">신청서 작성</Link>
           <img
             src={triangle}
             alt=""
           /> */}
-        </StPersonalPageList>
-        <StPersonalPageList>
-          {/* 설정 부분 구현 완료시 수정 */}
-          {/* <Link to="#">설정</Link>
+          </StPersonalPageList>
+          <StPersonalPageList>
+            {/* 설정 부분 구현 완료시 수정 */}
+            {/* <Link to="#">설정</Link>
           <img
             src={triangle}
             alt=""
           /> */}
-        </StPersonalPageList>
-      </ul>
+          </StPersonalPageList>
+        </ul>
+      </StPersonalPageWrap>
       <FooterNav />
-    </StPersonalPageWrap>
+    </>
   );
 }
 

@@ -126,7 +126,7 @@ function LoginUser() {
                 color: 'gray',
               }}
             >
-              LapLink가 처음이신가요?
+              LabLink가 처음이신가요?
             </Link>
             {/* <Link
               // 아이디 / 비밀번호 찾기 페이지 구현되면 수정
@@ -145,7 +145,7 @@ function LoginUser() {
           onEnter={() => nav(URI.auth.signin.company)}
         />
       </Tabs>
-      <FooterNav />
+      {/* <FooterNav /> */}
     </Layout>
   );
 }

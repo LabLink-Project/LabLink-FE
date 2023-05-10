@@ -39,67 +39,73 @@ function CompanyPage() {
   }, []);
 
   return (
-    <StCompanyPageWrap>
-      <SearchHeader title="마이페이지" />
-      <StCompanyPageUserWrap sort="space-between">
-        <StCompanyPageH2>
-          안녕하세요! <StCompanyPageStrong>{nickname}님</StCompanyPageStrong>
-        </StCompanyPageH2>
-        {/* 추후 추가 예정 */}
-        {/* <div>
+    <>
+      <StCompanyPageWrap>
+        <SearchHeader title="마이페이지" />
+        <StCompanyPageUserWrap sort="space-between">
+          <StCompanyPageH2>
+            안녕하세요! <StCompanyPageStrong>{nickname}님</StCompanyPageStrong>
+          </StCompanyPageH2>
+          {/* 추후 추가 예정 */}
+          {/* <div>
           <Link to={URI.mypage.company.editInfo}>내 정보 수정</Link>
           <img
             src={right}
             alt="더보기"
           />
         </div> */}
-      </StCompanyPageUserWrap>
-      <ul>
-        <StCompanyPageList
-          onClick={() => setOpen(!open)}
-          aria-controls="example-collapse-text"
-          aria-expanded={open}
-        >
-          <p>내 공고 관리</p>
-          <img
-            src={triangle}
-            alt=""
-          />
-        </StCompanyPageList>
-        <Collapse in={open}>
-          <div>
-            <StCompanyPageCollapse id="example-collapse-text">
-              <Link to={URI.mypage.company.ongoingStudy}>
-                진행중인 공고 확인
-              </Link>
-              <Link to={URI.mypage.company.endStudy}>종료된 공고 확인</Link>
-              <Link
-                // to={URI.mypage.company.studySchedule}
-                onClick={soonDevelop}
-              >
-                공고 스케줄확인
-              </Link>
-            </StCompanyPageCollapse>
-          </div>
-        </Collapse>
-        <StCompanyPageList>
-          <Link to={URI.mypage.company.createStudy}>공고 작성하기</Link>
-          {/* <img
-            src={triangle}
-            alt=""
-          /> */}
-        </StCompanyPageList>
-        <StCompanyPageList>
-          {/* 설정 부분 구현 완료시 수정 */}
-          {/* <Link to="#">설정</Link>
-          <img
+        </StCompanyPageUserWrap>
+        <ul>
+          <StCompanyPageList
+            onClick={() => setOpen(!open)}
+            aria-controls="example-collapse-text"
+            aria-expanded={open}
+          >
+            <p>내 공고 관리</p>
+            <img
+              src={triangle}
+              alt=""
+              style={{
+                width: '15px',
+                height: '15px',
+              }}
+            />
+          </StCompanyPageList>
+          <Collapse in={open}>
+            <div>
+              <StCompanyPageCollapse id="example-collapse-text">
+                <Link to={URI.mypage.company.ongoingStudy}>
+                  진행중인 공고 확인
+                </Link>
+                <Link to={URI.mypage.company.endStudy}>종료된 공고 확인</Link>
+                <Link
+                  // to={URI.mypage.company.studySchedule}
+                  onClick={soonDevelop}
+                >
+                  공고 스케줄확인
+                </Link>
+              </StCompanyPageCollapse>
+            </div>
+          </Collapse>
+          <StCompanyPageList>
+            <Link to={URI.mypage.company.createStudy}>공고 작성하기</Link>
+            {/* <img
             src={triangle}
             alt=""
           /> */}
-        </StCompanyPageList>
-      </ul>
+          </StCompanyPageList>
+          <StCompanyPageList>
+            {/* 설정 부분 구현 완료시 수정 */}
+            {/* <Link to="#">설정</Link>
+          <img
+            src={triangle}
+            alt=""
+          /> */}
+          </StCompanyPageList>
+        </ul>
+      </StCompanyPageWrap>
       <FooterNav />
-    </StCompanyPageWrap>
+    </>
   );
 }
 

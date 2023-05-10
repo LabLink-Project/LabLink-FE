@@ -28,6 +28,16 @@ function CompanyEndStudyList() {
 
   const [endStudies, setEndStudies] = useState();
 
+  const [studyDate, setStudyDate] = useState({
+    startDate: '',
+    endDate: '',
+  });
+
+  const dateOnchange = e => {
+    const { name, value } = e.target;
+    setStudyDate({ ...studyDate, [name]: value });
+  };
+
   const getEndStudies = async () => {
     try {
       const { data } = await api.get('/companies/studies', {
@@ -41,12 +51,12 @@ function CompanyEndStudyList() {
     }
   };
 
-  // const endStudy = endStudies?.filter(
-  //   endStudy => endStudy.studyStatus === 'END'
-  // );
   const endStudy = endStudies?.filter(
-    endStudy => endStudy.studyStatus === 'ONGOING'
+    endStudy => endStudy.studyStatus === 'END'
   );
+  // const endStudy = endStudies?.filter(
+  //   endStudy => endStudy.studyStatus === 'ONGOING'
+  // );
 
   useEffect(() => {
     getEndStudies();
@@ -64,8 +74,18 @@ function CompanyEndStudyList() {
       <StEndStudyListDateWrap>
         {/* 날짜 표시 방법 수정 */}
         {/* 달력 이미지 추가 */}
-        <StEndStudyListDate type="date" />
-        <StEndStudyListDate type="date" />
+        <StEndStudyListDate
+          type="date"
+          name="startDate"
+          value={studyDate.startDate}
+          onChange={dateOnchange}
+        />
+        <StEndStudyListDate
+          type="date"
+          name="endDate"
+          value={studyDate.endDate}
+          onChange={dateOnchange}
+        />
         <StEndStudyListQueryButton
           type="button"
           value="조회"

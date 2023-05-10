@@ -38,44 +38,45 @@ function PersonalOngoingStudy() {
   const ongoingStudy = ongoingStudies?.filter(
     ongoingStudy => ongoingStudy.approvalStatus === 'APPROVED'
   );
-
+  console.log(ongoingStudy);
   useEffect(() => {
     getPersonalOngoingStudies();
   }, []);
 
   return (
-    <StPersonalRequestPaddingWrap>
-      <SearchHeader title="실험 관리" />
-      <StPersonalRequestWrap sort="space-between">
-        <StPersonalRequestTitle>진행할 실험</StPersonalRequestTitle>
-        <StPersonalRequestDiv>전체보기</StPersonalRequestDiv>
-      </StPersonalRequestWrap>
-      <ul>
-        {ongoingStudy?.length ? (
-          <>
-            {ongoingStudy.map(ongoingStudy => {
-              return (
-                <li key={ongoingStudy.id}>
-                  <StPersonalRequestListWrap>
-                    <StPersonalRequestHeaderWrap sort="space-between">
-                      <StPersonalRequestCompany>
-                        {ongoingStudy.companyName}
-                      </StPersonalRequestCompany>
-                    </StPersonalRequestHeaderWrap>
-                    <StPersonalRequestStudyTitle>
-                      {ongoingStudy.title}
-                    </StPersonalRequestStudyTitle>
-                    <StPersonalRequestStudyPay>
-                      <StPersonalRequestStudyPayStrong>
-                        {ongoingStudy.pay}
-                      </StPersonalRequestStudyPayStrong>
-                      원
-                    </StPersonalRequestStudyPay>
-                    <StPersonalRequestHeaderWrap sort="space-between">
+    <>
+      <StPersonalRequestPaddingWrap>
+        <SearchHeader title="실험 관리" />
+        <StPersonalRequestWrap sort="space-between">
+          <StPersonalRequestTitle>진행할 실험</StPersonalRequestTitle>
+          <StPersonalRequestDiv>전체보기</StPersonalRequestDiv>
+        </StPersonalRequestWrap>
+        <ul>
+          {ongoingStudy?.length ? (
+            <>
+              {ongoingStudy.map(ongoingStudy => {
+                return (
+                  <li key={ongoingStudy.id}>
+                    <StPersonalRequestListWrap>
+                      <StPersonalRequestHeaderWrap sort="space-between">
+                        <StPersonalRequestCompany>
+                          {ongoingStudy.companyName}
+                        </StPersonalRequestCompany>
+                      </StPersonalRequestHeaderWrap>
+                      <StPersonalRequestStudyTitle>
+                        {ongoingStudy.title}
+                      </StPersonalRequestStudyTitle>
                       <StPersonalRequestStudyPay>
-                        {ongoingStudy.address} | {ongoingStudy.date}에 진행
+                        <StPersonalRequestStudyPayStrong>
+                          {ongoingStudy.pay}
+                        </StPersonalRequestStudyPayStrong>
+                        원
                       </StPersonalRequestStudyPay>
-                      {/* <Button
+                      <StPersonalRequestHeaderWrap sort="space-between">
+                        <StPersonalRequestStudyPay>
+                          {ongoingStudy.address} | {ongoingStudy.date}에 진행
+                        </StPersonalRequestStudyPay>
+                        {/* <Button
                           variant="dark"
                           style={{
                             height: '100%',
@@ -84,18 +85,19 @@ function PersonalOngoingStudy() {
                         >
                           지도보기
                         </Button> */}
-                    </StPersonalRequestHeaderWrap>
-                  </StPersonalRequestListWrap>
-                </li>
-              );
-            })}
-          </>
-        ) : (
-          <p>진행할 실험이 없습니다.</p>
-        )}
-      </ul>
+                      </StPersonalRequestHeaderWrap>
+                    </StPersonalRequestListWrap>
+                  </li>
+                );
+              })}
+            </>
+          ) : (
+            <p>진행할 실험이 없습니다.</p>
+          )}
+        </ul>
+      </StPersonalRequestPaddingWrap>
       <FooterNav />
-    </StPersonalRequestPaddingWrap>
+    </>
   );
 }
 
