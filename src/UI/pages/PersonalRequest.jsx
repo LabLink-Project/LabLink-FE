@@ -61,78 +61,80 @@ function PersonalRequest() {
       return (appliedStudy.approvalStatus = '처리중');
     }
   };
-
+console.log(appliedStudies);
   return (
-    <StPersonalRequestPaddingWrap>
-      <SearchHeader title="실험 관리" />
-      <StPersonalRequestWrap sort="space-between">
-        <StPersonalRequestTitle>신청한 실험</StPersonalRequestTitle>
-        <StPersonalRequestDiv>최근 1주일</StPersonalRequestDiv>
-      </StPersonalRequestWrap>
-      <ul>
-        {appliedStudies?.length ? (
-          <>
-            {appliedStudies?.map(appliedStudy => {
-              return (
-                <li key={appliedStudy.id}>
-                  <StPersonalRequestListWrap>
-                    <StPersonalRequestHeaderWrap sort="space-between">
-                      <StPersonalRequestCompany>
-                        {appliedStudy.companyName}
-                      </StPersonalRequestCompany>
-                      <StPersonalRequestTime>
-                        {appliedStudy.applicationDate}에 지원
-                      </StPersonalRequestTime>
-                    </StPersonalRequestHeaderWrap>
-                    <StPersonalRequestStudyTitle>
-                      <button
-                        onClick={() =>
-                          nav(`${URI.crud.studys}/${appliedStudy.id}`)
-                        }
-                      >
-                        {appliedStudy.title}
-                        <span
-                          style={{
-                            fontSize: '5px',
-                            marginLeft: '5px',
-                            color: 'gray',
-                          }}
+    <>
+      <StPersonalRequestPaddingWrap>
+        <SearchHeader title="실험 관리" />
+        <StPersonalRequestWrap sort="space-between">
+          <StPersonalRequestTitle>신청한 실험</StPersonalRequestTitle>
+          <StPersonalRequestDiv>최근 1주일</StPersonalRequestDiv>
+        </StPersonalRequestWrap>
+        <ul>
+          {appliedStudies?.length ? (
+            <>
+              {appliedStudies?.map(appliedStudy => {
+                return (
+                  <li key={appliedStudy.id}>
+                    <StPersonalRequestListWrap>
+                      <StPersonalRequestHeaderWrap sort="space-between">
+                        <StPersonalRequestCompany>
+                          {appliedStudy.companyName}
+                        </StPersonalRequestCompany>
+                        <StPersonalRequestTime>
+                          {appliedStudy.applicationDate}에 지원
+                        </StPersonalRequestTime>
+                      </StPersonalRequestHeaderWrap>
+                      <StPersonalRequestStudyTitle>
+                        <button
+                          onClick={() =>
+                            nav(`${URI.crud.studys}/${appliedStudy.id}`)
+                          }
                         >
-                          (상세보기)
-                        </span>
-                      </button>
-                    </StPersonalRequestStudyTitle>
-                    <StPersonalRequestHeaderWrap sort="space-between">
-                      <StPersonalRequestStudyPay>
-                        <StPersonalRequestStudyPayStrong>
-                          {appliedStudy.pay}
-                        </StPersonalRequestStudyPayStrong>
-                        원
-                      </StPersonalRequestStudyPay>
-                      <StapplicationViewstatus>
-                        {approvalStatus(appliedStudy)}
-                      </StapplicationViewstatus>
-                    </StPersonalRequestHeaderWrap>
-                    <StPersonalRequestHeaderWrap sort="space-between">
-                      <StPersonalRequestStudyPay>
-                        {appliedStudy.address} <br /> {appliedStudy.date}에 지원
-                        마감
-                      </StPersonalRequestStudyPay>
-                      <StapplicationViewstatus>
-                        {viewStatus(appliedStudy)}
-                      </StapplicationViewstatus>
-                    </StPersonalRequestHeaderWrap>
-                  </StPersonalRequestListWrap>
-                </li>
-              );
-            })}
-          </>
-        ) : (
-          <p>신청한 실험이 없습니다.</p>
-        )}
-      </ul>
-      <FooterNav/>
-    </StPersonalRequestPaddingWrap>
+                          {appliedStudy.title}
+                          <span
+                            style={{
+                              fontSize: '5px',
+                              marginLeft: '5px',
+                              color: 'gray',
+                            }}
+                          >
+                            (상세보기)
+                          </span>
+                        </button>
+                      </StPersonalRequestStudyTitle>
+                      <StPersonalRequestHeaderWrap sort="space-between">
+                        <StPersonalRequestStudyPay>
+                          <StPersonalRequestStudyPayStrong>
+                            {appliedStudy.pay}
+                          </StPersonalRequestStudyPayStrong>
+                          원
+                        </StPersonalRequestStudyPay>
+                        <StapplicationViewstatus>
+                          {approvalStatus(appliedStudy)}
+                        </StapplicationViewstatus>
+                      </StPersonalRequestHeaderWrap>
+                      <StPersonalRequestHeaderWrap sort="space-between">
+                        <StPersonalRequestStudyPay>
+                          {appliedStudy.address} <br /> {appliedStudy.date}에
+                          지원 마감
+                        </StPersonalRequestStudyPay>
+                        <StapplicationViewstatus>
+                          {viewStatus(appliedStudy)}
+                        </StapplicationViewstatus>
+                      </StPersonalRequestHeaderWrap>
+                    </StPersonalRequestListWrap>
+                  </li>
+                );
+              })}
+            </>
+          ) : (
+            <p>신청한 실험이 없습니다.</p>
+          )}
+        </ul>
+      </StPersonalRequestPaddingWrap>
+      <FooterNav />
+    </>
   );
 }
 

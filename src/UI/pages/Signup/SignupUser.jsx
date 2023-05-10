@@ -41,11 +41,11 @@ function SignupUser() {
     nickName: '',
     password: '',
     userPhone: '',
-    phoneCheck: '',
+    // phoneCheck: '',
     ageCheck: false,
     termsOfServiceAgreement: false,
     privacyPolicyConsent: false,
-    // sensitiveInfoConsent: false,
+    sensitiveInfoConsent: true,
     marketingOptIn: false,
   });
 
@@ -75,7 +75,7 @@ function SignupUser() {
       ageCheck: checked,
       termsOfServiceAgreement: checked,
       privacyPolicyConsent: checked,
-      sensitiveInfoConsent: checked,
+      // sensitiveInfoConsent: checked,
       marketingOptIn: checked,
     });
   };
@@ -92,7 +92,7 @@ function SignupUser() {
       newUsers.ageCheck &&
       newUsers.termsOfServiceAgreement &&
       newUsers.privacyPolicyConsent &&
-      newUsers.sensitiveInfoConsent &&
+      // newUsers.sensitiveInfoConsent &&
       newUsers.marketingOptIn
     ) {
       setAllAgreed(true);

@@ -121,7 +121,7 @@ function LoginCompany() {
                 color: 'gray',
               }}
             >
-              LapLink가 처음이신가요?
+              LabLink가 처음이신가요?
             </Link>
             {/* <Link
               // 페이지 구현 후 수정하기
