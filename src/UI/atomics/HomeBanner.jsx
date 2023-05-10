@@ -52,7 +52,10 @@ function HomeBanner() {
                   to={urls.current[i]}
                   key={i}
                 >
-                  <StImage src={img} />
+                  <StImage
+                    src={img}
+                    alt="이벤트 배너 이미지"
+                  />
                 </Link>
               );
             })}
