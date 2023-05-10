@@ -13,7 +13,7 @@ import BookmarkList from 'src/UI/pages/BookmarkList';
 import PersonalPage from 'src/UI/pages/PersonalPage';
 import EditPersonalProfile from 'src/UI/pages/EditPersonalProfile';
 import PersonalRequest from 'src/UI/pages/PersonalRequest';
-import CompanyApplicant from 'src/UI/pages/CompanyApplicant';
+import CompanyApplicant from 'src/UI/pages/StudyApplicant';
 import EndStudyList from 'src/UI/pages/CompanyEndStudyList';
 import ReadStudy from 'src/UI/pages/ReadStudy';
 import Search from 'src/UI/pages/Search';
@@ -40,6 +40,7 @@ import ReadFeedback from 'src/UI/pages/ReadFeedback';
 import KakaoRedirect from 'src/UI/pages/SocialLogin/KakaoRedirect';
 import TutorialBanner from 'src/UI/pages/Banner/TutorialBanner';
 import FeedbackBanner from 'src/UI/pages/Banner/FeedbackBanner';
+import StudyApplicant from 'src/UI/pages/StudyApplicant';
 
 const Router = () => {
   return (
@@ -181,7 +182,7 @@ const Router = () => {
         />
         <Route
           path={`${URI.mypage.company.applicant}/:id`}
-          element={<CompanyApplicant />}
+          element={<StudyApplicant />}
         />
         <Route
           path={`${URI.mypage.company.feedback}/:id`}

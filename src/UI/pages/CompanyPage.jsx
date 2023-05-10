@@ -16,6 +16,7 @@ import { useSelector } from 'react-redux';
 import Collapse from 'react-bootstrap/Collapse';
 import { useNavigate } from 'react-router-dom';
 import { cookies } from 'src/shared/Cookie';
+import { soonDevelop } from 'src/utils/soonDevelop';
 
 function CompanyPage() {
   const nav = useNavigate();
@@ -72,16 +73,21 @@ function CompanyPage() {
                 진행중인 공고 확인
               </Link>
               <Link to={URI.mypage.company.endStudy}>종료된 공고 확인</Link>
-              <Link to={URI.mypage.company.studySchedule}>공고 스케줄확인</Link>
+              <Link
+                // to={URI.mypage.company.studySchedule}
+                onClick={soonDevelop}
+              >
+                공고 스케줄확인
+              </Link>
             </StCompanyPageCollapse>
           </div>
         </Collapse>
         <StCompanyPageList>
           <Link to={URI.mypage.company.createStudy}>공고 작성하기</Link>
-          <img
+          {/* <img
             src={triangle}
             alt=""
-          />
+          /> */}
         </StCompanyPageList>
         <StCompanyPageList>
           {/* 설정 부분 구현 완료시 수정 */}
