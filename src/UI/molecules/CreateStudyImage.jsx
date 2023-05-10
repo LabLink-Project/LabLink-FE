@@ -24,7 +24,7 @@ function CreateStudyImage() {
         <StCreateStudyLabelWrap>
           <StCreateStudyLabel htmlFor="">썸네일 이미지 첨부</StCreateStudyLabel>
           <StCreateStudyParagraph>
-            500kB 이하의 jpg, png, pdf 파일만 등록 가능합니다.
+            공고 상단 이미지는 1개의 이미지만 등록 가능합니다.
           </StCreateStudyParagraph>
         </StCreateStudyLabelWrap>
         <StCreateStudyFileUploadLabel htmlFor="upload">

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { setStudyDetailAddress } from 'src/redux/modules/studyHandler';
+import { fontColors } from 'src/shared/designColors';
 import styled from 'styled-components';
 
 function Option({ children, closeHandler }) {
@@ -15,9 +16,9 @@ function Option({ children, closeHandler }) {
 }
 
 const StOption = styled.div`
-  border: 1px solid black;
+  background-color: ${fontColors.white};
   border-radius: 5px;
-  padding: 2px;
+  padding: 3px;
 
   &:hover {
     cursor: pointer;

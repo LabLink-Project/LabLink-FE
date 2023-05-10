@@ -16,6 +16,7 @@ import { serviceColors } from 'src/shared/designColors';
 import { soonDevelop } from 'src/utils/soonDevelop';
 import { useAccountState } from 'src/hooks/useReduxState';
 import { fontOptions } from 'src/shared/designFontOptions';
+import { StFlexBox } from '../styles/common.styled';
 
 function HomeHeader() {
   const nickname = useAccountState('nickname');
@@ -30,20 +31,19 @@ function HomeHeader() {
       <div>
         {nickname ? (
           <WelcomeMessage>
-            <Username>{nickname}</Username>님 환영합니다
+            <Username>{nickname}</Username>
+            <span>님 환영합니다</span>
             <Button onClick={signOutHandler}>로그아웃</Button>
           </WelcomeMessage>
         ) : (
           <WelcomeMessage>
-            {' '}
             <StHomeHeaderLink to={URI.auth.signin.user}>
-              로그인
-            </StHomeHeaderLink>{' '}
-            해주세요{' '}
-            <img
-              src={right}
-              alt="오른쪽 표시"
-            />
+              <Login>로그인</Login> 해주세요{' '}
+              <img
+                src={right}
+                alt="오른쪽 표시"
+              />
+            </StHomeHeaderLink>
           </WelcomeMessage>
         )}
       </div>
@@ -69,17 +69,24 @@ function HomeHeader() {
   );
 }
 
-const WelcomeMessage = styled.div`
+const WelcomeMessage = styled(StFlexBox)`
   ${fontOptions.body1}
 `;
 
-const Username = styled.strong`
+const Username = styled.div`
   ${fontOptions.subtitle}
+  max-width: 130px;
+  max-height: 22px;
+  overflow: hidden;
 `;
 
 const Button = styled.button`
   margin-left: 5px;
   color: ${serviceColors.secondary};
+`;
+
+const Login = styled.strong`
+  ${fontOptions.subtitle}
 `;
 
 export default HomeHeader;

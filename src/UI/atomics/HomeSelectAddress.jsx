@@ -10,6 +10,7 @@ import useBoolean from 'src/hooks/useBoolean';
 import useReduxState from 'src/hooks/useReduxState';
 import styled from 'styled-components';
 import { StFlexBox } from '../styles/common.styled';
+import { fontColors } from 'src/shared/designColors';
 
 function HomeSelectAddress() {
   const [show, isShowHandler] = useBoolean();
@@ -41,6 +42,7 @@ function HomeSelectAddress() {
           <Option closeHandler={isShowHandler}>울산</Option>
           <Option closeHandler={isShowHandler}>대구</Option>
           <Option closeHandler={isShowHandler}>경상</Option>
+          <Option closeHandler={isShowHandler}>제주</Option>
         </StOptionsWrap>
       )}
     </StMarginWrap>
@@ -52,12 +54,13 @@ const StMarginWrap = styled.div`
 `;
 
 const StOptionsWrap = styled(StFlexBox)`
-  flex-wrap: wrap;
-
   margin-top: 10px;
-  border: 1px solid black;
   border-radius: 5px;
   padding: 8px;
+
+  background-color: ${fontColors.background};
+
+  flex-wrap: wrap;
   gap: 6px;
 `;
 
